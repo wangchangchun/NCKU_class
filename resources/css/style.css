@@ -95,7 +95,7 @@ h2{
 }
 
 .section-about p{
-    letter-spacing:2px; 
+        letter-spacing:2px; 
 		line-height:40px; 
 		text-align:center;
 		text-decoration:blink;
@@ -103,14 +103,18 @@ h2{
 		font-size: 20px;
 		color: gray;
 		font-weight:600;
-		padding: 25px;
+        padding: 25px;
+         margin-bottom:1rem; 
+        /* height:50%; */
 }
-
-.introdution{
-	
+/* section-intro */
+.section-introdution{
+    margin-top:-17rem;
+    background-color: #f7e8c8;
 	display: grid;
 	grid-template-columns: [line1] 0.05fr [line2] 0.2fr [line3] 0.25fr [line4] 0.2fr [line5] 0.25fr[line6]0.05fr[end];
 	grid-template-rows: [row-1-start] 0.5fr [row-2-start] 20px [row-3-start] 0.5fr[row-4-start]20px [row-5-start]auto [row-end];
+    
 }
 
 
