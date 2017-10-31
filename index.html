@@ -25,14 +25,74 @@
     <main>
         <section class="section-about">
             <div class="text-center">
-                <h2>Culpa ut laborum deserunt ipsum ipsum eu.</h2>
-                <p>
-                    Aliqua est nisi nisi voluptate tempor voluptate deserunt fugiat incididunt enim ex est. <br>Eu magna minim dolor occaecat deserunt sint proident. Eiusmod cillum eiusmod est est mollit commodo officia officia. Id magna incididunt mollit nisi consequat enim. Veniam non non commodo ipsum officia amet ullamco.
-                </p>
+                <h2>簡介</h2>
+                <p id = "space">
+                    選課，一直是成大學生每學期最困擾的事之一，<br>
+					選課前除了必須搜尋課程大綱以及過去學長姐們的修課心得，<br>
+					還必須將想選修的課程製作成課表，仔細斟酌每堂課的時間該如何排列，<br>
+					此外，若是有想修的課沒有選到，還必須尋找其他想要換課的同學，<br>
+					以上的種種都必須造訪數個分別的網站才能蒐集到完整的情報資料，<br>
+					造成成大學生不少困擾，為了解決一直以來成大選課時，<br>
+					總是必須到多個網站查詢各種資料的問題，我們決定製作一個將所有資訊統整起來的網站，<br>
+					讓成大學生選課時不再需要將眾多分頁塞進瀏覽器<br>
+				</p>
             </div>
 
         </section>
-
+		<script type="text/javascript">
+		var count;
+		window.onload = function(){
+			var txt="選課，一直是成大學生每學期最困擾的事之一，<br>選課前除了必須搜尋課程大綱以及過去學長姐們的修課心得，<br>還必須將想選修的課程製作成課表，仔細斟酌每堂課的時間該如何排列，<br>，若是有想修的課沒有選到，還必須尋找其他想要換課的同學，<br>以上的種種都必須造訪數個分別的網站才能蒐集到完整的情報資料，<br>造成成大學生不少困擾，為了解決一直以來成大選課時，<br>總是必須到多個網站查詢各種資料的問題，我們決定製作一個將所有資訊統整起來的網站，<br>讓成大學生選課時不再需要將眾多分頁塞進瀏覽器<br>"
+			count = 0;
+			clearTimeout(timerID);
+			timerID = setTimeout(function(){
+				document.getElementById("space").innerHTML = txt.substr(0,count++);
+				if(count>txt.length)
+				{return;}
+			timerID = setTimeout(arguments.callee,75);
+			},100);
+		}
+		count = 0;
+		timerID = null;
+		</script>
+		
+		<div class = "introdution">
+		
+			<div class = "grid-item leader_photo">
+				<img src = "resources/img/NoImage.png"></img>
+			</div>
+			<div class = "grid-item leader_article">
+				<b>王昶鈞</b>
+			</div>
+		
+			<div class = "grid-item member1_photo">
+				<img src = "resources/img/NoImage.png"></img>
+			</div>
+			<div class = "grid-item member1_article">
+				<b>楊雅琦</b>
+			</div>
+			
+			<div class = "grid-item member2_photo">
+				<img src = "resources/img/NoImage.png"></img>
+			</div>
+			<div class = "grid-item member2_article">
+				<b >汪宗叡 </b>
+			</div>
+			
+			<div class = "grid-item member3_photo">
+				<img src = "resources/img/NoImage.png"></img>
+			</div>
+			<div class = "grid-item member3_article">
+				<b >黃暐程</b>
+			</div>
+			
+			<div class = "grid-item member4_photo">
+				<img src = "resources/img/NoImage.png"></img>
+			</div>
+			<div class = "grid-item member4_article">
+				<b >羅梅爾</b>
+			</div>
+		</div>
     </main>
         
 </body>
