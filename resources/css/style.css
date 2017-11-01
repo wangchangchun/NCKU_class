@@ -50,7 +50,7 @@ h2{
         to right bottom,
         /*  從左上到右下  */
         rgba(192, 118 ,89, 0.8),
-        rgba(195, 132 ,97, 0.8)),url("../img/nat-3-large.jpg");
+        rgba(195, 132 ,97, 0.8)),url("../img/IMG_0729-2.jpg");
     background-size: cover;
    
     position: relative;
@@ -127,7 +127,14 @@ h2{
 }
 .grid-item b {
 	font-size: 18px;
+	color: rgb(68, 61, 59);
 	font-family: '微軟正黑體',sans-serif;
+	padding: 5%;
+}
+
+.grid-item img{
+	height: 100%;
+	width: 100%;
 }
 .leader_photo{
 	background-color: #c07759;
@@ -136,7 +143,7 @@ h2{
 }
 
 .leader_article{ 
-	background-color: #c5655d;
+	background-color: #f2b4a7;
 	grid-column: line3/line6;
 	grid-row: row-1-start/row-2-start;
 }
@@ -148,7 +155,7 @@ h2{
 }
 
 .member1_article{ 
-	background-color: #c5655d;
+	background-color: #f2b4a7;
 	grid-column: line3/line4;
 	grid-row: row-3-start/row-4-start;
 }
@@ -160,7 +167,7 @@ h2{
 }
 
 .member2_article{ 
-	background-color: #c5655d;
+	background-color: #f2b4a7;
 	grid-column: line5/line6;
 	grid-row: row-3-start/row-4-start;
 }
@@ -172,7 +179,7 @@ h2{
 }
 
 .member3_article{ 
-	background-color: #c5655d;
+	background-color: #f2b4a7;
 	grid-column: line3/line4;
 	grid-row: row-5-start/row-end;
 }
@@ -184,7 +191,7 @@ h2{
 }
 
 .member4_article{ 
-	background-color: #c5655d;
+	background-color: #f2b4a7;
 	grid-column: line5/line6;
 	grid-row: row-5-start/row-end;
 }
