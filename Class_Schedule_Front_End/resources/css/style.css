@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    /* rem的reference  62.5% of browser default font size(16px)=10px */ }
+  
+
+body{
+    box-sizing: border-box;
+    font-family: 'Lato',sans-serif;
+    line-height: 1.7;
+    font-weight: 400;
+    color:#777;
+}
+
+
+/* header */
+
+.header-small{
+    height:20vh;
+    background-image:linear-gradient(to right,#bfd645,#70bf15); 
+}
