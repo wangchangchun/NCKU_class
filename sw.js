@@ -11,7 +11,7 @@ const cacheFile = [
   './resources/js/script.js'
 ]
 
-const cacheKey = 'ncku_class_v1'
+const cacheKey = 'ncku_class_v2'
 
 // install
 self.addEventListener('install', event => {
