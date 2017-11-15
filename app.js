@@ -5,5 +5,5 @@ $(() => {
     })
   }
   fetchData()
-//  $('#fetch-data').click(() => fetchData())
+  $('#fetch-data').click(() => fetchData())
 })
