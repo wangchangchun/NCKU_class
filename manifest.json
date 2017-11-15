@@ -1,0 +1,12 @@
+{
+  "name": "成大選課完全攻略Progressive Web App Demo - 1",
+  "short_name": "成大選課完全攻略PWA Demo 1",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [{
+    "src": "./src/icon.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }]
+}
