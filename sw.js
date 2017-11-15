@@ -8,7 +8,7 @@ const cacheFile = [
   './resources/img/IMG_0726-2.jpg',
   './resources/img/IMG_0727-2.jpg',
   './resources/img/IMG_0729-2.jpg',
-  './resources/js/script.js',
+  './resources/js/script.js'
 ]
 
 const cacheKey = 'ncku_class_v1'
