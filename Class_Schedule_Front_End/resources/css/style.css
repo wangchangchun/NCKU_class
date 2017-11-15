@@ -20,6 +20,42 @@ body{
 /* header */
 
 .header-small{
-    height:20vh;
-    background-image:linear-gradient(to right,#bfd645,#70bf15); 
+    height:15vh;
+    background-color:#69c6e5;
+    /* background-image:linear-gradient(to right,#bfd645,#70bf15);  */
+}
+
+
+/*section*/
+
+.row.test{
+    width:100%;
+    margin: 0;
+}
+
+#courses-list{
+    height:85vh;
+    background-color: #9abbc5;
+    /* margin-left:-3.5rem; */
+   margin: 0;
+}
+
+#courses-block{
+    height: 85vh;
+    background-color: 	#aed7e5;
+}
+
+/*table*/
+
+.table-main{
+    height:100%;
+    
+    border-color:#777;
+}
+
+.table-row{
+    height:calc( 100% / 9 );
+}
+.table-cell{
+    width:22.6rem;
 }

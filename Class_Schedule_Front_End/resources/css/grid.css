@@ -1,5 +1,5 @@
 .row {
-    max-width: 114rem;
+    max-width: 130rem;
     margin: 0 auto;
     /* 因為最後一個col不要margin-bottom 所以用not last-child */
     /* any class starts with "col-" use ^= ,any class ends with "col-" use $     */ }
@@ -11,7 +11,7 @@
       clear: both; }
     .row [class^="col-"] {
       float: left;
-      background-color: red; }
+       }
       .row [class^="col-"]:not(:last-child) {
         margin-right: 6rem; }
     .row .col-1-of-2 {
@@ -26,5 +26,5 @@
     .row .col-2-of-4 {
       width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
     .row .col-3-of-4 {
-      width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+      width: calc(3 * ((100% - 3 * 6rem) / 4) + 3 * 6rem); }
   
