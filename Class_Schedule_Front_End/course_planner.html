@@ -2,32 +2,354 @@
 <html>
 <head>
 	<link rel="stylesheet" href="course_planner.css">
+</head>
+
 <body>
 	<header>
 		<h1 class="headerTitle">Course Planning System</h1>
-		
 	</header>
 	
 	<nav>
+	<input type="text" id="searchBar" onkeyup="searchBar()" placeholder="Search for colleges..">
 	
-	<div class="dropdown">
+	<div class="dropdown">	
 		
-			<a href="#" id="A1">外國語言</a><br>
-			<a href="#" id="A9">通識課程</a><br>
-			<a href="#" id="文學院">文學院</a><br>
-			<a href="#" id="理學院">理學院</a><br>
-			<a href="#" id="工學院">工學院</a><br>
-			<a href="#" id="管理學院">管理學院</a><br>
-			<a href="#" id="醫學院">醫學院</a><br>
-			<a href="#" id="社科院">社會科學學院</a><br>
-			<a href="#" id="電資院">電機資訊學院</a><br>
-			<a href="#" id="規劃與設計學院">規劃與設計學院</a><br>
-			<a href="#" id="生科院">生物科學與科技學院</a><br>
-			
+			<a href="#" id="e1" class="college"onClick="changeButton(1)">通識課程</a><br>
+				<div id="college1" class="department">
+				<a href="#" id="A1" class="department" >外國語言</a><br>
+				<div id="query_result"></div>
+				<a href="#" id="A9" class="department" >通識中心</a><br>
+				<a href="#" id="AG" class="department" >公民歷史</a><br>
+				<a href="#" id="A7" class="department" >基礎國文</a><br>
+				</div>
+			<a href="#" id="e2" class="college" onClick="changeButton(2)">文學院</a><br>
+				<div id="college2" class="department">
+				<a href="#" id="B1" class="department" >中文系</a><br>
+				<a href="#" id="B2" class="department" >外文系</a><br>
+				<a href="#" id="B3" class="department" >歷史系</a><br>
+				<a href="#" id="B5" class="department" >台文系</a><br>
+				</div>
+			<a href="#" id="e3" class="college" onClick="changeButton(3)">理學院</a><br>
+				<div id="college3" class="department">
+				<a href="#" id="C1" class="department" >數學系</a><br>
+				<a href="#" id="C2" class="department" >物理系</a><br>
+				<a href="#" id="C3" class="department" >化學系</a><br>
+				<a href="#" id="C4" class="department" >地科系</a><br>
+				<a href="#" id="F8" class="department" >光電系</a><br>
+				</div>
+			<a href="#" id="e4" class="college" onClick="changeButton(4)">工學院</a><br>
+				<div id="college4" class="department">
+				<a href="#" id="E1" class="department" >機械系</a><br>
+				<a href="#" id="E3" class="department" >化工系</a><br>
+				<a href="#" id="E4" class="department" >資源系</a><br>
+				<a href="#" id="E5" class="department" >材料系</a><br>
+				<a href="#" id="E6" class="department" >土木系</a><br>
+				<a href="#" id="E8" class="department" >水利系</a><br>
+				<a href="#" id="E9" class="department" >工科系</a><br>
+				<a href="#" id="F0" class="department" >能源學程</a><br>
+				<a href="#" id="F1" class="department" >系統系</a><br>
+				<a href="#" id="F4" class="department" >航太系</a><br>
+				<a href="#" id="F5" class="department" >環工系</a><br>
+				<a href="#" id="F6" class="department" >測量系</a><br>
+				<a href="#" id="F9" class="department" >醫工系</a><br>
+				</div>
+			<a href="#" id="e5" class="college" onClick="changeButton(5)">管理學院</a><br>
+				<div id="college5" class="department">
+				<a href="#" id="H1" class="department" >會計系</a><br>
+				<a href="#" id="H2" class="department" >統計系</a><br>
+				<a href="#" id="H3" class="department" >工資系</a><br>
+				<a href="#" id="H4" class="department" >企管系</a><br>
+				<a href="#" id="H5" class="department" >交管系</a><br>
+				
+				</div>
+			<a href="#" id="e6" class="college" onClick="changeButton(6)">醫學院</a><br>
+				<div id="college6" class="department">
+				<a href="#" id="I2" class="department" >護理系</a><br>
+				<a href="#" id="I3" class="department" >醫技系</a><br>
+				<a href="#" id="I5" class="department" >醫學系</a><br>
+				<a href="#" id="I6" class="department" >物治系</a><br>
+				<a href="#" id="I7" class="department" >職治系</a><br>
+				<a href="#" id="I8" class="department" >藥學系</a><br>
+				</div>
+			<a href="#" id="e7" class="college" onClick="changeButton(7)">社會科學學院</a><br>
+				<div id="college7" class="department">
+				<a href="#" id="D2" class="department" >法律系</a><br>
+				<a href="#" id="D4" class="department" >政治系</a><br>
+				<a href="#" id="D5" class="department" >經濟系</a><br>
+				<a href="#" id="D8" class="department" >心理系</a><br>
+				</div>
+			<a href="#" id="e8" class="college" onClick="changeButton(8)">電機資訊學院</a><br>
+				<div id="college8" class="department">
+				<a href="#" id="E2" class="department" >電機系</a><br>
+				<a href="#" id="F7" class="department" >資訊系</a><br>
+				</div>
+			<a href="#" id="e9" class="college" onClick="changeButton(9)">規劃與設計學院</a><br>
+				<div id="college9" class="department">	
+				<a href="#" id="E7" class="department" >建築系</a><br>
+				<a href="#" id="F2" class="department" >都計系</a><br>
+				<a href="#" id="F3" class="department" >工設系</a><br>
+				</div>
+			<a href="#" id="e10" class="college" onClick="changeButton(10)">生物科學與科技學院</a><br>
+				<div id="college10" class="department">
+				<a href="#" id="C5" class="department" >生科系</a><br>
+				<a href="#" id="C6" class="department" >生技系</a><br>
+				</div>
+	</div>
+<!--	<div>
+	<button id="A1" class="" onclick="showClick('A1')">外國語言</button><br>
+    <button id="A2" class="" onclick="showClick('A2')">體育室</button><br>
+    <button id="A3" class="" onclick="showClick('A3')">軍訓室</button><br>
+    <button id="A4" class="" onclick="showClick('A4')">師培中心</button><br>
+    <button id="A5" class="" onclick="showClick('A5')">計網中心</button><br>
+    <button id="A6" class="" onclick="showClick('A6')">服務學習</button><br>
+    <button id="A7" class="" onclick="showClick('A7')">基礎國文</button><br>
+    <button id="A9" class="" onclick="showClick('A9')">通識中心</button><br>
+    <button id="AA" class="" onclick="showClick('AA')">共同英授</button><br>
+    <button id="AG" class="" onclick="showClick('AG')">公民歷史</button><br>
+    <button id="AH" class="" onclick="showClick('AH')">華語中心</button><br>
+    <button id="AN" class="" onclick="showClick('AN')">不分系學程</button><br>
+    <button id="B0" class="" onclick="showClick('B0')">文學院學士班</button><br>
+    <button id="B1" class="" onclick="showClick('B1')">中文系</button><br>
+    <button id="B2" class="" onclick="showClick('B2')">外文系</button><br>
+    <button id="B3" class="" onclick="showClick('B3')">歷史系</button><br>
+    <button id="B5" class="" onclick="showClick('B5')">台文系</button><br>
+    <button id="C0" class="" onclick="showClick('C0')">科學班</button><br>
+    <button id="C1" class="" onclick="showClick('C1')">數學系</button><br>
+    <button id="C2" class="" onclick="showClick('C2')">物理系</button><br>
+    <button id="C3" class="" onclick="showClick('C3')">化學系</button><br>
+    <button id="C4" class="" onclick="showClick('C4')">地科系</button><br>
+    <button id="C5" class="" onclick="showClick('C5')">生科系</button><br>
+    <button id="C6" class="" onclick="showClick('C6')">生技系</button><br>
+    <button id="CZ" class="" onclick="showClick('CZ')">理學院學士班</button><br>
+    <button id="D0" class="" onclick="showClick('D0')">社會科學院</button><br>
+    <button id="D2" class="" onclick="showClick('D2')">法律系</button><br>
+    <button id="D4" class="" onclick="showClick('D4')">政治系</button><br>
+    <button id="D5" class="" onclick="showClick('D5')">經濟系</button><br>
+    <button id="D8" class="" onclick="showClick('D8')">心理系</button><br>
+    <button id="E0" class="" onclick="showClick('E0')" >工學院</button><br>
+    <button id="E1" class="" onclick="showClick('E1')">機械系</button><br>
+    <button id="E2" class="" onclick="showClick('E2')">電機系</button><br>
+    <button id="E3" class="" onclick="showClick('E3')">化工系</button><br>
+    <button id="E4" class="" onclick="showClick('E4')">資源系</button><br>
+    <button id="E5" class="" onclick="showClick('E5')">材料系</button><br>
+    <button id="E6" class="" onclick="showClick('E6')">土木系</button><br>
+    <button id="E7" class="" onclick="showClick('E7')">建築系</button><br>
+    <button id="E8" class="" onclick="showClick('E8')">水利系</button><br>
+    <button id="E9" class="" onclick="showClick('E9')">工科系</button><br>
+    <button id="F0" class="" onclick="showClick('F0')">能源學程</button><br>
+    <button id="F1" class="" onclick="showClick('F1')">系統系</button><br>
+    <button id="F2" class="" onclick="showClick('F2')">都計系</button><br>
+    <button id="F3" class="" onclick="showClick('F3')">工設系</button><br>
+    <button id="F4" class="" onclick="showClick('F4')">航太系</button><br>
+    <button id="F5" class="" onclick="showClick('F5')">環工系</button><br>
+    <button id="F6" class="" onclick="showClick('F6')">測量系</button><br>
+    <button id="F7" class="" onclick="showClick('F7')">資訊系</button><br>
+    <button id="F8" class="" onclick="showClick('F8')">光電系</button><br>
+    <button id="F9" class="" onclick="showClick('F9')">醫工系</button><br>
+    <button id="FZ" class="" onclick="showClick('FZ')">規劃設計學院學士</button><br>
+    <button id="H1" class="" onclick="showClick('H1')">會計系</button><br>
+    <button id="H2" class="" onclick="showClick('H2')">統計系</button><br>
+    <button id="H3" class="" onclick="showClick('H3')">工資系</button><br>
+    <button id="H4" class="" onclick="showClick('H4')">企管系</button><br>
+    <button id="H5" class="" onclick="showClick('H5')">交管系</button><br>
+    <button id="I2" class="" onclick="showClick('I2')">護理系</button><br>
+    <button id="I3" class="" onclick="showClick('I3')">醫技系</button><br>
+    <button id="I5" class="" onclick="showClick('I5')">醫學系</button><br>
+    <button id="I6" class="" onclick="showClick('I6')">物治系</button><br>
+    <button id="I7" class="" onclick="showClick('I7')">職治系</button><br>
+    <button id="I8" class="" onclick="showClick('I8')">藥學系</button><br>
+    <button id="K1" class="" onclick="showClick('K1')">中文所</button><br>
+    <button id="K2" class="" onclick="showClick('K2')">外文所</button><br>
+    <button id="K3" class="" onclick="showClick('K3')">歷史所</button><br>
+    <button id="K4" class="" onclick="showClick('K4')">藝術所</button><br>
+    <button id="K5" class="" onclick="showClick('K5')">台文所</button><br>
+    <button id="K7" class="" onclick="showClick('K7')">考古所</button><br>
+    <button id="K8" class="" onclick="showClick('K8')">戲劇碩士學程</button><br>
+    <button id="L1" class="" onclick="showClick('L1')">應數所</button><br>
+    <button id="L2" class="" onclick="showClick('L2')">物理所</button><br>
+    <button id="L3" class="" onclick="showClick('L3')">化學所</button><br>
+    <button id="L4" class="" onclick="showClick('L4')">地科所</button><br>
+    <button id="L5" class="" onclick="showClick('L5')">生命科學</button><br>
+    <button id="L6" class="" onclick="showClick('L6')">生技所</button><br>
+    <button id="L7" class="" onclick="showClick('L7')">光電所</button><br>
+    <button id="LA" class="" onclick="showClick('LA')">電漿所</button><br>
+    <button id="LZ" class="" onclick="showClick('LZ')">理學院研究所</button><br>
+    <button id="N0" class="" onclick="showClick('N0')">工程管理</button><br>
+    <button id="N1" class="">機械所</button><br>
+    <button id="N2" class="">電機所</button><br>
+    <button id="N3" class="">化工所</button><br>
+    <button id="N4" class="">資源所</button><br>
+    <button id="N5" class="">材料所</button><br>
+    <button id="N6" class="">土木所</button><br>
+    <button id="N7" class="">建築所</button><br>
+    <button id="N8" class="">水利所</button><br>
+    <button id="N9" class="">工科所</button><br>
+    <button id="NA" class="">海事所</button><br>
+    <button id="NB" class="">尖端所</button><br>
+    <button id="NC" class="">自災所</button><br>
+    <button id="ND" class="">多媒學程</button><br>
+    <button id="P0" class="">能源學程</button><br>
+    <button id="P1" class="">系統所</button><br>
+    <button id="P2" class="">都計所</button><br>
+    <button id="P3" class="">工設所</button><br>
+    <button id="P4" class="">航太所</button><br>
+    <button id="P5" class="">環工所</button><br>
+    <button id="P6" class="">測量所</button><br>
+    <button id="P7" class="">資訊所</button><br>
+    <button id="P8" class="">醫工所</button><br>
+    <button id="P9" class="">製造所</button><br>
+    <button id="PA" class="">創意所</button><br>
+    <button id="PB" class="">科藝學程</button><br>
+    <button id="Q1" class="">微電所</button><br>
+    <button id="Q3" class="">電通所</button><br>
+    <button id="Q4" class="">民航所</button><br>
+    <button id="Q5" class="">醫資所</button><br>
+    <button id="Q6" class="">南科專</button><br>
+    <button id="Q7" class="">奈積學程</button><br>
+    <button id="R0" class="">EMBA</button><br>
+    <button id="R1" class="">會計所</button><br>
+    <button id="R2" class="">統計所</button><br>
+    <button id="R3" class="">工資所</button><br>
+    <button id="R4" class="">企管所</button><br>
+    <button id="R5" class="">交管所</button><br>
+    <button id="R6" class="">國企所</button><br>
+    <button id="R7" class="">資管所</button><br>
+    <button id="R8" class="">財金所</button><br>
+    <button id="R9" class="">電管所</button><br>
+    <button id="RA" class="">IMBA</button><br>
+    <button id="RB" class="">體檢所</button><br>
+    <button id="RD" class="">AMBA</button><br>
+    <button id="RZ" class="">管理學院</button><br>
+    <button id="S0" class="">醫學院</button><br>
+    <button id="S1" class="">生化所</button><br>
+    <button id="S2" class="">藥理所</button><br>
+    <button id="S3" class="">生理所</button><br>
+    <button id="S4" class="">微免所</button><br>
+    <button id="S5" class="">基醫所</button><br>
+    <button id="S6" class="">臨藥科技</button><br>
+    <button id="S7" class="">環醫所</button><br>
+    <button id="S8" class="">行醫所</button><br>
+    <button id="S9" class="">臨醫所</button><br>
+    <button id="SA" class="">神經學程</button><br>
+    <button id="SB" class="">公位在職</button><br>
+    <button id="SC" class="">食安所</button><br>
+    <button id="T1" class="">分醫所</button><br>
+    <button id="T2" class="">護理所</button><br>
+    <button id="T3" class="">醫技所</button><br>
+    <button id="T4" class="">口醫所</button><br>
+    <button id="T6" class="">物治所</button><br>
+    <button id="T7" class="">職治所</button><br>
+    <button id="T8" class="">公衛所</button><br>
+    <button id="T9" class="">細胞所</button><br>
+    <button id="TA" class="">健照所</button><br>
+    <button id="TC" class="">老年所</button><br>
+    <button id="U1" class="">政經所</button><br>
+    <button id="U2" class="">法律所</button><br>
+    <button id="U3" class="">教育所</button><br>
+    <button id="U5" class="">經濟所</button><br>
+    <button id="U7" class="">心理所</button><br>
+    <button id="V6" class="">電力產專</button><br>
+    <button id="V8" class="">微波材料</button><br>
+    <button id="V9" class="">電子材料</button><br>
+    <button id="VA" class="">電機產業</button><br>
+    <button id="VB" class="">光材產專</button><br>
+    <button id="VC" class="">光產產專</button><br>
+    <button id="VD" class="">微波材料元件</button><br>
+    <button id="VE" class="">電子產專</button><br>
+    <button id="VF" class="">發光二極</button><br>
+    <button id="VG" class="">靜電保護</button><br>
+    <button id="VH" class="">磁性材料</button><br>
+    <button id="VJ" class="">電子材料</button><br>
+    <button id="VK" class="">電機驅動</button><br>
+    <button id="VL" class="">微波電子</button><br>
+    <button id="VM" class="">積體製程</button><br>
+    <button id="VN" class="">微波元件</button><br>
+    <button id="VO" class="">先進RF產專</button><br>
+    <button id="Z0" class="">生科學院</button><br>
+    <button id="Z2" class="">生訊所</button><br>
+    <button id="Z3" class="">熱植所</button><br>
+    <button id="Z5" class="">譯農所</button><br>
+	</div> -->
+	<div id="ajax">
+	<script>
+	
+	
+	var f= [0,0,0,0,0,0,0,0,0,0];
+	
+	function changeButton(num){
+		if(num==1)
+			f[0]=(f[0]+1)%2;
+		else if(num==2)
+			f[1]=(f[1]+1)%2;
+		else if(num==3)
+			f[2]=(f[2]+1)%2;
+		else if(num==4)
+			f[3]=(f[3]+1)%2;
+		else if(num==5)
+			f[4]=(f[4]+1)%2;
+		else if(num==6)
+			f[5]=(f[5]+1)%2;
+		else if(num==7)
+			f[6]=(f[6]+1)%2;
+		else if(num==8)
+			f[7]=(f[7]+1)%2;
+		else if(num==9)
+			f[8]=(f[8]+1)%2;
+		else if(num==10)
+			f[9]=(f[9]+1)%2;
+		if(f[num-1]==0)
+		{
+			for(var i=1; i<11; i++)
+			{
+				if (i != num)
+				{
+					document.getElementById("e"+i).style.display = "none";
+				}
+				if(i == num)
+				{
+					document.getElementById("college"+i).style.display="block";
+				}
+			}
+		}
+		else{
+			for(var i=1; i<11; i++)
+			{
+				if (i != num)
+				{
+					document.getElementById("e"+i).style.display = "block";
+				}
+				if(i == num)
+				{
+					document.getElementById("college"+i).style.display="none";
+				}
+			}
+		}
+	}
+	
+	function searchBar(){
+		var input, filter, ul, li, a, i;
+		input = document.getElementById("searchBar");
+		filter = input.value.toUpperCase();
+		ul = document.getElementById("dropdown");
+		li = ul.getElementsByClassName("college");
+		
+		for ( i = 0; i < 10; i++)
+		{
+			a = li[i].getElementsByTagName("a")[0];
+			if (a.innerHTML.toUpperCase().indexOf(filter) > -1)
+			{
+				li[i].style.display = "";
+			}else{
+				li[i].style.display = "none";
+			}
+		}
+	}
+				
+	</script>
 	</div>
 	</nav>
 	
-	<main>
+	<main id="main">
 
 		<table  class="table-main">
 <!-- 1st -->
@@ -138,10 +460,7 @@
                              <td class="table-cell" id="WED-9"></td>
                              <td class="table-cell" id="THU-9"></td>
                              <td class="table-cell" id="FRI-9"></td>
-						</tr>
-				   
-                   
-                   
+						</tr>            
         </table>
 	</main>
 </body>
