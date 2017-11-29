@@ -10,10 +10,10 @@ $("#A1").click(() => {
   })
 });
 $("#query_result").on("click", "button[name='but']", (event) => { 
-    $.post({ 
+    $.get({ 
       url: "../test_1", 
-      method: "POST",
-      type: "post", 
+      method: "GET",
+      type: "get", 
       data: { 
           //id:this.id, 
           id:event.target.id 
