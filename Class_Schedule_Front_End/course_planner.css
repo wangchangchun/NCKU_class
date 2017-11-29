@@ -89,6 +89,9 @@ div.dropdown a:hover{
 div.dropdown div.department {
 	display: none;
 }
+
+.query_result {display:none;}
+
 .table-cell {
 	border: solid;
 	border-color: #777;

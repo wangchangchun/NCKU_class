@@ -17,12 +17,14 @@
 		
 			<a href="#" id="e1" class="college"onClick="changeButton(1)">通識課程</a><br>
 				<div id="college1" class="department">
-				<a href="#" id="A1" class="department">外國語言</a><br>
-					<div id="query_result_1"></div>
-				<a href="#" id="A9" class="department" >通識中心</a><br>
-					<div id="query_result_2"></div>
-				<a href="#" id="AG" class="department" >公民歷史</a><br>
-				<a href="#" id="A7" class="department" >基礎國文</a><br>
+				<a href="#" id="g1" class="department" onClick="changeButton2(1)">外國語言</a><br>
+					<div id="query_result1" class="query_result"></div>
+				<a href="#" id="g2" class="department" onClick="changeButton2(2)">通識中心</a><br>
+					<div id="query_result2" class="query_result"></div>
+				<a href="#" id="g3" class="department" onClick="changeButton2(3)">公民歷史</a><br>
+					<div id="query_result3" class="query_result"></div>
+				<a href="#" id="g4" class="department" onClick="changeButton2(4)">基礎國文</a><br>
+					<div id="query_result4" class="query_result"></div>
 				</div>
 			<a href="#" id="e2" class="college" onClick="changeButton(2)">文學院</a><br>
 				<div id="college2" class="department">
@@ -156,6 +158,43 @@
 		}
 	}
 	
+	function changeButton2(num){
+		if(num==1)
+			f[0]=(f[0]+1)%2;
+		else if(num==2)
+			f[1]=(f[1]+1)%2;
+		else if(num==3)
+			f[2]=(f[2]+1)%2;
+		else if(num==4)
+			f[3]=(f[3]+1)%2;
+		if(f[num-1]==0)
+		{
+			for(var i=1; i<5; i++)
+			{
+				if (i != num)
+				{
+					document.getElementById("g"+i).style.display = "none";
+				}
+				if(i == num)
+				{
+					document.getElementById("query_result"+i).style.display="block";
+				}
+			}
+		}
+		else{
+			for(var i=1; i<5; i++)
+			{
+				if (i != num)
+				{
+					document.getElementById("g"+i).style.display = "block";
+				}
+				if(i == num)
+				{
+					document.getElementById("query_result"+i).style.display="none";
+				}
+			}
+		}
+	}
 	function searchBar(){
 		var input, filter, division, colleges, a, i;
 		input = document.getElementById("searchBar");
