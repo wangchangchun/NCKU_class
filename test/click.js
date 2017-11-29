@@ -1,17 +1,18 @@
 $("#A1").click(() => {
   $.post({
-    url: "/",
+    url: "../test",
     method: "POST",
     type: "post",
     success: (res) => {
-      $('#text').html(res);
-      //$('#query_result').append(res);
+      //$('#text').html(res);
+      $('#query_result').append(res);
     }
   })
 });
 $("#query_result").on("click", "button[name='but']", (event) => { 
     $.post({ 
-      url: "course.php", 
+      url: "../test_1", 
+      method: "POST",
       type: "post", 
       data: { 
           //id:this.id, 
@@ -19,7 +20,7 @@ $("#query_result").on("click", "button[name='but']", (event) => {
       }, 
       success: (res) => {
         var name = res.split("+")[1];
-        var time = res.split("+")[0];
+        
         var day = time[1];
         var class_t1 = time[3];
         var class_t2 = time[5];
