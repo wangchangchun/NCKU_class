@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <title>mysql query test</title>
+  <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="Semantic-UI-CSS/semantic.min.js"></script>
+  </head>
+  <body>
+  <div id="body">
+  <div id="left">
+    <h1>MySQL Query</h1>
+    <form method="post" onsubmit="return false;">
+    <p id="text"></p>
+    <button id="A1" class="ui inverted teal button">外國語言</button><br>
+    </form>
+    <div id="query_result"></div>
+  </div>
+  <div id="right">
+  <div class="ui equal width grid">
+    <div class="row">
+      <div class="column">
+        <div class="ui segment"></div>
+      </div>
+      <div class="column">
+        <div class="ui segment">MON</div>
+      </div>
+      <div class="column">
+        <div class="ui segment">TUE</div>
+      </div>
+      <div class="column">
+        <div class="ui segment">WED</div>
+      </div>
+      <div class="column">
+        <div class="ui segment">THU</div>
+      </div>
+      <div class="column">
+        <div class="ui segment">FRI</div>
+      </div>
+      <div class="column">
+        <div class="ui segment">SAT</div>
+      </div>
+      <div class="column">
+        <div class="ui segment">SUN</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">1</div>
+      </div>
+      <div id="MON-1" class="column">
+        <p id="MON-1-seg" class="ui segment"></p>
+      </div>
+      <div id="TUE-1" class="column">
+        <p id="TUE-1-seg" class="ui segment"></p>
+      </div>
+      <div id="WED-1" class="column">
+        <p id="WED-1-seg" class="ui segment"></p>
+      </div>
+      <div id="THU-1" class="column">
+        <p id="THU-1-seg" class="ui segment"></p>
+      </div>
+      <div id="FRI-1" class="column">
+        <p id="FRI-1-seg" class="ui segment"></p>
+      </div>
+      <div id="SAT-1" class="column">
+        <p id="SAT-1-seg" class="ui segment"></p>
+      </div>
+      <div id="SUN-1" class="column">
+        <p id="SUN-1-seg" class="ui segment"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">2</div>
+      </div>
+      <div id="MON-2" class="column">
+        <p id="MON-2-seg" class="ui segment"></p>
+      </div>
+      <div id="TUE-2" class="column">
+        <div id="TUE-2-seg" class="ui segment"></div>
+      </div>
+      <div id="WED-2" class="column">
+        <div id="WED-2-seg" class="ui segment"></div>
+      </div>
+      <div id="THU-2" class="column">
+        <div id="THU-2-seg" class="ui segment"></div>
+      </div>
+      <div id="FRI-2" class="column">
+        <div id="FRI-2-seg" class="ui segment"></div>
+      </div>
+      <div id="SAT-2" class="column">
+        <div id="SAT-2-seg" class="ui segment"></div>
+      </div>
+      <div id="SUN-2" class="column">
+        <div id="SUN-2-seg" class="ui segment"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">3</div>
+      </div>
+      <div id="MON-3" class="column">
+        <div id="MON-3-seg" class="ui segment"></div>
+      </div>
+      <div id="TUE-3" class="column">
+        <div id="TUE-3-seg" class="ui segment"></div>
+      </div>
+      <div id="WED-3" class="column">
+        <div id="WED-3-seg" class="ui segment"></div>
+      </div>
+      <div id="THU-3" class="column">
+        <div id="THU-3-seg" class="ui segment"></div>
+      </div>
+      <div id="FRI-3" class="column">
+        <div id="FRI-3-seg" class="ui segment"></div>
+      </div>
+      <div id="SAT-3" class="column">
+        <div id="SAT-3-seg" class="ui segment"></div>
+      </div>
+      <div id="SUN-3" class="column">
+        <div id="SUN-3-seg" class="ui segment"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">4</div>
+      </div>
+      <div id="MON-4" class="column">
+        <div id="MON-4-seg" class="ui segment"></div>
+      </div>
+      <div id="TUE-4" class="column">
+        <div id="TUE-4-seg" class="ui segment"></div>
+      </div>
+      <div id="WED-4" class="column">
+        <div id="WED-4-seg" class="ui segment"></div>
+      </div>
+      <div id="THU-4" class="column">
+        <div id="THU-4-seg" class="ui segment"></div>
+      </div>
+      <div id="FRI-4" class="column">
+        <div id="FRI-4-seg" class="ui segment"></div>
+      </div>
+      <div id="SAT-4" class="column">
+        <div id="SAT-4-seg" class="ui segment"></div>
+      </div>
+      <div id="SUN-4" class="column">
+        <div id="SUN-4-seg" class="ui segment"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">5</div>
+      </div>
+      <div id="MON-5" class="column">
+        <div id="MON-5-seg" class="ui segment"></div>
+      </div>
+      <div id="TUE-5" class="column">
+        <div id="TUE-5-seg" class="ui segment"></div>
+      </div>
+      <div id="WED-5" class="column">
+        <div id="WED-5-seg" class="ui segment"></div>
+      </div>
+      <div id="THU-5" class="column">
+        <div id="THU-5-seg" class="ui segment"></div>
+      </div>
+      <div id="FRI-5" class="column">
+        <div id="FRI-5-seg" class="ui segment"></div>
+      </div>
+      <div id="SAT-5" class="column">
+        <div id="SAT-5-seg" class="ui segment"></div>
+      </div>
+      <div id="SUN-5" class="column">
+        <div id="SUN-5-seg" class="ui segment"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">6</div>
+      </div>
+      <div id="MON-6" class="column">
+        <div id="MON-6-seg" class="ui segment"></div>
+      </div>
+      <div id="TUE-6" class="column">
+        <div id="TUE-6-seg" class="ui segment"></div>
+      </div>
+      <div id="WED-6" class="column">
+        <div id="WED-6-seg" class="ui segment"></div>
+      </div>
+      <div id="THU-6" class="column">
+        <div id="THU-6-seg" class="ui segment"></div>
+      </div>
+      <div id="FRI-6" class="column">
+        <div id="FRI-6-seg" class="ui segment"></div>
+      </div>
+      <div id="SAT-6" class="column">
+        <div id="SAT-6-seg" class="ui segment"></div>
+      </div>
+      <div id="SUN-6" class="column">
+        <div id="SUN-6-seg" class="ui segment"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">7</div>
+      </div>
+      <div id="MON-7" class="column">
+        <div id="MON-7-seg" class="ui segment"></div>
+      </div>
+      <div id="TUE-7" class="column">
+        <div id="TUE-7-seg" class="ui segment"></div>
+      </div>
+      <div id="WED-7" class="column">
+        <div id="WED-7-seg" class="ui segment"></div>
+      </div>
+      <div id="THU-7" class="column">
+        <div id="THU-7-seg" class="ui segment"></div>
+      </div>
+      <div id="FRI-7" class="column">
+        <div id="FRI-7-seg" class="ui segment"></div>
+      </div>
+      <div id="SAT-7" class="column">
+        <div id="SAT-7-seg" class="ui segment"></div>
+      </div>
+      <div id="SUN-7" class="column">
+        <div id="SUN-7-seg" class="ui segment"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="ui segment">8</div>
+      </div>
+      <div id="MON-8" class="column">
+        <div id="MON-8-seg" class="ui segment"></div>
+      </div>
+      <div id="TUE-8" class="column">
+        <div id="TUE-8-seg" class="ui segment"></div>
+      </div>
+      <div id="WED-8" class="column">
+        <div id="WED-8-seg" class="ui segment"></div>
+      </div>
+      <div id="THU-8" class="column">
+        <div id="THU-8-seg" class="ui segment"></div>
+      </div>
+      <div id="FRI-8" class="column">
+        <div id="FRI-8-seg" class="ui segment"></div>
+      </div>
+      <div id="SAT-8" class="column">
+        <div id="SAT-8-seg" class="ui segment"></div>
+      </div>
+      <div id="SUN-8" class="column">
+        <div id="SUN-8-seg" class="ui segment"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="click.js"></script>
+  </body>
+</html>
