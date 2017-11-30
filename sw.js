@@ -1,5 +1,4 @@
 const cacheFile = [
-  './',
   './resources/css/style.css',
   './resources/img/IMG_0720-2.jpg',
   './resources/img/IMG_0722-2.jpg',
@@ -10,7 +9,7 @@ const cacheFile = [
   './resources/js/script.js'
 ]
 
-const cacheKey = 'ncku_class_v13'
+const cacheKey = 'ncku_class_v14'
 
 // install
 self.addEventListener('install', event => {

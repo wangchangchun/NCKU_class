@@ -2,11 +2,33 @@
 <html>
 <head>
 	<link rel="stylesheet" href="course_planner.css">
+  <link rel="stylesheet" type="text/css" href="../Semantic-UI-CSS/semantic.min.css">
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="../Semantic-UI-CSS/semantic.min.js"></script>
 </head>
 
 <body>
-	<header>
+  <div class="ui pointing menu" >                                                                               
+    <a class="item" href="../../index.html" target="_self">
+      About us
+    </a>
+    <a class="active item" href="../Class_Schedule_Front_End/course_planner.html" target="_self">
+      Course Planning 
+    </a>
+    <a class="item">
+      Course Trading
+    </a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui transparent icon input">
+          <input type="text" placeholder="Search...">
+            <i class="search link icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="ui segment">
+  <header>
 		<h1 class="headerTitle">Course Planning System</h1>
 	</header>
 	
@@ -332,6 +354,7 @@
 						</tr>            
         </table>
 	</main>
+  </div>
   <script src="course_planner.js"></script>
 </body>
 </html>

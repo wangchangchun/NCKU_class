@@ -5,8 +5,10 @@ html, body {
 	padding: 0;
 }
 /* The following decides how the body will be divided */
-body { 
-	display: grid;
+#content { 
+	height: -webkit-fill-available;
+  width: -webkit-fill-available;
+  display: grid;
 	grid-template-rows: 120px auto 0px;
 	grid-template-columns:30vw 70vw;
 }
