@@ -1,8 +1,8 @@
 $("#A1").click(() => {
-  $.post({
+  $.get({
     url: "../test",
-    method: "POST",
-    type: "post",
+    method: "GET",
+    type: "get",
     success: (res) => {
       //$('#text').html(res);
       $('#query_result').append(res);
