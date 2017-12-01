@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div class="ui pointing menu" >                                                                               
+  <div class="ui top attached olive inverted pointing menu" >                                                                               
     <a class="item" href="../../index.html" target="_self">
       About us
     </a>
@@ -25,14 +25,41 @@
             <i class="search link icon"></i>
         </div>
       </div>
+      <div class="item">
+          <div class="ui primary button">Sign In</div>
+      </div>
     </div>
   </div>
-  <div id="content" class="ui segment">
+  <div class="ui bottom attached segment pushable">
+  <div id="content">
+ <!--   <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <a class="item">
+        <i class="home icon"></i>
+        Home
+      </a>
+      <a class="item">
+        <i class="block layout icon"></i>
+        Topics
+      </a>
+      <a class="item">
+        <i class="smile icon"></i>
+        Friends
+      </a>
+      <a class="item">
+        <i class="calendar icon"></i>
+        History
+      </a>
+ </div>-->
   <header>
+    <button style="margin: 10px 10px;" class="ui inverted olive big basic icon toggle button" >
+      <i class="sidebar icon"></i>
+      Menu
+    </button>
 		<h1 class="headerTitle">Course Planning System</h1>
 	</header>
 	
 	<nav>
+  <div class="ui inverted left inline vertical sidebar menu">
 	<input type="text" id="searchBar" onkeyup="searchBar()" placeholder="Search for colleges..">
 	
 	<div class="dropdown">	
@@ -121,7 +148,15 @@
 				<a href="#" id="C6" class="department" >生技系</a><br>
 				</div>
 	</div>
+  <div class="ui inverted right inline vertical sidebar menu">
+	
+	<div class="dropdown" style="margin:20px;">	
+		
+	</div>
 
+  </div>
+
+  </div>
 	<div id="ajax">
 	<script>
 	
@@ -355,6 +390,23 @@
         </table>
 	</main>
   </div>
+  </div>
   <script src="course_planner.js"></script>
+    <script>
+    $('.ui.left.sidebar')
+      .sidebar({
+        context: $('.bottom.segment')
+      })
+      .sidebar('setting', 'transition', 'overlay')
+      .sidebar('attach events' ,'.toggle.button')
+    ;
+    $('.ui.right.sidebar')
+      .sidebar({
+        context: $('.bottom.segment')
+      })
+      .sidebar('setting', 'transition', 'overlay')
+      .sidebar('attach events' ,'.table-cell')
+    ;
+    </script>
 </body>
 </html>
