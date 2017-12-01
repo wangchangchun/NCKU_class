@@ -292,3 +292,19 @@ $("#query_result4").on("click", "a[name='but']", (event) => {
 //      } 
 //    })
 });
+$("#main").on("click", "td[class='table-cell']", (event) => { 
+  var day=event.target.id.split("-")[0]
+  var time=event.target.id.split("-")[1]
+  $.get({
+    url: "../test",
+    method: "GET",
+    type: "get",
+    data: { 
+      day: day,
+      time: time
+    }, 
+    success: (res) => {
+      $('').append(res);
+    }
+  })
+});

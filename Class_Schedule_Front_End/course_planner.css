@@ -4,13 +4,16 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+body{
+width: -webkit-fill-available;
+}
 /* The following decides how the body will be divided */
 #content { 
 	height: -webkit-fill-available;
   width: -webkit-fill-available;
   display: grid;
-	grid-template-rows: 120px auto 0px;
-	grid-template-columns:30vw 70vw;
+	grid-template-rows: 200px auto 0px;
+	grid-template-columns:20vw;
 }
 header{
 		grid-column: 1 / 3;
@@ -58,10 +61,10 @@ li.menu a:hover {
 	background-color: #111111;
 }
 div.dropdown{
-	position: fixed;
+/*	position: fixed;*/
 	padding-bottom:10px;
 	height:80%;
-	width: 30vw;
+/*	width: 30vw;*/
 	overflow-y: scroll;
 	/*overflow-x: hidden; */
 }
@@ -126,5 +129,5 @@ td.table-cell{
 	font-size: 16px;
 	padding: 16px;
 	border: 1px solid #ddd;
-	margin-bottom: 12px;
+	margin: 20px;
 }
