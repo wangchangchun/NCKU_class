@@ -235,8 +235,10 @@ $("#g4").click(() => {
   })
 });
 
+// Below are functions for the left sidebar menu. 
+
+	// 1. 
 var f= [1,1,1,1,1,1,1,1,1,1,1,1];
-	
 		function changeButton(num)
 	{
 
@@ -293,67 +295,99 @@ var f= [1,1,1,1,1,1,1,1,1,1,1,1];
 			}
 		}
 	}
-	
-	function changeButton2(num)
+// 2.
+var arr2=
+[
+  ['A2', 'A3', 'A4', 'A5', 'A6', 'AA', 'AH'],
+  ['AN', 'C0'],
+  ['A1','A9','AG','A7'],
+  ['B0','B1' ,'B2' ,'B3' ,'B5','K1','K2','K3','K5','K4','K8','K7'],
+  ['C1' ,'C2' ,'C3' ,'C4' ,'CZ','F8','L1','L2','L3','L4','LZ','L7','LA','VF'],
+  ['E0','E1' ,'E3' ,'E4' ,'E5' ,'E6' ,'E8' ,'E9' ,'F0' ,'F1','F4' ,'F5' ,'F6' ,'F9','N1','N3','N4','N5','N6','N8','NC','N9','P1','P4','P5','P6','P8','N0','NA','NB','P0'],
+  ['H1' ,'H2' ,'H3' ,'H4' ,'H5','R1','R2','R3','R7','R4','R5','R9','R0','R6','R8','RA','RB','RD','RZ'],
+  ['I2' ,'I3' ,'I5' ,'I6' ,'I7' ,'I8','T2','T3','T6','T7','S0','S1','S2','S3','S4','S5','S6','S7','SC','S8','S9','SA','T1','T4','SB','T8','T9','TA','TC'],
+  ['D2' ,'D4' ,'D5' ,'D8','U2','U1','U5','U7','U3'],
+  ['E2' ,'F7','N2','Q1','Q3','Q6','Q7','ND','P7','Q5','P9','V6','V8','V9','VA','VB','VC','VD','VE','VG','VH','VK','VM','VN','VO'],
+  ['E7' ,'F2' ,'F3','N7','P2','P3','PA','PB'],
+  ['C5' ,'C6','L5','L6','Z2','Z0','Z3','Z5'] 
+]
+var departmentList = 
+[ 
+	[0,0,0,0,0,0,0], //其他 (7)
+	[0,0],           //不分學院 (2)
+	[0,0,0,0],       //通識課程 (4)
+	[0,0,0,0,0,0,0,0,0,0,0,0],     // 文學院 (12)
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0], // 理學院 (14)
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],//工學院 (31)
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],  //管理學院 (19)
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], //醫學院 (29)
+	[0,0,0,0,0,0,0,0,0], //社會科學學院 (9)
+	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], //電機資訊學院 (25)
+	[0,0,0,0,0,0,0,0], // 規劃與設計學院 (8)
+	[0,0,0,0,0,0,0,0] // 生物科學與科技學院 (8) 
+]
+	function changeButton2(col,dep)
 	{
-		if(num==1)
-			f[0]=(f[0]+1)%2;
-		else if(num==2)
-			f[1]=(f[1]+1)%2;
-		else if(num==3)
-			f[2]=(f[2]+1)%2;
-		else if(num==4)
-			f[3]=(f[3]+1)%2;
-		if(f[num-1]==0)
+	
+		departmentList[col][dep] = ( departmentList[col][dep] + 1 ) % 2;
+		
+		if(departmentList[col][dep] == 1)
 		{
-			for(var i=1; i<5; i++)
+			for(var i=0; i < arr2[col].length; i++)
 			{
-				if (i != num)
+				if ( arr2[col][i] != arr2[col][dep])
 				{
-					document.getElementById("g"+i).style.display = "none";
+					document.getElementById('e'+arr2[col][i]).style.display = "none";
 				}
-				if(i == num)
+				if(arr2[col][i] == arr2[col][dep])
 				{
-					document.getElementById("query_result"+i).style.display="block";
+					document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
 				}
 			}
 		}
-		else{
-			for(var i=1; i<5; i++)
+		else
+		{
+			for(var i=0; i<arr2[col].length; i++)
 			{
-				if (i != num)
+				if ( arr2[col][i] != arr2[col][dep] )
 				{
-					document.getElementById("g"+i).style.display = "block";
+					document.getElementById('e'+arr2[col][i]).style.display = "block";
 				}
-				if(i == num)
+				if( arr2[col][i] == arr2[col][dep] )
 				{
-					document.getElementById("query_result"+i).style.display="none";
+					document.getElementById("query_resulte"+ arr2[col][i]).style.display="none";
 				}
 			}
 		}
 	}
+	
+	
 	function searchBar()
 	{
-		var input, filter, departments, colleges, a, b, i;
-		input = document.getElementById("searchBar");
-		filter = input.value;
-		colleges = document.getElementsByClassName("college");
-		departments = document.getElementsByClassName("department");
-		for ( i = 0; i < 10; i++)
+		var input = document.getElementById("searchBar");
+		var filter = input.value;
+		var collegeArray = document.getElementsByClassName("college");
+		var a,b;
+		for (var i = 0; i < 12; i++)
 		{
-			a = colleges[i];
-			b = departments[i]
-			if (a.innerHTML.toUpperCase().indexOf(filter) > -1)
+			a = collegeArray[i];
+			b = departmentArray[i]
+			
+			if (a.innerHTML.indexOf(filter) > -1)
 			{
-				colleges[i].style.display = "block";
-			}else{
-				colleges[i].style.display = "none";
+				collegeArray[i].style.display = "block";
 			}
-		/*	if (b.innerHTML.toUpperCase().indexOf(filter) > -1)
+			else
 			{
-				departments[i].style.display = "block";
-			}else{
-				departments[i].style.display = "none";
+				collegeArray[i].style.display = "none";
+			}
+		/*	if (b.innerHTML.indexOf(filter) > -1)
+			{
+				departmentArray[i].style.display = "block";
+			}
+			else
+			{
+				departmentArray[i].style.display = "none";
 			} */
 		}
 		
