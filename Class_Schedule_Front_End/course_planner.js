@@ -234,3 +234,127 @@ $("#g4").click(() => {
     }
   })
 });
+
+var f= [1,1,1,1,1,1,1,1,1,1,1,1];
+	
+		function changeButton(num)
+	{
+
+		if(num==0)
+			f[0]=(f[0]+1)%2;
+		else if(num==1)
+			f[1]=(f[1]+1)%2;
+		else if(num==2)
+			f[2]=(f[2]+1)%2;
+		else if(num==3)
+			f[3]=(f[3]+1)%2;
+		else if(num==4)
+			f[4]=(f[4]+1)%2;
+		else if(num==5)
+			f[5]=(f[5]+1)%2;
+		else if(num==6)
+			f[6]=(f[6]+1)%2;
+		else if(num==7)
+			f[7]=(f[7]+1)%2;
+		else if(num==8)
+			f[8]=(f[8]+1)%2;
+		else if(num==9)
+			f[9]=(f[9]+1)%2;
+		else if(num==10)
+			f[10]=(f[10]+1)%2;
+		else if(num==11)
+			f[11]=(f[11]+1)%2;
+		if(f[num]==0)
+		{
+			for(var i=0; i<12; i++)
+			{
+				if (i != num)
+				{
+					document.getElementById("e"+i).style.display = "none";
+				}
+				if(i == num)
+				{
+					document.getElementById("college"+i).style.display="block";
+				}
+			}
+		}
+		else
+		{
+			for(var i=0; i<12; i++)
+			{
+				if (i != num)
+				{
+					document.getElementById("e"+i).style.display = "block";
+				}
+				if(i == num)
+				{
+					document.getElementById("college"+i).style.display="none";
+				}
+			}
+		}
+	}
+	
+	function changeButton2(num)
+	{
+		if(num==1)
+			f[0]=(f[0]+1)%2;
+		else if(num==2)
+			f[1]=(f[1]+1)%2;
+		else if(num==3)
+			f[2]=(f[2]+1)%2;
+		else if(num==4)
+			f[3]=(f[3]+1)%2;
+		if(f[num-1]==0)
+		{
+			for(var i=1; i<5; i++)
+			{
+				if (i != num)
+				{
+					document.getElementById("g"+i).style.display = "none";
+				}
+				if(i == num)
+				{
+					document.getElementById("query_result"+i).style.display="block";
+				}
+			}
+		}
+		else{
+			for(var i=1; i<5; i++)
+			{
+				if (i != num)
+				{
+					document.getElementById("g"+i).style.display = "block";
+				}
+				if(i == num)
+				{
+					document.getElementById("query_result"+i).style.display="none";
+				}
+			}
+		}
+	}
+	function searchBar()
+	{
+		var input, filter, departments, colleges, a, b, i;
+		input = document.getElementById("searchBar");
+		filter = input.value;
+		colleges = document.getElementsByClassName("college");
+		departments = document.getElementsByClassName("department");
+		for ( i = 0; i < 10; i++)
+		{
+			a = colleges[i];
+			b = departments[i]
+			if (a.innerHTML.toUpperCase().indexOf(filter) > -1)
+			{
+				colleges[i].style.display = "block";
+			}else{
+				colleges[i].style.display = "none";
+			}
+		/*	if (b.innerHTML.toUpperCase().indexOf(filter) > -1)
+			{
+				departments[i].style.display = "block";
+			}else{
+				departments[i].style.display = "none";
+			} */
+		}
+		
+	}		
