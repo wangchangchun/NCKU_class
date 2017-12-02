@@ -323,69 +323,82 @@ var departmentList =
 	[0,0,0,0,0,0,0,0], // 規劃與設計學院 (8)
 	[0,0,0,0,0,0,0,0] // 生物科學與科技學院 (8) 
 ]
-	function changeButton2(col,dep)
-	{
-	
-		departmentList[col][dep] = ( departmentList[col][dep] + 1 ) % 2;
-		
-		if(departmentList[col][dep] == 1)
-		{
-			for(var i=0; i < arr2[col].length; i++)
-			{
-				if ( arr2[col][i] != arr2[col][dep])
-				{
-					document.getElementById('e'+arr2[col][i]).style.display = "none";
-				}
-				if(arr2[col][i] == arr2[col][dep])
-				{
-					document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
-				}
-			}
-		}
-		else
-		{
-			for(var i=0; i<arr2[col].length; i++)
-			{
-				if ( arr2[col][i] != arr2[col][dep] )
-				{
-					document.getElementById('e'+arr2[col][i]).style.display = "block";
-				}
-				if( arr2[col][i] == arr2[col][dep] )
-				{
-					document.getElementById("query_resulte"+ arr2[col][i]).style.display="none";
-				}
-			}
-		}
-	}
-	
-	
-	function searchBar()
-	{
-		var input = document.getElementById("searchBar");
-		var filter = input.value;
-		var collegeArray = document.getElementsByClassName("college");
-		var a,b;
-		for (var i = 0; i < 12; i++)
-		{
-			a = collegeArray[i];
-			b = departmentArray[i]
-			
-			if (a.innerHTML.indexOf(filter) > -1)
-			{
-				collegeArray[i].style.display = "block";
-			}
-			else
-			{
-				collegeArray[i].style.display = "none";
-			}
-		/*	if (b.innerHTML.indexOf(filter) > -1)
-			{
-				departmentArray[i].style.display = "block";
-			}
-			else
-			{
-				departmentArray[i].style.display = "none";
-			} */
-		}
-		
-	}		
+function changeButton2(col,dep)
+{
+
+  departmentList[col][dep] = ( departmentList[col][dep] + 1 ) % 2;
+
+  if(departmentList[col][dep] == 1)
+  {
+    for(var i=0; i < arr2[col].length; i++)
+    {
+      if ( arr2[col][i] != arr2[col][dep])
+      {
+        document.getElementById('e'+arr2[col][i]).style.display = "none";
+      }
+      if(arr2[col][i] == arr2[col][dep])
+      {
+        document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
+      }
+    }
+  }
+  else
+  {
+    for(var i=0; i<arr2[col].length; i++)
+    {
+      if ( arr2[col][i] != arr2[col][dep] )
+      {
+        document.getElementById('e'+arr2[col][i]).style.display = "block";
+      }
+      if( arr2[col][i] == arr2[col][dep] )
+      {
+        document.getElementById("query_resulte"+ arr2[col][i]).style.display="none";
+      }
+    }
+  }
+  
+  $.get({
+    url: "../test",
+    method: "GET",
+    type: "get",
+    data: { 
+      id:arr2[col][dep]
+    }, 
+    success: (res) => {
+      var result_id="#query_resulte".concat(arr2[col][dep])
+      $(result_id).append(res);
+    }
+  })
+}
+
+
+function searchBar()
+{
+  var input = document.getElementById("searchBar");
+  var filter = input.value;
+  var collegeArray = document.getElementsByClassName("college");
+  var a,b;
+  for (var i = 0; i < 12; i++)
+  {
+    a = collegeArray[i];
+    b = departmentArray[i]
+
+      if (a.innerHTML.indexOf(filter) > -1)
+      {
+        collegeArray[i].style.display = "block";
+      }
+      else
+      {
+        collegeArray[i].style.display = "none";
+      }
+    /*	if (b.innerHTML.indexOf(filter) > -1)
+        {
+        departmentArray[i].style.display = "block";
+        }
+        else
+        {
+        departmentArray[i].style.display = "none";
+        } */
+  }
+
+}		
