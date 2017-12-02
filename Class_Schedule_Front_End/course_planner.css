@@ -5,12 +5,12 @@ html, body {
 	padding: 0;
 }
 body{
- /*width: -webkit-fill-available;*/ 
+ width: -webkit-fill-available; 
 } 
 /* The following decides how the body will be divided */
 #content { 
-	/*height: -webkit-fill-available; 
-	width: -webkit-fill-available; */
+	height: -webkit-fill-available;
+	width: -webkit-fill-available;
 	display: grid;
 	grid-template-rows: 200px auto 0px;
 	grid-template-columns:0vw;
