@@ -1,86 +1,190 @@
-function statusChangeCallback(response) {
-  console.log('statusChangeCallback');
-  console.log(response);
-  // The response object is returned with a status field that lets the
-  // app know the current login status of the person.
-  // Full docs on the response object can be found in the documentation
-  // for FB.getLoginStatus().
-  if (response.status === 'connected') {
-    // Logged into your app and Facebook.
-    testAPI();
-  } else {
-    // The person is not logged into your app or we are unable to tell.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this app.';
+var arr=[
+  ['A1' ,'A9' ,'AG' ,'A7'],
+  ['B1' ,'B2' ,'B3' ,'B5'],
+  ['C1' ,'C2' ,'C3' ,'C4' ,'F8'],
+  ['E1' ,'E3' ,'E4' ,'E5' ,'E6' ,'E8' ,'E9' ,'F0' ,'F1','F4' ,'F5' ,'F6' ,'F9'],
+  ['H1' ,'H2' ,'H3' ,'H4' ,'H5'],
+  ['I2' ,'I3' ,'I5' ,'I6' ,'I7' ,'I8'],
+  ['D2' ,'D4' ,'D5' ,'D8'],
+  ['E2' ,'F7'],
+  ['E7' ,'F2' ,'F3'],
+  ['C5' ,'C6'] 
+]
+var a = [0,0,0,0,0,0,0,0,0,0];
+var b=[
+  [0 ,0 ,0 ,0],
+  [0 ,0 ,0 ,0],
+  [0 ,0 ,0 ,0 ,0],
+  [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0,0 ,0 ,0 ,0],
+  [0 ,0 ,0 ,0 ,0],
+  [0 ,0 ,0 ,0 ,0 ,0],
+  [0 ,0 ,0 ,0],
+  [0 ,0],
+  [0 ,0 ,0],
+  [0 ,0] 
+]
+
+function changeBut(num){
+  a[num-1]=(a[num-1]+1)%2;
+  if(a[num-1]==0)
+  {
+    for(var i=1; i<11; i++)
+    {
+      if (i != num)
+      {
+        document.getElementById("a"+i).style.display = "none";
+      }
+      if(i == num)
+      {
+        document.getElementById("u"+i).style.display="block";
+      }
+    }
+  }
+  else{
+    for(var i=1; i<11; i++)
+    {
+      if (i != num)
+      {
+        document.getElementById("a"+i).style.display = "block";
+      }
+      if(i == num)
+      {
+        document.getElementById("u"+i).style.display="none";
+      }
+    }
   }
 }
-// This function is called when someone finishes with the Login
-// Button.  See the onlogin handler attached to it in the sample
-// code below.
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1071353126339792',
-    cookie     : true,  // enable cookies to allow the server to access 
-    // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.11' // use graph api version 2.8
-  });
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-};
-// Load the SDK asynchronously
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
-function testAPI() {
-  console.log('Welcome!  Fetching your information.... ');
-  FB.api('/me', function(response) {
-    console.log('Successful login for: ' + response.name);
-    console.log(JSON.stringify(response));
-    document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name + '!';
-    document.getElementById('fb_login').innerHTML = '<a class = "item" id = "fb_logout" onclick = "logout();">log out</a>';
-    //alert(response.id);
-  });
-}
-function logout(){
-  FB.logout(function(response) {
-    // Person is now logged out
-    alert('已成功登出!');
-    window.location.reload();
-  });
+var day_str=""
+var time=""
+var day=0
+$("#main").on("click", "td[class='table-cell']", (event) => { 
+  day_str=event.target.id.split("-")[0]
+  time=event.target.id.split("-")[1]
+  day=0
+  switch(day_str){
+    case 'MON':
+      day=1;
+      break;
+    case 'TUE':
+      day=2;
+      break;
+    case 'WED':
+      day=3;
+      break;
+    case 'THU':
+      day=4;
+      break;
+    case 'FRI':
+      day=5;
+      break;
+    case 'SAT':
+      day=6;
+      break;
+    case 'SUN':
+      day=7;
+      break;
+  }
+});
+function clickBut(m ,n){
+  b[m-1][n-1]=(b[m-1][n-1]+1)%2;
+  if(b[m-1][n-1]==0)
+  {
+    for(var i=0; i<arr[m-1].length; i++)
+    {
+      if (arr[m-1][i] != arr[m-1][n-1])
+      {
+        document.getElementById(arr[m-1][i]).style.display = "none";
+      }
+      if(arr[m-1][i] == arr[m-1][n-1])
+      {
+        document.getElementById("query_result"+arr[m-1][i]).style.display="block";
+      }
+    }
+  }
+  else{
+    for(var i=0; i<arr[m-1].length; i++)
+    {
+      if (arr[m-1][i] != arr[m-1][n-1])
+      {
+        document.getElementById(arr[m-1][i]).style.display = "block";
+      }
+      if(arr[m-1][i] == arr[m-1][n-1])
+      {
+        document.getElementById("query_result"+arr[m-1][i]).style.display="none";
+      }
+    }
+  }
+  $.get({
+    url: "../time",
+    method: "GET",
+    type: "get",
+    data: { 
+      id:arr[m-1][n-1] ,
+      day: day,
+      time: time
+    }, 
+    success: (res) => {
+      var result_id="#query_result".concat(arr[m-1][n-1])
+      $(result_id).append(res);
+    }
+  })
 }
 
+$(".dropdown").on("click", "a[name='but']", (event) => { 
+  var res = event.target.text
+  var name = res.split("[")[0];
+  var time = res.split("[")[1];
+  //console.log(name) 
+  var day = time[0];
+ // console.log(day) 
+  var class_t1 = time[2];
+  var class_t2 = time[4];
+  var str = "";
+  if(time.length!=2){
+    switch(day)
+    {
+      case '1':
+        str1=str.concat("#MON-", class_t1);
+        str2=str.concat("#MON-", class_t2);
+        break;
+      case '2':
+        str1=str.concat("#TUE-", class_t1);
+        str2=str.concat("#TUE-", class_t2);
+        break;
+      case '3':
+        str1=str.concat("#WED-", class_t1);
+        str2=str.concat("#WED-", class_t2);
+        break;
+      case '4':
+        str1=str.concat("#THU-", class_t1);
+        str2=str.concat("#THU-", class_t2);
+        break;
+      case '5':
+        str1=str.concat("#FRI-", class_t1);
+        str2=str.concat("#FRI-", class_t2);
+        break;
+      case '6':
+        str1=str.concat("#SAT-", class_t1);
+        str2=str.concat("#SAT-", class_t2);
+        break;
+      case '7':
+        str1=str.concat("#SUN-", class_t1);
+        str2=str.concat("#SUN-", class_t2);
+        break;
+    }
+
+    //document.getElementById(str).value=name;
+    $(str1).html(name);
+    $(str2).html(name);
+  }
+});
 $("#g1").click(() => {
   $.get({
     url: "../test",
     method: "GET",
     type: "get",
     data: { 
-          id:"A1" 
+      id:"A1"
     }, 
     success: (res) => {
       //$('#text').html(res);
@@ -94,7 +198,7 @@ $("#g2").click(() => {
     method: "GET",
     type: "get",
     data: { 
-          id:"A9"
+      id:"A9"
     }, 
     success: (res) => {
       //$('#text').html(res);
@@ -108,7 +212,7 @@ $("#g3").click(() => {
     method: "GET",
     type: "get",
     data: { 
-          id:"AG"
+      id:"AG"
     }, 
     success: (res) => {
       //$('#text').html(res);
@@ -122,263 +226,11 @@ $("#g4").click(() => {
     method: "GET",
     type: "get",
     data: { 
-          id:"A7"
+      id:"A7"
     }, 
     success: (res) => {
       //$('#text').html(res);
       $('#query_result4').append(res);
-    }
-  })
-});
-$("#query_result1").on("click", "a[name='but']", (event) => { 
-/*    $.get({ 
-      url: "../test_1", 
-      method: "GET",
-      type: "get", 
-      data: { 
-          id:event.target.id
-      }, 
-      success: (res) => {
-*/
-        var res = event.target.text
-        var name = res.split("[")[0];
-        var time = res.split("[")[1];
-        console.log(name) 
-        var day = time[0];
-        console.log(day) 
-        var class_t1 = time[2];
-        var class_t2 = time[4];
-        var str = "";
-        if(time.length!=2){
-        switch(day)
-        {
-          case '1':
-            str1=str.concat("#MON-", class_t1);
-            str2=str.concat("#MON-", class_t2);
-            break;
-          case '2':
-            str1=str.concat("#TUE-", class_t1);
-            str2=str.concat("#TUE-", class_t2);
-            break;
-          case '3':
-            str1=str.concat("#WED-", class_t1);
-            str2=str.concat("#WED-", class_t2);
-            break;
-          case '4':
-            str1=str.concat("#THU-", class_t1);
-            str2=str.concat("#THU-", class_t2);
-            break;
-          case '5':
-            str1=str.concat("#FRI-", class_t1);
-            str2=str.concat("#FRI-", class_t2);
-            break;
-          case '6':
-            str1=str.concat("#SAT-", class_t1);
-            str2=str.concat("#SAT-", class_t2);
-            break;
-          case '7':
-            str1=str.concat("#SUN-", class_t1);
-            str2=str.concat("#SUN-", class_t2);
-            break;
-        }
-        
-        //document.getElementById(str).value=name;
-        $(str1).html(name);
-        $(str2).html(name);
-        }
-//      } 
-//    })
-});
-$("#query_result2").on("click", "a[name='but']", (event) => { 
-/*    $.get({ 
-      url: "../test_1", 
-      method: "GET",
-      type: "get", 
-      data: { 
-          id:event.target.id
-      }, 
-      success: (res) => {
-*/
-        var res = event.target.text
-        var name = res.split("[")[0];
-        var time = res.split("[")[1];
-        console.log(name) 
-        var day = time[0];
-        console.log(day) 
-        var class_t1 = time[2];
-        var class_t2 = time[4];
-        var str = "";
-        if(time.length!=2){
-        switch(day)
-        {
-          case '1':
-            str1=str.concat("#MON-", class_t1);
-            str2=str.concat("#MON-", class_t2);
-            break;
-          case '2':
-            str1=str.concat("#TUE-", class_t1);
-            str2=str.concat("#TUE-", class_t2);
-            break;
-          case '3':
-            str1=str.concat("#WED-", class_t1);
-            str2=str.concat("#WED-", class_t2);
-            break;
-          case '4':
-            str1=str.concat("#THU-", class_t1);
-            str2=str.concat("#THU-", class_t2);
-            break;
-          case '5':
-            str1=str.concat("#FRI-", class_t1);
-            str2=str.concat("#FRI-", class_t2);
-            break;
-          case '6':
-            str1=str.concat("#SAT-", class_t1);
-            str2=str.concat("#SAT-", class_t2);
-            break;
-          case '7':
-            str1=str.concat("#SUN-", class_t1);
-            str2=str.concat("#SUN-", class_t2);
-            break;
-        }
-        
-        //document.getElementById(str).value=name;
-        $(str1).html(name);
-        $(str2).html(name);
-        }
-//      } 
-//    })
-});
-$("#query_result3").on("click", "a[name='but']", (event) => { 
-/*    $.get({ 
-      url: "../test_1", 
-      method: "GET",
-      type: "get", 
-      data: { 
-          id:event.target.id
-      }, 
-      success: (res) => {
-*/
-        var res = event.target.text
-        var name = res.split("[")[0];
-        var time = res.split("[")[1];
-        console.log(name) 
-        var day = time[0];
-        console.log(day) 
-        var class_t1 = time[2];
-        var class_t2 = time[4];
-        var str = "";
-        if(time.length!=2){
-        switch(day)
-        {
-          case '1':
-            str1=str.concat("#MON-", class_t1);
-            str2=str.concat("#MON-", class_t2);
-            break;
-          case '2':
-            str1=str.concat("#TUE-", class_t1);
-            str2=str.concat("#TUE-", class_t2);
-            break;
-          case '3':
-            str1=str.concat("#WED-", class_t1);
-            str2=str.concat("#WED-", class_t2);
-            break;
-          case '4':
-            str1=str.concat("#THU-", class_t1);
-            str2=str.concat("#THU-", class_t2);
-            break;
-          case '5':
-            str1=str.concat("#FRI-", class_t1);
-            str2=str.concat("#FRI-", class_t2);
-            break;
-          case '6':
-            str1=str.concat("#SAT-", class_t1);
-            str2=str.concat("#SAT-", class_t2);
-            break;
-          case '7':
-            str1=str.concat("#SUN-", class_t1);
-            str2=str.concat("#SUN-", class_t2);
-            break;
-        }
-        
-        //document.getElementById(str).value=name;
-        $(str1).html(name);
-        $(str2).html(name);
-        }
-//      } 
-//    })
-});
-$("#query_result4").on("click", "a[name='but']", (event) => { 
-/*    $.get({ 
-      url: "../test_1", 
-      method: "GET",
-      type: "get", 
-      data: { 
-          id:event.target.id
-      }, 
-      success: (res) => {
-*/
-        var res = event.target.text
-        var name = res.split("[")[0];
-        var time = res.split("[")[1];
-        console.log(name) 
-        var day = time[0];
-        console.log(day) 
-        var class_t1 = time[2];
-        var class_t2 = time[4];
-        var str = "";
-        if(time.length!=2){
-        switch(day)
-        {
-          case '1':
-            str1=str.concat("#MON-", class_t1);
-            str2=str.concat("#MON-", class_t2);
-            break;
-          case '2':
-            str1=str.concat("#TUE-", class_t1);
-            str2=str.concat("#TUE-", class_t2);
-            break;
-          case '3':
-            str1=str.concat("#WED-", class_t1);
-            str2=str.concat("#WED-", class_t2);
-            break;
-          case '4':
-            str1=str.concat("#THU-", class_t1);
-            str2=str.concat("#THU-", class_t2);
-            break;
-          case '5':
-            str1=str.concat("#FRI-", class_t1);
-            str2=str.concat("#FRI-", class_t2);
-            break;
-          case '6':
-            str1=str.concat("#SAT-", class_t1);
-            str2=str.concat("#SAT-", class_t2);
-            break;
-          case '7':
-            str1=str.concat("#SUN-", class_t1);
-            str2=str.concat("#SUN-", class_t2);
-            break;
-        }
-        
-        //document.getElementById(str).value=name;
-        $(str1).html(name);
-        $(str2).html(name);
-        }
-//      } 
-//    })
-});
-$("#main").on("click", "td[class='table-cell']", (event) => { 
-  var day=event.target.id.split("-")[0]
-  var time=event.target.id.split("-")[1]
-  $.get({
-    url: "../test",
-    method: "GET",
-    type: "get",
-    data: { 
-      day: day,
-      time: time
-    }, 
-    success: (res) => {
-      $('').append(res);
     }
   })
 });
