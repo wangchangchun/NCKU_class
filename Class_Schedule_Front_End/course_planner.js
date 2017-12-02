@@ -87,7 +87,7 @@ $("#main").on("click", "td[class='table-cell']", (event) => {
 });
 function clickBut(m ,n){
   b[m-1][n-1]=(b[m-1][n-1]+1)%2;
-  if(b[m-1][n-1]==0)
+  if(b[m-1][n-1]==1)
   {
     for(var i=0; i<arr[m-1].length; i++)
     {
