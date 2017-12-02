@@ -1,4 +1,3 @@
-
 function statusChangeCallback(response) {
   console.log('statusChangeCallback');
   console.log(response);
@@ -64,7 +63,9 @@ function testAPI() {
     document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
     document.getElementById('fb_login').innerHTML = '<a class = "item" id = "fb_logout" onclick = "logout();">log out</a>';
-    //alert(response.id);
+//    alert(response.id);
+//    file_id = response.id;
+
   });
 }
 function logout(){
@@ -74,3 +75,46 @@ function logout(){
     window.location.reload();
   });
 }
+
+function getElementsByClass( searchClass, domNode, tagName) {
+    if (domNode == null) domNode = document;
+    if (tagName == null) tagName = '*';
+    var el = new Array();
+    var tags = domNode.getElementsByTagName(tagName);
+    var tcl = " "+searchClass+" ";
+    for(i=0,j=0; i<tags.length; i++) {
+        var test = " " + tags[i].className + " ";
+        if (test.indexOf(tcl) != -1)
+            el[j++] = tags[i];
+    }
+    return el;
+}
+               
+$("#save_btn").click(() =>{
+    var wdata = "";
+    var class_arr = getElementsByClass('table-cell');
+    for (var i=0;i<class_arr.length;i++)
+    {
+        if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !="")
+          wdata=wdata.concat(class_arr[i].id," ",class_arr[i].innerHTML,"\n");
+    }
+    
+    FB.api('/me', function(response) {
+    console.log(JSON.stringify(response));
+    var file_id = response.id;
+    alert(file_id);
+    $.get({
+        url:"../save",
+        method: "GET",
+        type:"get",
+        data:{
+            filename : file_id+".txt",
+            wdata: wdata
+
+        },
+        success: (res) =>{
+            $('#status').append(res);
+        }
+    })
+    });
+});

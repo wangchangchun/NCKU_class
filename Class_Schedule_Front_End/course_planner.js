@@ -144,38 +144,35 @@ $(".dropdown").on("click", "a[name='but']", (event) => {
     switch(day)
     {
       case '1':
-        str1=str.concat("#MON-", class_t1);
-        str2=str.concat("#MON-", class_t2);
+        str="#MON-";
         break;
       case '2':
-        str1=str.concat("#TUE-", class_t1);
-        str2=str.concat("#TUE-", class_t2);
+        str="#TUE-"
         break;
       case '3':
-        str1=str.concat("#WED-", class_t1);
-        str2=str.concat("#WED-", class_t2);
+        str="#WED-"
         break;
       case '4':
-        str1=str.concat("#THU-", class_t1);
-        str2=str.concat("#THU-", class_t2);
+        str="#THU-"
         break;
       case '5':
-        str1=str.concat("#FRI-", class_t1);
-        str2=str.concat("#FRI-", class_t2);
+        str="#FRI-"
         break;
       case '6':
-        str1=str.concat("#SAT-", class_t1);
-        str2=str.concat("#SAT-", class_t2);
+        str="#SAT-"
         break;
       case '7':
-        str1=str.concat("#SUN-", class_t1);
-        str2=str.concat("#SUN-", class_t2);
+        str="#SUN-"
         break;
     }
 
     //document.getElementById(str).value=name;
-    $(str1).html(name);
-    $(str2).html(name);
+    for(var i=class_t1;i<=class_t2;i++){
+      str1=str.concat(i);
+      $(str1).html(name);
+    }
+    //$(str1).html(name);
+    //$(str2).html(name);
   }
 });
 $("#g1").click(() => {
