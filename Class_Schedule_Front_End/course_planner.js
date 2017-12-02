@@ -26,7 +26,7 @@ var b=[
 
 function changeBut(num){
   a[num-1]=(a[num-1]+1)%2;
-  if(a[num-1]==0)
+  if(a[num-1]==1)
   {
     for(var i=1; i<11; i++)
     {
