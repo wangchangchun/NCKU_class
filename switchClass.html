@@ -89,6 +89,22 @@
   #facebookButton{
 		
   }
+  #myClass a.department { 
+    text-decoration: none;
+    color: white;
+    background-color: #84767E;
+    display: block; 
+    text-align: center;
+    padding: 8px;
+    max-width: 200px;
+    margin: auto;
+    height: 50px;
+    width: 200px;
+  }
+  #myClass  a.department:hover{
+      background-color: #5F555B;
+  }
+
     </style>
 </head>
 
@@ -117,9 +133,13 @@
         <div id="pageName">
             <h1>成大換課系統</h1>
 		</div>
+    
+        <button id="button1">button1</button>
+        <button id="button2">button2</button>
         <div id="myClass">
-            here
         </div>
+          <div id="text">space</div>
+          here
         <div id="changeGoal">
             <a href="#" id="e0" class="college" onClick="changeButton(0)">其他</a><br>
             <div id = "college0" class = "department">
@@ -622,5 +642,6 @@
     <script>
 
     </script>
+    <script src="Class_Schedule_Front_End/login.js"></script>
 </body>
 </html>

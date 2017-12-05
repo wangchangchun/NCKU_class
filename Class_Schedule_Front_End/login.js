@@ -24,7 +24,7 @@ function checkLoginState() {
 }
 window.fbAsyncInit = function() {
   FB.init({
-    appId      : '257340648129250',
+    appId      : '1071353126339792',
     cookie     : true,  // enable cookies to allow the server to access 
     // the session
     xfbml      : true,  // parse social plugins on this page
@@ -169,4 +169,49 @@ $("#clear_btn").click(() => {
           })
     });
 
+});
+var select_course;
+var fb_id;
+$("#button1").click(() => {
+  FB.api('/me', function(response) {
+    console.log('Successful login for: ' + response.name);
+    console.log(JSON.stringify(response));
+    document.getElementById('status').innerHTML =
+      'Thanks for logging in, ' + response.name +'!';
+//    document.getElementById('fb_login').innerHTML = '<a class = "item" id = "fb_logout" onclick = "logout();">log out</a>';
+//    alert(response.id);
+    fb_id = response.id;
+    $('#text').html(fb_id);
+
+  });
+  $.get({
+    url: "../self",
+    method: "GET",
+    type: "get",
+    data: { 
+      id:"1490217444419483"
+    }, 
+    success: (res) => {
+      $('#text').html("click");
+      alert(res)
+      $('#myClass').append(res);
+    }
+  })
+});
+$("#button2").click(() => {
+  $.get({
+    url: "../trading",
+    method: "GET",
+    type: "get",
+    data: { 
+      name: select_course
+    }, 
+    success: (res) => {
+      $('#text').html(res);
+    }
+  })
+});
+$("#myClass").on("click", "a[name='but']", (event) => { 
+    select_course=event.target.text
+    $('#text').html(select_course);
 });
