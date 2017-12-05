@@ -422,18 +422,18 @@ function searchBar()
   var filter = input.value;
   var collegeArray = document.getElementsByClassName("college");
   var a,b;
-  for (var i = 0; i < 12; i++)
+  for (var i = 0; i < collegeArray.length; i++)
   {
-    a = collegeArray[i];
-    b = departmentArray[i]
+      a = collegeArray[i];
+ //   b = departmentArray[i]
 
       if (a.innerHTML.indexOf(filter) > -1)
       {
-        collegeArray[i].style.display = "block";
+        a.style.display = "block";
       }
       else
       {
-        collegeArray[i].style.display = "none";
+        a.style.display = "none";
       }
     /*	if (b.innerHTML.indexOf(filter) > -1)
         {
