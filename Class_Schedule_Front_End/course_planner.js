@@ -144,43 +144,72 @@ function clickBut(m ,n){
 $(".dropdown").on("click", "a[name='but']", (event) => { 
   var res = event.target.text
   var name = res.split("[")[0];
-  var time = res.split("[")[1];
-  //console.log(name) 
-  var day = time[0];
- // console.log(day) 
-  var class_t1 = time[2];
-  var class_t2 = time[4];
-  var str = "";
-  if(time.length!=2){
-    switch(day)
-    {
-      case '1':
-        str="#MON-";
-        break;
-      case '2':
-        str="#TUE-"
-        break;
-      case '3':
-        str="#WED-"
-        break;
-      case '4':
-        str="#THU-"
-        break;
-      case '5':
-        str="#FRI-"
-        break;
-      case '6':
-        str="#SAT-"
-        break;
-      case '7':
-        str="#SUN-"
-        break;
+  var test = res.split("[")
+  for(var j=1;j<test.length;j++){
+
+    var time = res.split("[")[j];
+    var day = time[0];
+    var class_t1 = "";
+    var class_t2 = "";
+    var only_one_class = 0
+    if(time[3]=='~'){
+      class_t1 = time[2];
+      class_t2 = time[4];
+      only_one_class=0;
+    }
+    else{
+      class_t1 = time[2];
+      only_one_class=1
     }
 
-    //document.getElementById(str).value=name;
-    for(var i=class_t1;i<=class_t2;i++){
-      str1=str.concat(i);
-      $(str1).html(name);
+    var str = "";
+    if(time.length!=2){
+      switch(day)
+      {
+        case '1':
+          str="#MON-";
+          break;
+        case '2':
+          str="#TUE-"
+            break;
+        case '3':
+          str="#WED-"
+            break;
+        case '4':
+          str="#THU-"
+            break;
+        case '5':
+          str="#FRI-"
+            break;
+        case '6':
+          str="#SAT-"
+            break;
+        case '7':
+          str="#SUN-"
+            break;
+      }
+
+      //document.getElementById(str).value=name;
+      if(only_one_class==0){
+        if(class_t1=='N'){
+          var str1=str.concat(class_t1);
+          $(str1).html(name);
+          class_t1=5
+        }
+        if(class_t2=='N'){
+          var str1=str.concat(class_t2);
+          $(str1).html(name);
+          class_t2=4
+        }
+        for(var i=class_t1;i<=class_t2;i++){
+          var str1=str.concat(i);
+          $(str1).html(name);
+        }
+      }
+      else{
+        var str1=str.concat(class_t1);
+        $(str1).html(name);
+      }
     }
     //$(str1).html(name);
     //$(str2).html(name);
