@@ -517,6 +517,7 @@
             for(i=0;i<bLeng[num];i++){
                 //alert(i);
                 //alert(arr[num][i]);
+                b[num][i]=0;
                 document.getElementById(arr[num][i]).style.display="block";
                 document.getElementById("query_resulte"+arr[num][i]).style.display="none";
                 //alert(arr[num][i]);
@@ -550,6 +551,7 @@
         }
     function changeButton2(num1,num2){
         //alert(bLeng[num1]);
+        var sendi,sendj;
         b[num1][num2]=(b[num1][num2]+1)%2;
         if(b[num1][num2]){
             for(i=0;i<bLeng[num1];i++){
@@ -563,6 +565,8 @@
                     document.getElementById("query_resulte"+arr[num1][i]).style.display="block";
                 }
             }
+            sendi=num1;
+            sendj=num2;
         }
         else{
             for(i=0;i<bLeng[num1];i++){
@@ -575,9 +579,25 @@
                 }
             }
         }
+        alert(sendi);
+        alert(sendj);
+        $.get({
+              url: "../test",
+              method: "GET",
+              type: "get",
+              data: {
+                    id:arr2[sendi][sendj]
+              },
+              success: (res) => {
+                    var result_id="#query_resulte".concat(arr2[sendi][sendj])
+                    $(result_id).append(res);
+              }
+        })
         
     }
     </script>
+    <script>
 
+    </script>
 </body>
 </html>
