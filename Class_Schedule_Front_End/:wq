@@ -21,6 +21,12 @@
 		<div id="status"></div>
     <div class="right menu">
 		<div class="item">
+			<div class="ui transparent icon input">
+			<input type="text" placeholder="Search...">
+			<i class="search link icon"></i>
+			</div>
+		</div>
+		<div class="item">
 			<a class="ui primary button" id ="fb_login">
             <fb:login-button  scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 			</a>
@@ -30,7 +36,7 @@
 <div class="ui bottom attached segment pushable">
  <div id="content">
   <header>
-		<button style="margin: 10px 10px;" class="ui inverted green big icon toggle button" >
+		<button style="margin: 10px 10px;" class="ui inverted olive big basic icon toggle button" >
 		<i class="sidebar icon"></i>Menu
 		</button>
 		<h1 class="headerTitle">Course Planning System</h1>
@@ -419,7 +425,7 @@
 	</div> 
   
   <div class="ui inverted right inline vertical sidebar menu">
-	  <div id="right" class="dropdown" style="margin:20px;">	
+	  <div class="dropdown" style="margin:20px;">	
 	
 		
 			<a href="#" id="a1" class="college"onClick="changeBut(1)">通識課程</a><br>
@@ -685,7 +691,7 @@
     <script>
     $('.ui.left.sidebar')
       .sidebar({
-        context: $('.bottom.segment')
+        context: $('#content')
       })
       .sidebar('setting', 'transition', 'overlay')
       .sidebar('attach events' ,'.toggle.button')

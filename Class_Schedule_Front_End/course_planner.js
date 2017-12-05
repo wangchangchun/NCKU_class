@@ -58,6 +58,16 @@ var day_str=""
 var time=""
 var day=0
 $("#main").on("click", "td[class='table-cell']", (event) => { 
+  
+  for(var i=0;i<arr.length;i++){
+    for(var j=0;j<arr[i].length;j++){
+      var result="#query_result".concat(arr[i][j])
+      $(result).empty();
+    }
+  }
+  
+
+
   day_str=event.target.id.split("-")[0]
   time=event.target.id.split("-")[1]
   day=0
@@ -125,6 +135,7 @@ function clickBut(m ,n){
     }, 
     success: (res) => {
       var result_id="#query_result".concat(arr[m-1][n-1])
+      last_result_id=result_id
       $(result_id).append(res);
     }
   })
