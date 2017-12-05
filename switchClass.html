@@ -22,35 +22,36 @@
         #pageName {
             grid-row:1/2;
             grid-column:1/4;
-            background-color:green;
+          /*  background-color:green; */
         }
   #myClass{
       grid-row: 2 / 4;
       grid-column: 1 / 2;
-      height:100%;
-      width:60%;
+      height:80%;
+      width:80%;
       position:relative;
       left:10%;
       overflow:scroll;
-      background-color: #f7e8c8;
+      background-color: #f7e8f8;
   }
   #changeGoal{
       grid-row:2/3;
       grid-column:2/3;
-      height:100%;
-      width:60%;
+      height:80%;
+      width:80%;
       position:relative;
       left:5%;
-      overflow:scroll;
-      background-color:yellow;
+      overflow-y:scroll;
+      background-color: #aea7e5;
+	  margin: 10px;
   }
   #subArea{
       grid-row:3/4;
       grid-column:2/3;
       height:100px;
-      width:100px;
+      width:100%;
       position:relative;
-      top:0%;
+      top:0%; 
   }
   #submit{
       width:60%;
@@ -65,12 +66,24 @@
       left:0%;
       overflow:scroll;
       border-style:outset;
+	  background-color: #afafff;
   }
   .college{
-      height:40px;
+      height:45px;
       width:80%;
       display:block;
       border-style:double;
+	  background-color: #f7e8f8;
+	  color: brown;
+	  text-align: center;
+	  border-radius: 15px;
+	  padding: 10px;
+	  position: relative;
+	  left: 10%;
+	
+	  }
+  .college:hover {
+	  background-color:  #f7e8a8;
   }
   .department{
       height:400px;
@@ -79,6 +92,8 @@
       border-style:groove;
       overflow:scroll;
       display:none;
+	  position: relative;
+	  left: 10%;
   }
   .query_result{
       height:40px;
@@ -86,8 +101,18 @@
       display:none;
       border-style:inset;
   }
-  #facebookButton{
-		
+  .headerTitle{
+	  text-align: center;
+	  color: white;
+	  background-color: #aea7e5;
+	  font-size: 50px;
+	  padding: 50px;
+  }
+  body{
+	  background-color: #aea7e5;
+  }
+  .subheading{
+	  text-align: center;
   }
     </style>
 </head>
@@ -115,12 +140,14 @@
 	
     <div id="content">
         <div id="pageName">
-            <h1>成大換課系統</h1>
+            <h1 class="headerTitle">成大換課系統</h1>
 		</div>
         <div id="myClass">
+			<h2 class="subheading">My Classes</h2><br>
             here
         </div>
         <div id="changeGoal">
+			<h2 class="subheading">目標課程</h2>
             <a href="#" id="e0" class="college" onClick="changeButton(0)">其他</a><br>
             <div id = "college0" class = "department">
                 <a href="#" id="A2" onClick="changeButton2(0,0)">體育室</a><br>
