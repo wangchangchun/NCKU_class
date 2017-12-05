@@ -85,7 +85,7 @@
   .college:hover {
 	  background-color:  #f7e8a8;
   }
-  .department{
+  div.department{
       height:80%;
       width:60%;
       background-color: #d2d8e0;
@@ -115,7 +115,7 @@
   .subheading{
 	  text-align: center;
   }
-  div.department a {
+  div.department a{
 	  display: block;
 	  background-color: #1aebf2;
 	  border-style: solid;
@@ -123,11 +123,10 @@
 	  color: black;
 	  font-weight: bold;
 	  text-align: center;
-	  height: 50px;
 	  padding: 10px;
-	  font-size: 20px;
+    width: 150px;
   }
-  #myClass a.dept { 
+  #myClass .dept { 
     text-decoration: none;
     color: white;
     background-color: #84767E;
@@ -139,7 +138,7 @@
     height: 50px;
     width: 200px;
   }
-  #myClass  a.dept:hover{
+  #myClass  .dept:hover{
       background-color: #5F555B;
   }
 
@@ -172,10 +171,9 @@
             <h1 class="headerTitle">成大換課系統</h1>
 		</div>
     
-        <button id="button1">button1</button>
-        <button id="button2">button2</button>
         <div id="myClass">
-			<h2 class="subheading">My Classes</h2><br>
+          <button id="button1">button1</button><br>
+			      <h2 class="subheading">My Classes</h2><br>
             here
         </div>
         <div id="changeGoal">
