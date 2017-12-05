@@ -86,14 +86,37 @@
       display:none;
       border-style:inset;
   }
+  #facebookButton{
+		
+  }
     </style>
 </head>
 
 <body>
+	<div class="ui top attached olive inverted pointing menu" >                                                                               
+		<a class="item" href="../../index.html" target="_self">
+		About us
+		</a>
+		<a class="item" href="Class_Schedule_Front_End/course_planner.html" target="_self">
+		Course Planning 
+		</a>
+		<a class="active item" href="switchClass.html" target="_self">
+		Course Trading
+		</a>
+		<div id="status"></div>
+    <div class="right menu">
+		<div class="item">
+			<a class="ui primary button" id ="fb_login">
+            <fb:login-button  scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+			</a>
+		</div>
+    </div>
+	</div>
+	
     <div id="content">
         <div id="pageName">
             <h1>成大換課系統</h1>
-        </div>
+		</div>
         <div id="myClass">
             here
         </div>
