@@ -630,16 +630,18 @@
             }
         }
         //alert(sendi);
+        //alert(num1);
         //alert(sendj);
+        //alert(num2);
         $.get({
               url: "../test",
               method: "GET",
               type: "get",
               data: {
-                    id:arr[sendi][sendj]
+                    id:arr[num1][num2]
               },
               success: (res) => {
-                    var result_id="#query_resulte".concat(arr[sendi][sendj])
+                    var result_id="#query_resulte".concat(arr[num1][num2])
                     $(result_id).append(res);
               }
         })
