@@ -194,21 +194,25 @@ $(".dropdown").on("click", "a[name='but']", (event) => {
         if(class_t1=='N'){
           var str1=str.concat(class_t1);
           $(str1).html(name);
+          $(str1).attr({"name" : event.target.id});
           class_t1=5
         }
         if(class_t2=='N'){
           var str1=str.concat(class_t2);
           $(str1).html(name);
+          $(str1).attr({"name" : event.target.id});
           class_t2=4
         }
         for(var i=class_t1;i<=class_t2;i++){
           var str1=str.concat(i);
           $(str1).html(name);
+          $(str1).attr({"name" : event.target.id});
         }
       }
       else{
         var str1=str.concat(class_t1);
         $(str1).html(name);
+        $(str1).attr({"name" : event.target.id});
       }
     }
     //$(str1).html(name);
