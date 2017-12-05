@@ -22,35 +22,36 @@
         #pageName {
             grid-row:1/2;
             grid-column:1/4;
-            background-color:green;
+          /*  background-color:green; */
         }
   #myClass{
       grid-row: 2 / 4;
       grid-column: 1 / 2;
-      height:100%;
-      width:60%;
+      height:80%;
+      width:80%;
       position:relative;
       left:10%;
       overflow:scroll;
-      background-color: #f7e8c8;
+      background-color: #d2d8e0;
   }
   #changeGoal{
       grid-row:2/3;
       grid-column:2/3;
-      height:100%;
-      width:60%;
+      height:80%;
+      width:80%;
       position:relative;
       left:5%;
-      overflow:scroll;
-      background-color:yellow;
+      overflow-y:scroll;
+      background-color: #aea7e5;
+	  margin: 10px;
   }
   #subArea{
       grid-row:3/4;
       grid-column:2/3;
       height:100px;
-      width:100px;
+      width:100%;
       position:relative;
-      top:0%;
+      top:0%; 
   }
   #submit{
       width:60%;
@@ -65,31 +66,68 @@
       left:0%;
       overflow:scroll;
       border-style:outset;
+	  background-color: #afafff;
   }
   .college{
-      height:40px;
+      height:45px;
       width:80%;
       display:block;
       border-style:double;
+	  background-color: #f7e8f8;
+	  color: brown;
+	  text-align: center;
+	  border-radius: 15px;
+	  padding: 10px;
+	  position: relative;
+	  left: 10%;
+	
+	  }
+  .college:hover {
+	  background-color:  #f7e8a8;
   }
   .department{
-      height:400px;
-      width:100px;
-      background-color:white;
+      height:80%;
+      width:60%;
+      background-color: #d2d8e0;
       border-style:groove;
       overflow:scroll;
       display:none;
+	  position: relative;
+	  left: 10%;
   }
+  
   .query_result{
       height:40px;
       width:100px;
       display:none;
       border-style:inset;
   }
-  #facebookButton{
-		
+  .headerTitle{
+	  text-align: center;
+	  color: white;
+	  background-color: #aea7e5;
+	  font-size: 50px;
+	  padding: 50px;
   }
-  #myClass a.department { 
+  body{
+	  background-color: #aea7e5;
+  }
+  .subheading{
+	  text-align: center;
+  }
+  div.department a {
+	  display: block;
+	  background-color: #1aebf2;
+	  border-style: solid;
+	  border-radius: 5px;
+	  color: black;
+	  font-weight: bold;
+	  text-align: center;
+	  height: 50px;
+	  padding: 10px;
+	  font-size: 20px;
+  }
+  #myClass a.dept { 
     text-decoration: none;
     color: white;
     background-color: #84767E;
@@ -101,7 +139,7 @@
     height: 50px;
     width: 200px;
   }
-  #myClass  a.department:hover{
+  #myClass  a.dept:hover{
       background-color: #5F555B;
   }
 
@@ -131,16 +169,17 @@
 	
     <div id="content">
         <div id="pageName">
-            <h1>成大換課系統</h1>
+            <h1 class="headerTitle">成大換課系統</h1>
 		</div>
     
         <button id="button1">button1</button>
         <button id="button2">button2</button>
         <div id="myClass">
+			<h2 class="subheading">My Classes</h2><br>
+            here
         </div>
-          <div id="text">space</div>
-          here
         <div id="changeGoal">
+			<h2 class="subheading">目標課程</h2>
             <a href="#" id="e0" class="college" onClick="changeButton(0)">其他</a><br>
             <div id = "college0" class = "department">
                 <a href="#" id="A2" onClick="changeButton2(0,0)">體育室</a><br>
@@ -623,16 +662,18 @@
             }
         }
         //alert(sendi);
+        //alert(num1);
         //alert(sendj);
+        //alert(num2);
         $.get({
               url: "../test",
               method: "GET",
               type: "get",
               data: {
-                    id:arr[sendi][sendj]
+                    id:arr[num1][num2]
               },
               success: (res) => {
-                    var result_id="#query_resulte".concat(arr[sendi][sendj])
+                    var result_id="#query_resulte".concat(arr[num1][num2])
                     $(result_id).append(res);
               }
         })

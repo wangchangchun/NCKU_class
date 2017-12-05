@@ -181,7 +181,6 @@ $("#button1").click(() => {
 //    document.getElementById('fb_login').innerHTML = '<a class = "item" id = "fb_logout" onclick = "logout();">log out</a>';
 //    alert(response.id);
     fb_id = response.id;
-    $('#text').html(fb_id);
 
   });
   $.get({
@@ -192,7 +191,6 @@ $("#button1").click(() => {
       id:"1490217444419483"
     }, 
     success: (res) => {
-      $('#text').html("click");
       alert(res)
       $('#myClass').append(res);
     }
@@ -213,5 +211,4 @@ $("#button2").click(() => {
 });
 $("#myClass").on("click", "a[name='but']", (event) => { 
     select_course=event.target.text
-    $('#text').html(select_course);
 });
