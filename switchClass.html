@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+  <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS/semantic.min.css"> 
+  <link rel="manifest" href="./manifest.json">
+  <title>成大換課</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script> 
+  <script src="Semantic-UI-CSS/semantic.min.js"></script>
+  <style>
+        #content {
+
+            display: grid;
+            grid-template-rows: [1][2][3][4][5];
+            grid-template-columns:[1]45%[2]30%[3]20%[4];
+            height:100%;
+            width:100%;
+        }
+        #pageName {
+            grid-row:1/2;
+            grid-column:1/4;
+            background-color:green;
+        }
+  #myClass{
+      grid-row: 2 / 4;
+      grid-column: 1 / 2;
+      height:100%;
+      width:60%;
+      position:relative;
+      left:10%;
+      overflow:scroll;
+      background-color: #f7e8c8;
+  }
+  #changeGoal{
+      grid-row:2/3;
+      grid-column:2/3;
+      height:100%;
+      width:60%;
+      position:relative;
+      left:5%;
+      overflow:scroll;
+      background-color:yellow;
+  }
+  #subArea{
+      grid-row:3/4;
+      grid-column:2/3;
+      height:100px;
+      width:100px;
+      position:relative;
+      top:0%;
+  }
+  #submit{
+      width:60%;
+      position:relative;
+      left:14%;
+  }
+  #showBoard{
+      grid-row:2/3;
+      grid-column:3/4;
+      height:80%;
+      position:relative;
+      left:0%;
+      overflow:scroll;
+      border-style:outset;
+  }
+  .college{
+      height:40px;
+      width:80%;
+      display:block;
+      border-style:double;
+  }
+  .department{
+      height:400px;
+      width:100px;
+      background-color:white;
+      border-style:groove;
+      overflow:scroll;
+      display:none;
+  }
+  .query_result{
+      height:40px;
+      width:100px;
+      display:none;
+      border-style:inset;
+  }
+  #facebookButton{
+		
+  }
+    </style>
+</head>
+
+<body>
+	<div class="ui top attached olive inverted pointing menu" >                                                                               
+		<a class="item" href="../../index.html" target="_self">
+		About us
+		</a>
+		<a class="item" href="Class_Schedule_Front_End/course_planner.html" target="_self">
+		Course Planning 
+		</a>
+		<a class="active item" href="switchClass.html" target="_self">
+		Course Trading
+		</a>
+		<div id="status"></div>
+    <div class="right menu">
+		<div class="item">
+			<a class="ui primary button" id ="fb_login">
+            <fb:login-button  scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+			</a>
+		</div>
+    </div>
+	</div>
+	
+    <div id="content">
+        <div id="pageName">
+            <h1>成大換課系統</h1>
+		</div>
+        <div id="myClass">
+            here
+        </div>
+        <div id="changeGoal">
+            <a href="#" id="e0" class="college" onClick="changeButton(0)">其他</a><br>
+            <div id = "college0" class = "department">
+                <a href="#" id="A2" onClick="changeButton2(0,0)">體育室</a><br>
+                <div id="query_resulteA2" class="query_result"></div>
+                <a href="#" id="A3" onClick="changeButton2(0,1)">軍訓室</a><br>
+                <div id="query_resulteA3" class="query_result"></div>
+                <a href="#" id="A4" onClick="changeButton2(0,2)">師培中心</a><br>
+                <div id="query_resulteA4" class="query_result"></div>
+                <a href="#" id="A5" onClick="changeButton2(0,3)">計網中心</a><br>
+                <div id="query_resulteA5" class="query_result"></div>
+                <a href="#" id="A6" onClick="changeButton2(0,4)">服務學習</a><br>
+                <div id="query_resulteA6" class="query_result"></div>
+                <a href="#" id="AA" onClick="changeButton2(0,5)">共同英授</a><br>
+                <div id="query_resulteAA" class="query_result"></div>
+                <a href="#" id="AH" onClick="changeButton2(0,6)">華語中心</a><br>
+                <div id="query_resulteAH" class="query_result"></div>
+            </div>
+            <a href="#" id="e1" class="college" onClick="changeButton(1)">不分學院</a><br>
+            <div id = "college1" class = "department">
+                <a href="#" id="AN" onClick="changeButton2(1,0)">不分系學程</a><br>
+                <div id="query_resulteAN" class="query_result"></div>
+                <a href="#" id="C0" onClick="changeButton2(1,1)">科學班</a><br>
+                <div id="query_resulteC0" class="query_result"></div>
+            </div>
+            <a href="#" id="e2" class="college" onClick="changeButton(2)">通識課程</a><br>
+            <div id="college2" class="department">
+                <a href="#" id="A1" onClick="changeButton2(2,0)">外國語言</a><br>
+                <div id="query_resulteA1" class="query_result"></div>
+                <a href="#" id="A9" onClick="changeButton2(2,1)">通識中心</a><br>
+                <div id="query_resulteA9" class="query_result"></div>
+                <a href="#" id="AG" onClick="changeButton2(2,2)">公民歷史</a><br>
+                <div id="query_resulteAG" class="query_result"></div>
+                <a href="#" id="A7" onClick="changeButton2(2,3)">基礎國文</a><br>
+                <div id="query_resulteA7" class="query_result"></div>
+            </div>
+            <a href="#" id="e3" class="college" onClick="changeButton(3)">文學院</a><br>
+            <div id="college3" class="department">
+                <a href="#" id="B0" onClick="changeButton2(3,0)">文學院學士班</a><br>
+                <div id="query_resulteB0" class="query_result"></div>
+                <a href="#" id="B1" onClick="changeButton2(3,1)">中文系</a><br>
+                <div id="query_resulteB1" class="query_result"></div>
+                <a href="#" id="B2" onClick="changeButton2(3,2)" >外文系</a><br>
+                <div id="query_resulteB2" class="query_result"></div>
+                <a href="#" id="B3" onClick="changeButton2(3,3)" >歷史系</a><br>
+                <div id="query_resulteB3" class="query_result"></div>
+                <a href="#" id="B5" onClick="changeButton2(3,4)" >台文系</a><br>
+                <div id="query_resulteB5" class="query_result"></div>
+                <a href="#" id="K1" onClick="changeButton2(3,5)">中文所</a><br>
+                <div id="query_resulteK1" class="query_result"></div>
+                <a href="#" id="K2" onClick="changeButton2(3,6)" >外文所</a><br>
+                <div id="query_resulteK2" class="query_result"></div>
+                <a href="#" id="K3" onClick="changeButton2(3,7)">歷史所</a><br>
+                <div id="query_resulteK3" class="query_result"></div>
+                <a href="#" id="K5" onClick="changeButton2(3,8)">台文所</a><br>
+                <div id="query_resulteK5" class="query_result"></div>
+                <a href="#" id="K4" onClick="changeButton2(3,9)">藝術所</a><br>
+                <div id="query_resulteK4" class="query_result"></div>
+                <a href="#" id="K8" onClick="changeButton2(3,10)">戲劇碩士學程</a><br>
+                <div id="query_resulteK8" class="query_result"></div>
+                <a href="#" id="K7" onClick="changeButton2(3,11)">考古所</a><br>
+                <div id="query_resulteK7" class="query_result"></div>
+            </div>
+            <a href="#" id="e4" class="college" onClick="changeButton(4)">理學院</a><br>
+            <div id="college4" class="department">
+                <a href="#" id="C1" onClick="changeButton2(4,0)">數學系</a><br>
+                <div id="query_resulteC1" class="query_result"></div>
+                <a href="#" id="C2"onClick="changeButton2(4,1)">物理系</a><br>
+                <div id="query_resulteC2" class="query_result"></div>
+                <a href="#" id="C3" onClick="changeButton2(4,2)">化學系</a><br>
+                <div id="query_resulteC3" class="query_result"></div>
+                <a href="#" id="C4" onClick="changeButton2(4,3)" >地科系</a><br>
+                <div id="query_resulteC4" class="query_result"></div>
+                <a href="#" id="CZ" onClick="changeButton2(4,4)" >理學院學士班</a><br>
+                <div id="query_resulteCZ" class="query_result"></div>
+                <a href="#" id="F8" onClick="changeButton2(4,5)">光電系</a><br>
+                <div id="query_resulteF8" class="query_result"></div>
+                <a href="#" id="L1" onClick="changeButton2(4,6)">應數所</a><br>
+                <div id="query_resulteL1" class="query_result"></div>
+                <a href="#" id="L2" onClick="changeButton2(4,7)">物理所</a><br>
+                <div id="query_resulteL2" class="query_result"></div>
+                <a href="#" id="L3" onClick="changeButton2(4,8)">化學所</a><br>
+                <div id="query_resulteL3" class="query_result"></div>
+                <a href="#" id="L4" onClick="changeButton2(4,9)">地科所</a><br>
+                <div id="query_resulteL4" class="query_result"></div>
+                <a href="#" id="LZ" onClick="changeButton2(4,10)">理學院研究所</a><br>
+                <div id="query_resulteLZ" class="query_result"></div>
+                <a href="#" id="L7" onClick="changeButton2(4,11)">光電所</a><br>
+                <div id="query_resulteL7" class="query_result"></div>
+                <a href="#" id="LA" onClick="changeButton2(4,12)">電漿所</a><br>
+                <div id="query_resulteLA" class="query_result"></div>
+                <a href="#" id="VF" onClick="changeButton2(4,13)">發光二極</a><br>
+                <div id="query_resulteVF" class="query_result"></div>
+            </div>
+            <a href="#" id="e5" class="college" onClick="changeButton(5)">工學院</a><br>
+            <div id="college5" class="department">
+                <a href="#" id="E0" onClick="changeButton2(5,0)" >工學院</a><br>
+                <div id="query_resulteE0" class="query_result"></div>
+                <a href="#" id="E1" onClick="changeButton2(5,1)">機械系</a><br>
+                <div id="query_resulteE1" class="query_result"></div>
+                <a href="#" id="E3" onClick="changeButton2(5,2)">化工系</a><br>
+                <div id="query_resulteE3" class="query_result"></div>
+                <a href="#" id="E4" onClick="changeButton2(5,3)">資源系</a><br>
+                <div id="query_resulteE4" class="query_result"></div>
+                <a href="#" id="E5" onClick="changeButton2(5,4)">材料系</a><br>
+                <div id="query_resulteE5" class="query_result"></div>
+                <a href="#" id="E6" onClick="changeButton2(5,5)">土木系</a><br>
+                <div id="query_resulteE6" class="query_result"></div>
+                <a href="#" id="E8" onClick="changeButton2(5,6)">水利系</a><br>
+                <div id="query_resulteE8" class="query_result"></div>
+                <a href="#" id="E9" onClick="changeButton2(5,7)">工科系</a><br>
+                <div id="query_resulteE9" class="query_result"></div>
+                <a href="#" id="F0" onClick="changeButton2(5,8)">能源學程</a><br>
+                <div id="query_resulteF0" class="query_result"></div>
+                <a href="#" id="F1" onClick="changeButton2(5,9)">系統系</a><br>
+                <div id="query_resulteF1" class="query_result"></div>
+                <a href="#" id="F4" onClick="changeButton2(5,10)">航太系</a><br>
+                <div id="query_resulteF4" class="query_result"></div>
+                <a href="#" id="F5" onClick="changeButton2(5,11)">環工系</a><br>
+                <div id="query_resulteF5" class="query_result"></div>
+                <a href="#" id="F6" onClick="changeButton2(5,12)">測量系</a><br>
+                <div id="query_resulteF6" class="query_result"></div>
+                <a href="#" id="F9" onClick="changeButton2(5,13)">醫工系</a><br>
+                <div id="query_resulteF9" class="query_result"></div>
+                <a href="#" id="N1" onClick="changeButton2(5,14)">機械所</a><br>
+                <div id="query_resulteN1" class="query_result"></div>
+                <a href="#" id="N3" onClick="changeButton2(5,15)">化工所</a><br>
+                <div id="query_resulteN3" class="query_result"></div>
+                <a href="#" id="N4" onClick="changeButton2(5,16)">資源所</a><br>
+                <div id="query_resulteN4" class="query_result"></div>
+                <a href="#" id="N5" onClick="changeButton2(5,17)">材料所</a><br>
+                <div id="query_resulteN5" class="query_result"></div>
+                <a href="#" id="N6" onClick="changeButton2(5,18)">土木所</a><br>
+                <div id="query_resulteN6" class="query_result"></div>
+                <a href="#" id="N8" onClick="changeButton2(5,19)">水利所</a><br>
+                <div id="query_resulteN8" class="query_result"></div>
+                <a href="#" id="NC" onClick="changeButton2(5,20)">自災所</a><br>
+                <div id="query_resulteNC" class="query_result"></div>
+                <a href="#" id="N9" onClick="changeButton2(5,21)">工科所</a><br>
+                <div id="query_resulteN9" class="query_result"></div>
+                <a href="#" id="P1" onClick="changeButton2(5,22)">系統所</a><br>
+                <div id="query_resulteP1" class="query_result"></div>
+                <a href="#" id="P4" onClick="changeButton2(5,23)">航太所</a><br>
+                <div id="query_resulteP4" class="query_result"></div>
+                <a href="#" id="P5" onClick="changeButton2(5,24)" >還工所</a><br>
+                <div id="query_resulteP5" class="query_result"></div>
+                <a href="#" id="P6" onClick="changeButton2(5,25)">測量所</a><br>
+                <div id="query_resulteP6" class="query_result"></div>
+                <a href="#" id="P8" onClick="changeButton2(5,26)">醫工所</a><br>
+                <div id="query_resulteP8" class="query_result"></div>
+                <a href="#" id="N0" onClick="changeButton2(5,27)">工程管理</a><br>
+                <div id="query_resulteN0" class="query_result"></div>
+                <a href="#" id="NA" onClick="changeButton2(5,28)">海事所</a><br>
+                <div id="query_resulteNA" class="query_result"></div>
+                <a href="#" id="NB" onClick="changeButton2(5,29)">尖端所</a><br>
+                <div id="query_resulteNB" class="query_result"></div>
+                <a href="#" id="P0" onClick="changeButton2(5,30)">能源學程</a><br>
+                <div id="query_resulteP0" class="query_result"></div>
+            </div>
+            <a href="#" id="e6" class="college" onClick="changeButton(6)">管理學院</a><br>
+            <div id="college6" class="department">
+                <a href="#" id="H1" onClick="changeButton2(6,0)">會計系</a><br>
+                <div id="query_resulteH1" class="query_result"></div>
+                <a href="#" id="H2" onClick="changeButton2(6,1)">統計系</a><br>
+                <div id="query_resulteH2" class="query_result"></div>
+                <a href="#" id="H3" onClick="changeButton2(6,2)">工資系</a><br>
+                <div id="query_resulteH3" class="query_result"></div>
+                <a href="#" id="H4" onClick="changeButton2(6,3)" >企管系</a><br>
+                <div id="query_resulteH4" class="query_result"></div>
+                <a href="#" id="H5" onClick="changeButton2(6,4)">交管系</a><br>
+                <div id="query_resulteH5" class="query_result"></div>
+                <a href="#" id="R1" onClick="changeButton2(6,5)">會計所</a><br>
+                <div id="query_resulteR1" class="query_result"></div>
+                <a href="#" id="R2" onClick="changeButton2(6,6)">統計所</a><br>
+                <div id="query_resulteR2" class="query_result"></div>
+                <a href="#" id="R3" onClick="changeButton2(6,7)">工資所</a><br>
+                <div id="query_resulteR3" class="query_result"></div>
+                <a href="#" id="R7" onClick="changeButton2(6,8)">資管所</a><br>
+                <div id="query_resulteR7" class="query_result"></div>
+                <a href="#" id="R4" onClick="changeButton2(6,9)">企管所</a><br>
+                <div id="query_resulteR4" class="query_result"></div>
+                <a href="#" id="R5" onClick="changeButton2(6,10)">交管所</a><br>
+                <div id="query_resulteR5" class="query_result"></div>
+                <a href="#" id="R9" onClick="changeButton2(6,11)">電管所</a><br>
+                <div id="query_resulteR9" class="query_result"></div>
+                <a href="#" id="R0" onClick="changeButton2(6,12)">EMBA</a><br>
+                <div id="query_resulteR0" class="query_result"></div>
+                <a href="#" id="R6" onClick="changeButton2(6,13)">國企所</a><br>
+                <div id="query_resulteR6" class="query_result"></div>
+                <a href="#" id="R8" onClick="changeButton2(6,14)" >財金所</a><br>
+                <div id="query_resulteR8" class="query_result"></div>
+                <a href="#" id="RA" onClick="changeButton2(6,15)" >IMBA</a><br>
+                <div id="query_resulteRA" class="query_result"></div>
+                <a href="#" id="RB" onClick="changeButton2(6,16)">體健所</a><br>
+                <div id="query_resulteRB" class="query_result"></div>
+                <a href="#" id="RD" onClick="changeButton2(6,17)">AMBA</a><br>
+                <div id="query_resulteRD" class="query_result"></div>
+                <a href="#" id="RZ" onClick="changeButton2(6,18)">管理學院</a><br>
+                <div id="query_resulteRZ" class="query_result"></div>
+            </div>
+            <a href="#" id="e7" class="college" onClick="changeButton(7)">醫學院</a><br>
+            <div id="college7" class="department">
+                <a href="#" id="I2" onClick="changeButton2(7,0)">護理系</a><br>
+                <div id="query_resulteI2" class="query_result"></div>
+                <a href="#" id="I3" onClick="changeButton2(7,1)">醫技系</a><br>
+                <div id="query_resulteI3" class="query_result"></div>
+                <a href="#" id="I5" onClick="changeButton2(7,2)">醫學系</a><br>
+                <div id="query_resulteI5" class="query_result"></div>
+                <a href="#" id="I6" onClick="changeButton2(7,3)">物治系</a><br>
+                <div id="query_resulteI6" class="query_result"></div>
+                <a href="#" id="I7" onClick="changeButton2(7,4)">職治系</a><br>
+                <div id="query_resulteI7" class="query_result"></div>
+                <a href="#" id="I8" onClick="changeButton2(7,5)">藥學系</a><br>
+                <div id="query_resulteI8" class="query_result"></div>
+                <a href="#" id="T2" onClick="changeButton2(7,6)" >護理所</a><br>
+                <div id="query_resulteT2" class="query_result"></div>
+                <a href="#" id="T3" onClick="changeButton2(7,7)">醫技所</a><br>
+                <div id="query_resulteT3" class="query_result"></div>
+                <a href="#" id="T6" onClick="changeButton2(7,8)">物治所</a><br>
+                <div id="query_resulteT6" class="query_result"></div>
+                <a href="#" id="T7" onClick="changeButton2(7,9)">職治所</a><br>
+                <div id="query_resulteT7" class="query_result"></div>
+                <a href="#" id="S0" onClick="changeButton2(7,10)">醫學院</a><br>
+                <div id="query_resulteS0" class="query_result"></div>
+                <a href="#" id="S1" onClick="changeButton2(7,11)">生化所</a><br>
+                <div id="query_resulteS1" class="query_result"></div>
+                <a href="#" id="S2" onClick="changeButton2(7,12)">藥理所</a><br>
+                <div id="query_resulteS2" class="query_result"></div>
+                <a href="#" id="S3" onClick="changeButton2(7,13)">生理所</a><br>
+                <div id="query_resulteS3" class="query_result"></div>
+                <a href="#" id="S4" onClick="changeButton2(7,14)">微免所</a><br>
+                <div id="query_resulteS4" class="query_result"></div>
+                <a href="#" id="S5" onClick="changeButton2(7,15)">基醫所</a><br>
+                <div id="query_resulteS5" class="query_result"></div>
+                <a href="#" id="S6" onClick="changeButton2(7,16)">臨藥科技</a><br>
+                <div id="query_resulteS6" class="query_result"></div>
+                <a href="#" id="S7" onClick="changeButton2(7,17)">環醫所</a><br>
+                <div id="query_resulteS7" class="query_result"></div>
+                <a href="#" id="SC" onClick="changeButton2(7,18)">食安所</a><br>
+                <div id="query_resulteSC" class="query_result"></div>
+                <a href="#" id="S8" onClick="changeButton2(7,19)">行醫所</a><br>
+                <div id="query_resulteS8" class="query_result"></div>
+                <a href="#" id="S9" onClick="changeButton2(7,20)">臨醫所</a><br>
+                <div id="query_resulteS9" class="query_result"></div>
+                <a href="#" id="SA" onClick="changeButton2(7,21)">神經學程</a><br>
+                <div id="query_resulteSA" class="query_result"></div>
+                <a href="#" id="T1" onClick="changeButton2(7,22)">分醫所</a><br>
+                <div id="query_resulteT1" class="query_result"></div>
+                <a href="#" id="T4" onClick="changeButton2(7,23)">口醫所</a><br>
+                <div id="query_resulteT4" class="query_result"></div>
+                <a href="#" id="SB" onClick="changeButton2(7,24)">公衛在職</a><br>
+                <div id="query_resulteSB" class="query_result"></div>
+                <a href="#" id="T8" onClick="changeButton2(7,25)">公衛所</a><br>
+                <div id="query_resulteT8" class="query_result"></div>
+                <a href="#" id="T9" onClick="changeButton2(7,26)" >細胞所</a><br>
+                <div id="query_resulteT9" class="query_result"></div>
+                <a href="#" id="TA" onClick="changeButton2(7,27)">健照所</a><br>
+                <div id="query_resulteTA" class="query_result"></div>
+                <a href="#" id="TC" onClick="changeButton2(7,28)">老年所</a><br>
+                <div id="query_resulteTC" class="query_result"></div>
+            </div>
+            <a href="#" id="e8" class="college" onClick="changeButton(8)">社會科學學院</a><br>
+            <div id="college8" class="department">
+                <a href="#" id="D2" onClick="changeButton2(8,0)">法律系</a><br>
+                <div id="query_resulteD2" class="query_result"></div>
+                <a href="#" id="D4" onClick="changeButton2(8,1)">政治系</a><br>
+                <div id="query_resulteD4" class="query_result"></div>
+                <a href="#" id="D5" onClick="changeButton2(8,2)">經濟系</a><br>
+                <div id="query_resulteD5" class="query_result"></div>
+                <a href="#" id="D8" onClick="changeButton2(8,3)">心理系</a><br>
+                <div id="query_resulteD8" class="query_result"></div>
+                <a href="#" id="U2" onClick="changeButton2(8,4)">法律所</a><br>
+                <div id="query_resulteU2" class="query_result"></div>
+                <a href="#" id="U1" onClick="changeButton2(8,5)">政經所</a><br>
+                <div id="query_resulteU1" class="query_result"></div>
+                <a href="#" id="U5" onClick="changeButton2(8,6)">經濟所</a><br>
+                <div id="query_resulteU5" class="query_result"></div>
+                <a href="#" id="U7" onClick="changeButton2(8,7)">心理所</a><br>
+                <div id="query_resulteU7" class="query_result"></div>
+                <a href="#" id="U3" onClick="changeButton2(8,8)">教育所</a><br>
+                <div id="query_resulteU3" class="query_result"></div>
+            </div>
+            <a href="#" id="e9" class="college" onClick="changeButton(9)">電機資訊學院</a><br>
+            <div id="college9" class="department">
+                
+                <a href="#" id="E2" onClick="changeButton2(9,0)">電機系</a><br>
+                <div id="query_resulteE2" class="query_result"></div>
+                <a href="#" id="F7" onClick="changeButton2(9,1)">資訊系</a><br>
+                <div id="query_resulteF7" class="query_result"></div>
+                <a href="#" id="N2" onClick="changeButton2(9,2)">電機所</a><br>
+                <div id="query_resulteN2" class="query_result"></div>
+                <a href="#" id="Q1" onClick="changeButton2(9,3)">微電所</a><br>
+                <div id="query_resulteQ1" class="query_result"></div>
+                <a href="#" id="Q3" onClick="changeButton2(9,4)">電通所</a><br>
+                <div id="query_resulteQ3" class="query_result"></div>
+                <a href="#" id="Q6" onClick="changeButton2(9,5)">南科專</a><br>
+                <div id="query_resulteQ6" class="query_result"></div>
+                <a href="#" id="Q7" onClick="changeButton2(9,6)">奈積學程</a><br>
+                <div id="query_resulteQ7" class="query_result"></div>
+                <a href="#" id="ND" onClick="changeButton2(9,7)">多媒學程</a><br>
+                <div id="query_resulteND" class="query_result"></div>
+                <a href="#" id="P7" onClick="changeButton2(9,8)">資訊所</a><br>
+                <div id="query_resulteP7" class="query_result"></div>
+                <a href="#" id="Q5" onClick="changeButton2(9,9)">醫資所</a><br>
+                <div id="query_resulteQ5" class="query_result"></div>
+                <a href="#" id="P9" onClick="changeButton2(9,10)">製造所</a><br>
+                <div id="query_resulteP9" class="query_result"></div>
+                <a href="#" id="V6" onClick="changeButton2(9,11)">電力產專</a><br>
+                <div id="query_resulteV6" class="query_result"></div>
+                <a href="#" id="V8" onClick="changeButton2(9,12)">微波材料</a><br>
+                <div id="query_resulteV8" class="query_result"></div>
+                <a href="#" id="V9" onClick="changeButton2(9,13)">電子材料</a><br>
+                <div id="query_resulteV9" class="query_result"></div>
+                <a href="#" id="VA" onClick="changeButton2(9,14)">電機產業</a><br>
+                <div id="query_resulteVA" class="query_result"></div>
+                <a href="#" id="VB" onClick="changeButton2(9,15)">光材產專</a><br>
+                <div id="query_resulteVB" class="query_result"></div>
+                <a href="#" id="VC" onClick="changeButton2(9,16)">光產產專</a><br>
+                <div id="query_resulteVC" class="query_result"></div>
+                <a href="#" id="VD" onClick="changeButton2(9,17)">微波材料元件</a><br>
+                <div id="query_resulteVD" class="query_result"></div>
+                <a href="#" id="VE" onClick="changeButton2(9,18)">電子產專</a><br>
+                <div id="query_resulteVE" class="query_result"></div>
+                <a href="#" id="VG" onClick="changeButton2(9,19)">靜電保護</a><br>
+                <div id="query_resulteVG" class="query_result"></div>
+                <a href="#" id="VH" onClick="changeButton2(9,20)">磁性材料</a><br>
+                <div id="query_resulteVH" class="query_result"></div>
+                <a href="#" id="VK" onClick="changeButton2(9,21)">電機驅動</a><br>
+                <div id="query_resulteVK" class="query_result"></div>
+                <a href="#" id="VM" onClick="changeButton2(9,22)">積體製程</a><br>
+                <div id="query_resulteVM" class="query_result"></div>
+                <a href="#" id="VN" onClick="changeButton2(9,23)">微波元件</a><br>
+                <div id="query_resulteVN" class="query_result"></div>
+                <a href="#" id="V0" onClick="changeButton2(9,24)">先進RF產專</a><br>
+                <div id="query_resulteV0" class="query_result"></div>
+            </div>
+            <a href="#" id="e10" class="college" onClick="changeButton(10)">規劃與設計學院</a><br>
+            <div id="college10" class="department">	
+                <a href="#" id="E7" onClick="changeButton2(10,0)">建築系</a><br>
+                <div id="query_resulteE7" class="query_result"></div>
+                <a href="#" id="F2" onClick="changeButton2(10,1)">都計系</a><br>
+                <div id="query_resulteF2" class="query_result"></div>
+                <a href="#" id="F3" onClick="changeButton2(10,2)">工設系</a><br>
+                <div id="query_resulteF3" class="query_result"></div>
+                <a href="#" id="N7" onClick="changeButton2(10,3)">建築所</a><br>
+                <div id="query_resulteN7" class="query_result"></div>
+                <a href="#" id="P2" onClick="changeButton2(10,4)">都計所</a><br>
+                <div id="query_resulteP2" class="query_result"></div>
+                <a href="#" id="P3" onClick="changeButton2(10,5)">工設所</a><br>
+                <div id="query_resulteP3" class="query_result"></div>
+                <a href="#" id="PA" onClick="changeButton2(10,6)">創意所</a><br>
+                <div id="query_resultePA" class="query_result"></div>
+                <a href="#" id="PB" onClick="changeButton2(10,7)">科藝學程</a><br>
+                <div id="query_resultePB" class="query_result"></div>
+            </div>
+            <a href="#" id="e11" class="college" onClick="changeButton(11)">生物科學與科技學院</a><br>
+            <div id="college11" class="department">
+                <a href="#" id="C5" onClick="changeButton2(11,0)">生科系</a><br>
+                <div id="query_resulteC5" class="query_result"></div>
+                <a href="#" id="C6" onClick="changeButton2(11,1)">生技系</a><br>
+                <div id="query_resulteC6" class="query_result"></div>
+                <a href="#" id="L5" onClick="changeButton2(11,2)">生命科學</a><br>
+                <div id="query_resulteL5" class="query_result"></div>
+                <a href="#" id="L6" onClick="changeButton2(11,3)">生技所</a><br>
+                <div id="query_resulteL6" class="query_result"></div>
+                <a href="#" id="Z2" onClick="changeButton2(11,4)">生訊所</a><br>
+                <div id="query_resulteZ2" class="query_result"></div>
+                <a href="#" id="Z0" onClick="changeButton2(11,5)">生科學院</a><br>
+                <div id="query_resulteZ0" class="query_result"></div>
+                <a href="#" id="Z3" onClick="changeButton2(11,6)">熱植所</a><br>
+                <div id="query_resulteZ3" class="query_result"></div>
+                <a href="#" id="Z5" onClick="changeButton2(11,7)">譯農所</a><br>
+                <div id="query_resulteZ5" class="query_result"></div>
+            </div>
+        </div>
+        <div id=""subArea>
+            <input type="button" id="submit" value="submit">
+        </div>
+        
+        <div id="showBoard">這裡會有還沒被換的課</div>
+    </div>
+    <script>
+        var arr=[
+            ['A2','A3','A4','A5','A6','AA','AH'],
+            ['AN','C0'],
+            ['A1' ,'A9' ,'AG' ,'A7'],
+            ['B0','B1' ,'B2' ,'B3' ,'B5','K1','K2','K3','K5','K4','K8','K7'],
+            ['C1' ,'C2' ,'C3' ,'C4' ,'CZ','F8','L1','L2','L3','L4','LZ','L7','LA','VF'],
+            ['E0','E1' ,'E3' ,'E4' ,'E5' ,'E6' ,'E8' ,'E9' ,'F0' ,'F1','F4' ,'F5' ,'F6' ,'F9','N1','N3','N4','N5','N6','N8','NC','N9','P1','P4','P5','P6','P8','N0','NA','NB','P0'],
+            ['H1' ,'H2' ,'H3' ,'H4' ,'H5','R1','R2','R3','R7','R4','R5','R9','R0','R6','R8','RA','RB','RD','RZ'],
+            ['I2' ,'I3' ,'I5' ,'I6' ,'I7' ,'I8','T2','T3','T6','T7','S0','S1','S2','S3','S4','S5','S6','S7','SC','S8','S9','SA','T1','T4','SB','T8','T9','TA','TC'],
+            ['D2' ,'D4' ,'D5' ,'D8','U2','U1','U5','U7','U3'],
+            ['E2' ,'F7','N2','Q1','Q3','Q6','Q7','ND','P7','Q5','P9','V6','V8','V9','VA','VB','VC','VD','VE','VG','VH','VK','VM','VN','V0'],
+            ['E7' ,'F2' ,'F3','N7','P2','P3','PA','PB'],
+            ['C5' ,'C6','L5','L6','Z2','Z0','Z3','Z5']
+        ]
+        var a = [0,0,0,0,0,0,0,0,0,0,0,0];
+        var b=[
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0],
+            [0 ,0 ,0 ,0],
+            [0 ,0 ,0 ,0,0,0,0,0,0,0,0,0],
+            [0 ,0 ,0 ,0 ,0,0,0,0,0,0,0,0,0,0],
+            [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0 ,0 ,0 ,0 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0 ,0 ,0 ,0 ,0 ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0 ,0 ,0 ,0,0,0,0,0,0],
+            [0 ,0, 0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            [0 ,0 ,0,0,0,0,0,0],
+            [0 ,0,0,0,0,0,0,0]
+        ]
+        var bLeng=[7,2,4,12,14,31,19,29,9,25,8,8];
+        //e是大的，college是中的
+
+        function changeButton(num){
+            //alert(num);
+            //alert(bLeng[num]);
+            for(i=0;i<bLeng[num];i++){
+                //alert(i);
+                //alert(arr[num][i]);
+                b[num][i]=0;
+                document.getElementById(arr[num][i]).style.display="block";
+                document.getElementById("query_resulte"+arr[num][i]).style.display="none";
+                //alert(arr[num][i]);
+            }
+            //alert('here');
+            a[num]=(a[num]+1)%2;
+            if(a[num]){
+                for(i=0;i<12;i++){
+                    if (i != num){
+                        document.getElementById("e"+i).style.display="none";
+                        document.getElementById("college"+i).style.display = "none";
+                    }
+                    else{
+                        document.getElementById("e"+i).style.display="block";
+                        document.getElementById("college"+i).style.display = "block";
+                    }
+                }
+            }
+            else{
+                for(i=0;i<12;i++){
+                    if(i!=num){
+                        document.getElementById("e"+i).style.display="block";
+                        document.getElementById("college"+i).style.display="none";
+                    }
+                    else{
+                        document.getElementById("college"+i).style.display="none";
+                        document.getElementById("e"+i).style.display = "block";
+                    }
+                }
+            }
+        }
+    function changeButton2(num1,num2){
+        //alert(bLeng[num1]);
+        var sendi,sendj;
+        b[num1][num2]=(b[num1][num2]+1)%2;
+        if(b[num1][num2]){
+            for(i=0;i<bLeng[num1];i++){
+                if(i!=num2){
+                    //alert(arr[num1][i]);
+                    document.getElementById(arr[num1][i]).style.display ="none";
+                }
+                else{
+                    //alert("first");
+                    document.getElementById(arr[num1][i]).style.display="block";
+                    document.getElementById("query_resulte"+arr[num1][i]).style.display="block";
+                }
+            }
+            sendi=num1;
+            sendj=num2;
+        }
+        else{
+            for(i=0;i<bLeng[num1];i++){
+                if(i!=num2){
+                    document.getElementById(arr[num1][i]).style.display ="block";
+                }
+                else{
+                    document.getElementById(arr[num1][i]).style.display="block";
+                    document.getElementById("query_resulte"+arr[num1][i]).style.display="none";
+                }
+            }
+        }
+        alert(sendi);
+        alert(sendj);
+        $.get({
+              url: "../test",
+              method: "GET",
+              type: "get",
+              data: {
+                    id:arr2[sendi][sendj]
+              },
+              success: (res) => {
+                    var result_id="#query_resulte".concat(arr2[sendi][sendj])
+                    $(result_id).append(res);
+              }
+        })
+        
+    }
+    </script>
+    <script>
+
+    </script>
+</body>
+</html>
