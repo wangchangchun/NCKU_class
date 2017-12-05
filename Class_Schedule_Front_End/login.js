@@ -24,7 +24,7 @@ function checkLoginState() {
 }
 window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1071353126339792',
+    appId      : '257340648129250',
     cookie     : true,  // enable cookies to allow the server to access 
     // the session
     xfbml      : true,  // parse social plugins on this page
@@ -65,6 +65,27 @@ function testAPI() {
     document.getElementById('fb_login').innerHTML = '<a class = "item" id = "fb_logout" onclick = "logout();">log out</a>';
 //    alert(response.id);
 //    file_id = response.id;
+    $.get({
+        url: "../read",
+        method:"GET",
+        type:"get",
+        data:{
+            id: response.id,
+            name:response.name
+        },
+        success:(res)=>{
+            //alert(res);
+            var sp = res.split(" ");
+
+            for (var i=0;i<sp.length;i=i+2){
+                var class_id =sp[i].substr(0,3)+"-"+sp[i][3];
+                //alert(class_id+" "+sp[i+1]);
+                document.getElementById(class_id).innerHTML=sp[i+1];
+            }
+        }
+    
+    })
+      
 
   });
 }
@@ -91,30 +112,61 @@ function getElementsByClass( searchClass, domNode, tagName) {
 }
                
 $("#save_btn").click(() =>{
-    var wdata = "";
+    var class_time = "";
+    var class_name="";
     var class_arr = getElementsByClass('table-cell');
     for (var i=0;i<class_arr.length;i++)
     {
-        if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !="")
-          wdata=wdata.concat(class_arr[i].id," ",class_arr[i].innerHTML,"\n");
+        if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !=""){
+          class_id = class_arr[i].id.split("-");
+          class_time = class_time.concat(class_id[0],class_id[1],"\n");
+          class_name = class_name.concat(class_arr[i].innerHTML,"\n");
+     //     alert("frontend "+class_time+" "+class_name);
+          
+      }
     }
+          FB.api('/me', function(response) {
+              console.log(JSON.stringify(response));
+              var id = response.id;
+              $.get({
+                  url:"../save",
+                  method: "GET",
+                  type:"get",
+                  data:{
+                      id : id,
+                      class_time: class_time,
+                      class_name: class_name
+                  },
+                  success: (res) =>{
+                  }
+              })
+          });
     
-    FB.api('/me', function(response) {
-    console.log(JSON.stringify(response));
-    var file_id = response.id;
-    alert(file_id);
-    $.get({
-        url:"../save",
-        method: "GET",
-        type:"get",
-        data:{
-            filename : file_id+".txt",
-            wdata: wdata
+});
 
-        },
-        success: (res) =>{
-            $('#status').append(res);
-        }
-    })
+$("#clear_btn").click(() => {
+    FB.api('/me',function(response){
+        console.log(JSON.stringify(response));
+        var id = response.id;
+                var class_arr = getElementsByClass('table-cell');
+                for (var i=0;i<class_arr.length;i++){
+                    if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !=""){
+                          class_arr[i].innerHTML = "";
+                    
+                    }
+                }
+        $.get({
+            url:"../clear",
+            method:"GET",
+            type:"get",
+            data:{
+              id: id
+            },
+            success: (res) =>{
+                alert("clear");     
+                //windows.location.reload();
+            }
+          })
     });
+
 });

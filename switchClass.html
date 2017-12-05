@@ -629,17 +629,17 @@
                 }
             }
         }
-        alert(sendi);
-        alert(sendj);
+        //alert(sendi);
+        //alert(sendj);
         $.get({
               url: "../test",
               method: "GET",
               type: "get",
               data: {
-                    id:arr2[sendi][sendj]
+                    id:arr[sendi][sendj]
               },
               success: (res) => {
-                    var result_id="#query_resulte".concat(arr2[sendi][sendj])
+                    var result_id="#query_resulte".concat(arr[sendi][sendj])
                     $(result_id).append(res);
               }
         })
