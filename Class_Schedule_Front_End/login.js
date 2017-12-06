@@ -63,29 +63,43 @@ function testAPI() {
     document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
     document.getElementById('fb_login').innerHTML = '<a class = "item" id = "fb_logout" onclick = "logout();">log out</a>';
-//    alert(response.id);
-//    file_id = response.id;
+    //    alert(response.id);
+    //    file_id = response.id;
+    fb_id = response.id;
     $.get({
-        url: "../read",
-        method:"GET",
-        type:"get",
-        data:{
-            id: response.id,
-            name:response.name
-        },
-        success:(res)=>{
-            //alert(res);
-            var sp = res.split(" ");
+      url: "../read",
+      method:"GET",
+      type:"get",
+      data:{
+        id: response.id,
+        name:response.name
+      },
+      success:(res)=>{
+        //alert(res);
+        var sp = res.split(" ");
 
-            for (var i=0;i<sp.length;i=i+2){
-                var class_id =sp[i].substr(0,3)+"-"+sp[i][3];
-                //alert(class_id+" "+sp[i+1]);
-                document.getElementById(class_id).innerHTML=sp[i+1];
-            }
+        for (var i=0;i<sp.length;i=i+2){
+          var class_id =sp[i].substr(0,3)+"-"+sp[i][3];
+          //alert(class_id+" "+sp[i+1]);
+          document.getElementById(class_id).innerHTML=sp[i+1];
         }
-    
+      }
+
     })
-      
+
+  $.get({
+    url: "../self",
+    method: "GET",
+    type: "get",
+    data: { 
+      id:fb_id
+    }, 
+    success: (res) => {
+      //alert(res)
+      $('#myClass').append(res);
+    }
+  })
+
 
   });
 }
@@ -98,117 +112,102 @@ function logout(){
 }
 
 function getElementsByClass( searchClass, domNode, tagName) {
-    if (domNode == null) domNode = document;
-    if (tagName == null) tagName = '*';
-    var el = new Array();
-    var tags = domNode.getElementsByTagName(tagName);
-    var tcl = " "+searchClass+" ";
-    for(i=0,j=0; i<tags.length; i++) {
-        var test = " " + tags[i].className + " ";
-        if (test.indexOf(tcl) != -1)
-            el[j++] = tags[i];
-    }
-    return el;
+  if (domNode == null) domNode = document;
+  if (tagName == null) tagName = '*';
+  var el = new Array();
+  var tags = domNode.getElementsByTagName(tagName);
+  var tcl = " "+searchClass+" ";
+  for(i=0,j=0; i<tags.length; i++) {
+    var test = " " + tags[i].className + " ";
+    if (test.indexOf(tcl) != -1)
+      el[j++] = tags[i];
+  }
+  return el;
 }
-               
+
 $("#save_btn").click(() =>{
-    var class_time = "";
-    var class_name="";
-    var class_arr = getElementsByClass('table-cell');
-    for (var i=0;i<class_arr.length;i++)
-    {
-        if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !=""){
-          class_id = class_arr[i].id.split("-");
-          class_time = class_time.concat(class_id[0],class_id[1],"\n");
-          class_name = class_name.concat(class_arr[i].innerHTML,"\n");
-     //     alert("frontend "+class_time+" "+class_name);
-          
-      }
+  var class_time = "";
+  var class_name="";
+  var class_arr = getElementsByClass('table-cell');
+  for (var i=0;i<class_arr.length;i++)
+  {
+    if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !=""){
+      class_id = class_arr[i].id.split("-");
+      class_time = class_time.concat(class_id[0],class_id[1],"\n");
+      class_name = class_name.concat(class_arr[i].innerHTML,"\n");
+      //     alert("frontend "+class_time+" "+class_name);
+
     }
-          FB.api('/me', function(response) {
-              console.log(JSON.stringify(response));
-              var id = response.id;
-              $.get({
-                  url:"../save",
-                  method: "GET",
-                  type:"get",
-                  data:{
-                      id : id,
-                      class_time: class_time,
-                      class_name: class_name
-                  },
-                  success: (res) =>{
-                  }
-              })
-          });
-    
+  }
+  FB.api('/me', function(response) {
+    console.log(JSON.stringify(response));
+    var id = response.id;
+    $.get({
+      url:"../save",
+      method: "GET",
+      type:"get",
+      data:{
+        id : id,
+        class_time: class_time,
+        class_name: class_name
+      },
+      success: (res) =>{
+      }
+    })
+  });
+
 });
 
 $("#clear_btn").click(() => {
-    FB.api('/me',function(response){
-        console.log(JSON.stringify(response));
-        var id = response.id;
-                var class_arr = getElementsByClass('table-cell');
-                for (var i=0;i<class_arr.length;i++){
-                    if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !=""){
-                          class_arr[i].innerHTML = "";
-                    
-                    }
-                }
-        $.get({
-            url:"../clear",
-            method:"GET",
-            type:"get",
-            data:{
-              id: id
-            },
-            success: (res) =>{
-                alert("clear");     
-                //windows.location.reload();
-            }
-          })
-    });
-
-});
-var select_course;
-var fb_id;
-$("#button1").click(() => {
-  FB.api('/me', function(response) {
-    console.log('Successful login for: ' + response.name);
+  FB.api('/me',function(response){
     console.log(JSON.stringify(response));
-    document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name +'!';
-//    document.getElementById('fb_login').innerHTML = '<a class = "item" id = "fb_logout" onclick = "logout();">log out</a>';
-//    alert(response.id);
-    fb_id = response.id;
+    var id = response.id;
+    var class_arr = getElementsByClass('table-cell');
+    for (var i=0;i<class_arr.length;i++){
+      if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !=""){
+        class_arr[i].innerHTML = "";
 
-  });
-  $.get({
-    url: "../self",
-    method: "GET",
-    type: "get",
-    data: { 
-      id:"1490217444419483"
-    }, 
-    success: (res) => {
-      alert(res)
-      $('#myClass').append(res);
+      }
     }
-  })
+    $.get({
+      url:"../clear",
+      method:"GET",
+      type:"get",
+      data:{
+        id: id
+      },
+      success: (res) =>{
+        alert("clear");     
+        //windows.location.reload();
+      }
+    })
+  });
+
 });
-$("#button2").click(() => {
+var fb_id="";
+var have_course;
+$("#myClass").on("click", "a[name='but']", (event) => { 
+  have_course=event.target.text
+  alert("select:\n"+have_course)
+});
+var want_course_list="";
+$("#changeGoal").on("click", "a[name='but']", (event) => { 
+  //alert("select:"+event.target.text)
+  want_course_list=want_course_list+"\n"+event.target.text
+  alert("select:"+want_course_list)
+});
+$("#submit").click(() => {
   $.get({
     url: "../trading",
     method: "GET",
     type: "get",
     data: { 
-      name: select_course
+      have: have_course,
+      want: want_course_list,
+      id: fb_id
     }, 
     success: (res) => {
-      $('#text').html(res);
+      alert(res)
     }
   })
-});
-$("#myClass").on("click", "a[name='but']", (event) => { 
-    select_course=event.target.text
 });
