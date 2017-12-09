@@ -11,62 +11,71 @@
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script> 
   <script src="Semantic-UI-CSS/semantic.min.js"></script>
   <style>
-        #content {
+    #content {
 
-            display: grid;
-            grid-template-rows: [1][2][3][4][5];
-            grid-template-columns:[1]45%[2]30%[3]20%[4];
-            height:100%;
-            width:100%;
-        }
-        #pageName {
-            grid-row:1/2;
-            grid-column:1/4;
-          /*  background-color:green; */
-        }
+        display: grid;
+        grid-template-rows: [1]10%[2]70%[3]20%[4];
+        grid-template-columns:[1]45%[2]35%[3]20%[4];
+        height:40%;
+        width:70%;
+        position:relative;
+        left:10%;
+            
+    }
+    #pageName {
+        grid-row:1/2;
+        grid-column:1/4;
+        /*  background-color:green; */
+    }
+
   #myClass{
       grid-row: 2 / 4;
       grid-column: 1 / 2;
-      height:80%;
-      width:80%;
-      position:relative;
-      left:10%;
-      overflow:scroll;
-      background-color: #d2d8e0;
-  }
-  #changeGoal{
-      grid-row:2/3;
-      grid-column:2/3;
-      height:80%;
+      height:500px;
       width:80%;
       position:relative;
       left:5%;
+      overflow:scroll;
+      background-color: #a9ebff;
+      border-radius: 10px;
+  }
+  #changeGoal{
+      grid-row:2/3;
+      grid-column:2/4;
+      height:500px;
+      width:80%;
+      position:relative;
+      left:2%;
       overflow-y:scroll;
-      background-color: #aea7e5;
+      background-color: #a9fdff;
 	  margin: 10px;
   }
   #subArea{
       grid-row:3/4;
       grid-column:2/3;
-      height:100px;
       width:100%;
       position:relative;
       top:0%; 
   }
   #submit{
+      grid-row:2/3;
+      grid-column:2/3;
       width:60%;
+      top:60%;
       position:relative;
       left:14%;
   }
   #showBoard{
-      grid-row:2/3;
-      grid-column:3/4;
-      height:80%;
+      grid-row:3/4;
+      grid-column:1/4;
+      height:200px;
+      width:85%;
       position:relative;
-      left:0%;
+      left:5%;
       overflow:scroll;
       border-style:outset;
-	  background-color: #afafff;
+	  background-color: #a9f4ff;
+      border-radius: 15px;
   }
   .college{
       height:45px;
@@ -83,17 +92,17 @@
 	
 	  }
   .college:hover {
-	  background-color:  #f7e8a8;
+	  background-color:  #a9e3ff;
   }
   div.department{
       height:80%;
-      width:60%;
-      background-color: #d2d8e0;
-      border-style:groove;
+      width:65%;
+      background-color: #a9fdff;
+      
       overflow:scroll;
       display:none;
 	  position: relative;
-	  left: 10%;
+	  left: 22%;
   }
   
   .query_result{
@@ -105,26 +114,27 @@
   .headerTitle{
 	  text-align: center;
 	  color: white;
-	  background-color: #aea7e5;
+	  background-color: #a9fdff;
 	  font-size: 50px;
 	  padding: 50px;
   }
   body{
-	  background-color: #aea7e5;
+	  background-color: #a9fdff;
   }
   .subheading{
 	  text-align: center;
   }
   div.department a{
 	  display: block;
-	  background-color: #1aebf2;
+	  background-color: #f7e8f8;
 	  border-style: solid;
-	  border-radius: 5px;
+	  border-radius: 15px;
 	  color: black;
 	  font-weight: bold;
 	  text-align: center;
 	  padding: 10px;
-    width: 150px;
+      width: 250px;
+
   }
   #myClass .dept { 
     text-decoration: none;
@@ -168,14 +178,14 @@
 	
     <div id="content">
         <div id="pageName">
-            <h1 class="headerTitle">成大換課系統</h1>
+            <h1 class="headerTitle" style="color:black">成大換課系統</h1>
 		</div>
     
         <div id="myClass">
 			      <h2 class="subheading">My Classes</h2><br>
         </div>
         <div id="changeGoal">
-			      <h2 class="subheading">目標課程</h2>
+			      <!--<h2 class="subheading">目標課程</h2>-->
             <a href="#" id="e0" class="college" onClick="changeButton(0)">其他</a><br>
             <div id = "college0" class = "department">
                 <a href="#" id="A2" onClick="changeButton2(0,0)">體育室</a><br>
@@ -551,7 +561,8 @@
             </div>
         </div>
         <div id=""subArea>
-            <input type="button" id="submit" value="submit">
+            <!--<input type="button" id="submit" value="submit">
+             -->
         </div>
         
         <div id="showBoard">這裡會有還沒被換的課</div>
