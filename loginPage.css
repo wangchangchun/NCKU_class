@@ -5,7 +5,7 @@ body {
   background: #1a1a1a;
   background-image: url("banyanTree.jpg");
   background-repeat: no-repeat; 
-  background-size: 100% 100%;
+  background-size: 100% 170%;
   color: white;
   font-family: 'Roboto';
 }
@@ -16,6 +16,8 @@ body {
   height: 340px;
   position: relative;
   font-family: 'Roboto';
+  border-style: none;
+  border-radius: 50px;
 }
 .tabs {
   background: #c0392b;
@@ -27,6 +29,7 @@ body {
   position: relative;
   display: block;
   margin-bottom: 20px;
+  border-radius: 20px;
 }
 .tabs li {
   display: block;
@@ -42,6 +45,7 @@ body {
   color: white;
   font-size: 16px;
   padding: 12px 22px 12px 22px;
+   border-radius: 20px;
   /*border-right: 1px solid @tab-border;*/
 
 }
