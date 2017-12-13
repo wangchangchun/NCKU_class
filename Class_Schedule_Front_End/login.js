@@ -24,7 +24,7 @@ function checkLoginState() {
 }
 window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1071353126339792',
+    appId      : '257340648129250',
     cookie     : true,  // enable cookies to allow the server to access 
     // the session
     xfbml      : true,  // parse social plugins on this page
@@ -81,7 +81,9 @@ function testAPI() {
         for (var i=0;i<sp.length;i=i+2){
           var class_id =sp[i].substr(0,3)+"-"+sp[i][3];
           //alert(class_id+" "+sp[i+1]);
-          document.getElementById(class_id).innerHTML=sp[i+1];
+          var info = sp[i+1].split(":");
+          document.getElementById(class_id).innerHTML=info[0];
+          $("#"+class_id).attr({"name" : info[1] });
         }
       }
 
@@ -128,6 +130,7 @@ function getElementsByClass( searchClass, domNode, tagName) {
 $("#save_btn").click(() =>{
   var class_time = "";
   var class_name="";
+  var class_no = "";
   var class_arr = getElementsByClass('table-cell');
   for (var i=0;i<class_arr.length;i++)
   {
@@ -136,6 +139,8 @@ $("#save_btn").click(() =>{
       class_time = class_time.concat(class_id[0],class_id[1],"\n");
       class_name = class_name.concat(class_arr[i].innerHTML,"\n");
       //     alert("frontend "+class_time+" "+class_name);
+      class_no = class_no.concat(class_arr[i].getAttribute("name"),"\n");
+      alert(class_no);
 
     }
   }
@@ -149,7 +154,9 @@ $("#save_btn").click(() =>{
       data:{
         id : id,
         class_time: class_time,
-        class_name: class_name
+        class_name: class_name,
+        class_no: class_no
+
       },
       success: (res) =>{
       }

@@ -1,3 +1,4 @@
+
 var arr=[
   ['A1' ,'A9' ,'AG' ,'A7'],
   ['B1' ,'B2' ,'B3' ,'B5'],
@@ -404,5 +405,5 @@ function searchBar()
 		//document.getElementById("college"+i).style.display = "none";
 		//document.getElementById("e"+i).style.display = "block";	
 	}
-	}	
-} */		
+  }	
+  } */		
