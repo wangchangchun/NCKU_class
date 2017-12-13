@@ -608,51 +608,45 @@
             [0 ,0,0,0,0,0,0,0]
         ]
         var bLeng=[7,2,4,12,14,31,19,29,9,25,8,8];
-        //e是大的，college是中的
+        //e>college>A2>query_result
 
         function changeButton(num){
-            //alert(num);
-            //alert(bLeng[num]);
             for(i=0;i<bLeng[num];i++){
-                //alert(i);
-                //alert(arr[num][i]);
                 b[num][i]=0;
                 document.getElementById(arr[num][i]).style.display="block";
                 //$( "#"+arr[num][i]).transition('slide up');
                 document.getElementById("query_resulte"+arr[num][i]).style.display="none";
                 //$( "#query_resulte"+arr[num][i]).transition('slide up');
-                //alert(arr[num][i]);
             }
-            //alert('here');
             a[num]=(a[num]+1)%2;
             if(a[num]){
                 for(i=0;i<12;i++){
                     if (i != num){
-                        document.getElementById("e"+i).style.display="none";
-                        //$( "#e"+i).transition('slide up');
-                        document.getElementById("college"+i).style.display = "none";
+                        //document.getElementById("e"+i).style.display="none";
+                        $( "#e"+i).transition('slide up');
+                        //document.getElementById("college"+i).style.display = "none";
                         //$( "#college"+i).transition('slide up');
                     }
                     else{
-                        document.getElementById("e"+i).style.display="block";
+                        //document.getElementById("e"+i).style.display="block";
                         //$( "#e"+i).transition('slide up');
-                        document.getElementById("college"+i).style.display = "block";
-                        //$( "#college"+i).transition('slide up');
+                        //document.getElementById("college"+i).style.display = "block";
+                        $( "#college"+i).transition('slide up');
                     }
                 }
             }
             else{
                 for(i=0;i<12;i++){
                     if(i!=num){
-                        document.getElementById("e"+i).style.display="block";
-                        //$( "#e"+i).transition('slide up');
-                        document.getElementById("college"+i).style.display="none";
+                        //document.getElementById("e"+i).style.display="block";
+                        $( "#e"+i).transition('slide up');
+                        //document.getElementById("college"+i).style.display="none";
                         //$( "#college"+i).transition('slide up');
                     }
                     else{
-                        document.getElementById("college"+i).style.display="none";
-                        //$( "#college"+i).transition('slide up');
-                        document.getElementById("e"+i).style.display = "block";
+                        //document.getElementById("college"+i).style.display="none";
+                        $( "#college"+i).transition('slide up');
+                        //document.getElementById("e"+i).style.display = "block";
                         //$( "#e"+i).transition('slide up');
                     }
                 }
@@ -665,12 +659,10 @@
         if(b[num1][num2]){
             for(i=0;i<bLeng[num1];i++){
                 if(i!=num2){
-                    //alert(arr[num1][i]);
                     document.getElementById(arr[num1][i]).style.display ="none";
                     //$( "#"+arr[num][i]).transition('slide up');
                 }
                 else{
-                    //alert("first");
                     document.getElementById(arr[num1][i]).style.display="block";
                     //$( "#"+arr[num][i]).transition('slide up');
                     document.getElementById("query_resulte"+arr[num1][i]).style.display="block";
