@@ -159,7 +159,12 @@
       width:100%;
       overflow:scroll;
   }
-
+  .snow{
+      background-image:url("snow.jpg");
+      height:50px;
+      weight:50px;
+      
+  }
     </style>
 </head>
 
@@ -611,6 +616,7 @@
         //e>college>A2>query_result
 
         function changeButton(num){
+            //document.getElementById("showGoal").style.height="50%";
             for(i=0;i<bLeng[num];i++){
                 b[num][i]=0;
                 document.getElementById(arr[num][i]).style.display="block";
@@ -620,6 +626,7 @@
             }
             a[num]=(a[num]+1)%2;
             if(a[num]){
+                document.getElementById("showGoal").style.height="100%";
                 for(i=0;i<12;i++){
                     if (i != num){
                         //document.getElementById("e"+i).style.display="none";
@@ -636,6 +643,7 @@
                 }
             }
             else{
+                document.getElementById("showGoal").style.height="50%";
                 for(i=0;i<12;i++){
                     if(i!=num){
                         //document.getElementById("e"+i).style.display="block";
@@ -654,6 +662,7 @@
         }
     function changeButton2(num1,num2){
         //alert(bLeng[num1]);
+        //document.getElementById("showGoal").style.height="100%";
         var sendi,sendj;
         b[num1][num2]=(b[num1][num2]+1)%2;
         if(b[num1][num2]){

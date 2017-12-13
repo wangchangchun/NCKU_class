@@ -23,7 +23,19 @@ var b=[
   [0 ,0 ,0],
   [0 ,0] 
 ]
-
+///
+var week=[MON,TUE,WEN,THU,FRI,SAT,SUN];
+var reNamed;
+function replaceCourse(name){
+    for(var i=0;i<7;i++){
+        for(var j=0;j<10;j++){
+            if(0==name.localeCompare(document.getElementById(week[i]+"-"+j).innerHTML)){
+                document.getElementById(week[i]+"-"+j).innerHTML='';
+            }
+        }
+    }
+}
+///
 function changeBut(num){
   a[num-1]=(a[num-1]+1)%2;
   if(a[num-1]==1)
@@ -149,17 +161,18 @@ function clickBut(m ,n){
   })
 }
 
-$(".dropdown").on("click", "a[name='but']", (event) => { 
-  var res = event.target.text
+$(".dropdown").on("click", "a[name='but']", (event) => { //chick this
+    var res = event.target.text;
+    //alert(res);
   var name = res.split("[")[0];
   var test = res.split("[")
   for(var j=1;j<test.length;j++){
 
-    var time = res.split("[")[j];
-    var day = time[0];
+    var time = res.split("[")[j];//時間
+    var day = time[0];//日期
     var class_t1 = "";
     var class_t2 = "";
-    var only_one_class = 0
+    var only_one_class = 0;
     if(time[3]=='~'){
       class_t1 = time[2];
       class_t2 = time[4];
@@ -201,24 +214,36 @@ $(".dropdown").on("click", "a[name='but']", (event) => {
       if(only_one_class==0){
         if(class_t1=='N'){
           var str1=str.concat(class_t1);
+                  //////
+                  replaceCourse(document.getElementById(str1).innerHTML);
+                  //////
           $(str1).html(name);
           $(str1).attr({"name" : event.target.id});
           class_t1=5
         }
         if(class_t2=='N'){
           var str1=str.concat(class_t2);
+                  //////
+                  replaceCourse(document.getElementById(str1).innerHTML);
+                  //////
           $(str1).html(name);
           $(str1).attr({"name" : event.target.id});
           class_t2=4
         }
         for(var i=class_t1;i<=class_t2;i++){
           var str1=str.concat(i);
+                  //////
+                  replaceCourse(document.getElementById(str1).innerHTML);
+                  //////
           $(str1).html(name);
           $(str1).attr({"name" : event.target.id});
         }
       }
       else{
         var str1=str.concat(class_t1);
+                  //////
+                  replaceCourse(document.getElementById(str1).innerHTML);
+                  //////
         $(str1).html(name);
         $(str1).attr({"name" : event.target.id});
       }
@@ -228,7 +253,7 @@ $(".dropdown").on("click", "a[name='but']", (event) => {
   }
 });
 
-// Below are functions for the left sidebar menu. 
+// Below are functions for the left sidebar menu.
 
 // 1. 
 var f= [1,1,1,1,1,1,1,1,1,1,1,1];
