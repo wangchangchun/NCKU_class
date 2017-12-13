@@ -150,7 +150,6 @@ body {
   color: white;
   font-size: 16px;
   padding: 12px 22px 12px 22px;
-   border-radius: 20px;
   /*border-right: 1px solid @tab-border;*/
 
 }
@@ -182,9 +181,10 @@ body {
   padding-bottom: 10px;
 }
 .form-action p {
-  font-size: 12px;
+  font-size: 18px;
   padding-bottom: 10px;
   line-height: 25px;
+  text-align: center;
 }
 form {
   padding-right: 20px !important;
@@ -254,7 +254,12 @@ form input[type=password] {
   background: #136899;
   /*box-shadow: 0 3px 1px #0f608c;*/
 }
-
+#fb_login{
+	width: 100%;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	top: 50px;
+}
 ::-webkit-input-placeholder {
   color: #e74c3c;
 }
