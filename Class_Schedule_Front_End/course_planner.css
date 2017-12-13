@@ -59,6 +59,8 @@ div.dropdown a.college {
 	border-radius: 25px;
 	font-weight: bold;
 	font-size: 18px;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
 }
 div.dropdown a.department { 
 	text-decoration: none;
@@ -70,12 +72,14 @@ div.dropdown a.department {
 	max-width: 100px;
 	margin: auto;
 	border-radius: 20px;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
 }
 div.dropdown  a.department:hover{
 	background-color: #5F555B;
 }
 div.dropdown a.college:hover{
-	background-color: #e8fd42;
+	background-color: #fffddf;
 }
 div.dropdown div.department {
 	display: none;
@@ -105,6 +109,8 @@ th.table-cell{
 td.table-cell{
 	text-align:center;
 	font-weight: bold;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
 }
 #searchBar{
 	width: 80%;
