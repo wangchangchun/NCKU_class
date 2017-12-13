@@ -193,7 +193,7 @@ $("#myClass").on("click", "a[name='but']", (event) => {
 var want_course_list="";
 $("#changeGoal").on("click", "a[name='but']", (event) => { 
   //alert("select:"+event.target.text)
-  want_course_list=want_course_list+"\n"+event.target.text
+  want_course_list=want_course_list+event.target.text+"\n"
   alert("select:"+want_course_list)
 });
 $("#submit").click(() => {
