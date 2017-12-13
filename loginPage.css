@@ -254,15 +254,11 @@ form input[type=password] {
   background: #136899;
   /*box-shadow: 0 3px 1px #0f608c;*/
 }
-#login_button {
-	top: 50px;
-}
 #fb_login{
-	width: 50%;
+	width: 100%;
 	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
 	top: 50px;
-	margin: 80px;
 }
 ::-webkit-input-placeholder {
   color: #e74c3c;
