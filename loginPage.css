@@ -56,6 +56,10 @@ body {
   padding-right: 0;
   text-align: center;
 }
+ .flat-form.form-action-show ul {
+	list-style-type: none;
+	margin: 5px;
+}
 .tabs a.active {
   background: #e74c3c;
   border-right: none;
