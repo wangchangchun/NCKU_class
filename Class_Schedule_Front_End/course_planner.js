@@ -388,4 +388,21 @@ function searchBar()
         } */
   }
 
-}		
+}
+/*function restore()
+{
+	for (var j = 0; j < arr2.length ; j++)
+	{
+		$('#e'+j).transition('slide down');
+	for (var i = 0; i < arr2[j].length; i++)
+	{
+		$('#e'+arr2[j][i]).transition('slide up');
+		$('#query_resulte'+arr2[j][i]).transition('slide up');
+		//$('#e'+i).transition('slide down');
+		//$('#college'+i).transition("slide up");
+		
+		//document.getElementById("college"+i).style.display = "none";
+		//document.getElementById("e"+i).style.display = "block";	
+	}
+	}	
+} */		
