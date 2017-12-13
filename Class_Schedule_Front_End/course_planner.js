@@ -32,11 +32,13 @@ function changeBut(num){
     {
       if (i != num)
       {
-        document.getElementById("a"+i).style.display = "none";
+        $('#a'+i).transition('slide up');
+		//document.getElementById("a"+i).style.display = "none";
       }
       if(i == num)
       {
-        document.getElementById("u"+i).style.display="block";
+        $('#u'+i).transition('slide down');
+		//document.getElementById("u"+i).style.display="block";
       }
     }
   }
@@ -45,11 +47,13 @@ function changeBut(num){
     {
       if (i != num)
       {
-        document.getElementById("a"+i).style.display = "block";
+        $('#a'+i).transition('slide down');
+		//document.getElementById("a"+i).style.display = "block";
       }
       if(i == num)
       {
-        document.getElementById("u"+i).style.display="none";
+        $('#u'+i).transition('slide up');
+		//document.getElementById("u"+i).style.display="none";
       }
     }
   }
@@ -103,11 +107,13 @@ function clickBut(m ,n){
     {
       if (arr[m-1][i] != arr[m-1][n-1])
       {
-        document.getElementById(arr[m-1][i]).style.display = "none";
+        $('#'+arr[m-1][i]).transition('slide up');
+		//document.getElementById(arr[m-1][i]).style.display = "none";
       }
       if(arr[m-1][i] == arr[m-1][n-1])
       {
-        document.getElementById("query_result"+arr[m-1][i]).style.display="block";
+        $('#query_result'+arr[m-1][i]).transition('slide down');
+		//document.getElementById("query_result"+arr[m-1][i]).style.display="block";
       }
     }
   }
@@ -116,11 +122,13 @@ function clickBut(m ,n){
     {
       if (arr[m-1][i] != arr[m-1][n-1])
       {
-        document.getElementById(arr[m-1][i]).style.display = "block";
+		$('#'+arr[m-1][i]).transition('slide down');
+		//document.getElementById(arr[m-1][i]).style.display = "block";
       }
       if(arr[m-1][i] == arr[m-1][n-1])
       {
-        document.getElementById("query_result"+arr[m-1][i]).style.display="none";
+        $('#query_result'+arr[m-1][i]).transition('slide up');
+		//document.getElementById("query_result"+arr[m-1][i]).style.display="none";
       }
     }
   }
@@ -219,105 +227,34 @@ $(".dropdown").on("click", "a[name='but']", (event) => {
     //$(str2).html(name);
   }
 });
-$("#g1").click(() => {
-  $.get({
-    url: "../test",
-    method: "GET",
-    type: "get",
-    data: { 
-      id:"A1"
-    }, 
-    success: (res) => {
-      //$('#text').html(res);
-      $('#query_result1').append(res);
-    }
-  })
-});
-$("#g2").click(() => {
-  $.get({
-    url: "../test",
-    method: "GET",
-    type: "get",
-    data: { 
-      id:"A9"
-    }, 
-    success: (res) => {
-      //$('#text').html(res);
-      $('#query_result2').append(res);
-    }
-  })
-});
-$("#g3").click(() => {
-  $.get({
-    url: "../test",
-    method: "GET",
-    type: "get",
-    data: { 
-      id:"AG"
-    }, 
-    success: (res) => {
-      //$('#text').html(res);
-      $('#query_result3').append(res);
-    }
-  })
-});
-$("#g4").click(() => {
-  $.get({
-    url: "../test",
-    method: "GET",
-    type: "get",
-    data: { 
-      id:"A7"
-    }, 
-    success: (res) => {
-      //$('#text').html(res);
-      $('#query_result4').append(res);
-    }
-  })
-});
 
 // Below are functions for the left sidebar menu. 
 
-	// 1. 
+// 1. 
 var f= [1,1,1,1,1,1,1,1,1,1,1,1];
-		function changeButton(num)
+
+function changeButton(num)
 	{
 
-		if(num==0)
-			f[0]=(f[0]+1)%2;
-		else if(num==1)
-			f[1]=(f[1]+1)%2;
-		else if(num==2)
-			f[2]=(f[2]+1)%2;
-		else if(num==3)
-			f[3]=(f[3]+1)%2;
-		else if(num==4)
-			f[4]=(f[4]+1)%2;
-		else if(num==5)
-			f[5]=(f[5]+1)%2;
-		else if(num==6)
-			f[6]=(f[6]+1)%2;
-		else if(num==7)
-			f[7]=(f[7]+1)%2;
-		else if(num==8)
-			f[8]=(f[8]+1)%2;
-		else if(num==9)
-			f[9]=(f[9]+1)%2;
-		else if(num==10)
-			f[10]=(f[10]+1)%2;
-		else if(num==11)
-			f[11]=(f[11]+1)%2;
-		if(f[num]==0)
+		for (var i = 0; i < f.length; i++)
+		{ 
+			if (num == i)
+				f[i] = (f[i] + 1)%2;
+		}
+
+		if(f[num] == 0)
 		{
-			for(var i=0; i<12; i++)
+			for(var i = 0; i < f.length; i++)
 			{
 				if (i != num)
 				{
-					document.getElementById("e"+i).style.display = "none";
+					// document.getElementById("e"+i).style.display = "none";
+					$("#e"+i).transition('slide up');
 				}
 				if(i == num)
 				{
-					document.getElementById("college"+i).style.display="block";
+					// document.getElementById("college"+i).style.display="block";
+					$("#college"+i).transition('slide down');
 				}
 			}
 		}
@@ -327,11 +264,13 @@ var f= [1,1,1,1,1,1,1,1,1,1,1,1];
 			{
 				if (i != num)
 				{
-					document.getElementById("e"+i).style.display = "block";
+					//document.getElementById("e"+i).style.display = "block";
+					$("#e"+i).transition('slide down');
 				}
 				if(i == num)
 				{
-					document.getElementById("college"+i).style.display="none";
+					//document.getElementById("college"+i).style.display="none";
+					$("#college"+i).transition('slide up');
 				}
 			}
 		}
@@ -378,25 +317,29 @@ function changeButton2(col,dep)
     {
       if ( arr2[col][i] != arr2[col][dep])
       {
-        document.getElementById('e'+arr2[col][i]).style.display = "none";
+		$('#e'+arr2[col][i]).transition('slide up');
+		//document.getElementById('e'+arr2[col][i]).style.display = "none";
       }
       if(arr2[col][i] == arr2[col][dep])
       {
-        document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
+        $('#query_resulte'+arr2[col][i]).transition('slide down');
+		// document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
       }
     }
   }
   else
   {
-    for(var i=0; i<arr2[col].length; i++)
+    for(var i=0; i < arr2[col].length; i++)
     {
       if ( arr2[col][i] != arr2[col][dep] )
       {
-        document.getElementById('e'+arr2[col][i]).style.display = "block";
+        $('#e'+arr2[col][i]).transition('slide down');
+		//document.getElementById('e'+arr2[col][i]).style.display = "block";
       }
       if( arr2[col][i] == arr2[col][dep] )
       {
-        document.getElementById("query_resulte"+ arr2[col][i]).style.display="none";
+		$('#query_resulte'+arr2[col][i]).transition('slide up');
+        //document.getElementById("query_resulte"+ arr2[col][i]).style.display="none";
       }
     }
   }
@@ -445,4 +388,21 @@ function searchBar()
         } */
   }
 
-}		
+}
+/*function restore()
+{
+	for (var j = 0; j < arr2.length ; j++)
+	{
+		$('#e'+j).transition('slide down');
+	for (var i = 0; i < arr2[j].length; i++)
+	{
+		$('#e'+arr2[j][i]).transition('slide up');
+		$('#query_resulte'+arr2[j][i]).transition('slide up');
+		//$('#e'+i).transition('slide down');
+		//$('#college'+i).transition("slide up");
+		
+		//document.getElementById("college"+i).style.display = "none";
+		//document.getElementById("e"+i).style.display = "block";	
+	}
+	}	
+} */		
