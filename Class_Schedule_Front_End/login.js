@@ -62,7 +62,6 @@ function testAPI() {
     console.log(JSON.stringify(response));
     document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
-    document.getElementById('fb_login').innerHTML = '<a class = "item" id = "fb_logout" onclick = "logout();">log out</a>';
     //    alert(response.id);
     //    file_id = response.id;
     fb_id = response.id;
@@ -109,7 +108,6 @@ function logout(){
   FB.logout(function(response) {
     // Person is now logged out
     alert('已成功登出!');
-    window.location.reload();
     document.location.href="https://luffy.ee.ncku.edu.tw:1211/index.html";
   });
 }
@@ -148,12 +146,14 @@ $("#save_btn").click(() =>{
   FB.api('/me', function(response) {
     console.log(JSON.stringify(response));
     var id = response.id;
+    var user_name = response.name;
     $.get({
       url:"../save",
       method: "GET",
       type:"get",
       data:{
         id : id,
+        user_name:user_name,
         class_time: class_time,
         class_name: class_name,
         class_no: class_no
