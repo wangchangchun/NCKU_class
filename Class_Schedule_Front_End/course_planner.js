@@ -33,12 +33,12 @@ function changeBut(num){
     {
       if (i != num)
       {
-        $('#a'+i).transition('slide up');
+        $('#a'+i).transition('slide up', '800ms');
 		//document.getElementById("a"+i).style.display = "none";
       }
       if(i == num)
       {
-        $('#u'+i).transition('slide down');
+        $('#u'+i).transition('slide down', '800ms');
 		//document.getElementById("u"+i).style.display="block";
       }
     }
@@ -48,12 +48,12 @@ function changeBut(num){
     {
       if (i != num)
       {
-        $('#a'+i).transition(  'slide down',   '0.6s');
+        $('#a'+i).transition(  'slide down', '800ms');
 		//document.getElementById("a"+i).style.display = "block";
       }
       if(i == num)
       {
-        $('#u'+i).transition(  'slide up',   '0.6s');
+        $('#u'+i).transition(  'slide up', '800ms');
 		//document.getElementById("u"+i).style.display="none";
       }
     }
@@ -108,12 +108,12 @@ function clickBut(m ,n){
     {
       if (arr[m-1][i] != arr[m-1][n-1])
       {
-        $('#'+arr[m-1][i]).transition(  'slide up',   '0.6s');
+        $('#'+arr[m-1][i]).transition( 'slide up', '800ms');
 		//document.getElementById(arr[m-1][i]).style.display = "none";
       }
       if(arr[m-1][i] == arr[m-1][n-1])
       {
-        $('#query_result'+arr[m-1][i]).transition(  'slide down',  '0.6s');
+        $('#query_result'+arr[m-1][i]).transition('slide down', '800ms');
 		//document.getElementById("query_result"+arr[m-1][i]).style.display="block";
       }
     }
@@ -123,12 +123,12 @@ function clickBut(m ,n){
     {
       if (arr[m-1][i] != arr[m-1][n-1])
       {
-		$('#'+arr[m-1][i]).transition(  'slide down',   '0.6s');
+		$('#'+arr[m-1][i]).transition(  'slide down',   '800ms');
 		//document.getElementById(arr[m-1][i]).style.display = "block";
       }
       if(arr[m-1][i] == arr[m-1][n-1])
       {
-        $('#query_result'+arr[m-1][i]).transition(  'slide up',   '0.6s');
+        $('#query_result'+arr[m-1][i]).transition(  'slide up',   '800ms');
 		//document.getElementById("query_result"+arr[m-1][i]).style.display="none";
       }
     }
@@ -250,12 +250,12 @@ function changeButton(num)
 				if (i != num)
 				{
 					// document.getElementById("e"+i).style.display = "none";
-					$("#e"+i).transition(  'slide up',   '0.6s');
+					$("#e"+i).transition(  'slide up',   '800ms');
 				}
 				if(i == num)
 				{
 					// document.getElementById("college"+i).style.display="block";
-					$("#college"+i).transition(  'slide down',   '0.6s');
+					$("#college"+i).transition(  'slide down',   '800ms');
 				}
 			}
 		}
@@ -266,12 +266,12 @@ function changeButton(num)
 				if (i != num)
 				{
 					//document.getElementById("e"+i).style.display = "block";
-					$("#e"+i).transition(  'slide down',   '0.6s');
+					$("#e"+i).transition(  'slide down',   '800ms');
 				}
 				if(i == num)
 				{
 					//document.getElementById("college"+i).style.display="none";
-					$("#college"+i).transition(  'slide up',   '0.6s');
+					$("#college"+i).transition(  'slide up',   '800ms');
 				}
 			}
 		}
@@ -318,12 +318,12 @@ function changeButton2(col,dep)
     {
       if ( arr2[col][i] != arr2[col][dep])
       {
-		$('#e'+arr2[col][i]).transition('slide up','0.6s');
+		$('#e'+arr2[col][i]).transition('slide up','800ms');
 		//document.getElementById('e'+arr2[col][i]).style.display = "none";
       }
       if(arr2[col][i] == arr2[col][dep])
       {
-        $('#query_resulte'+arr2[col][i]).transition('slide down', '0.6s');
+        $('#query_resulte'+arr2[col][i]).transition('slide down', '800ms');
 		// document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
       }
     }
@@ -334,12 +334,12 @@ function changeButton2(col,dep)
     {
       if ( arr2[col][i] != arr2[col][dep] )
       {
-        $('#e'+arr2[col][i]).transition(  'slide down',   '0.6s');
+        $('#e'+arr2[col][i]).transition(  'slide down',   '800ms');
 		//document.getElementById('e'+arr2[col][i]).style.display = "block";
       }
       if( arr2[col][i] == arr2[col][dep] )
       {
-		$('#query_resulte'+arr2[col][i]).transition(  'slide up',   '0.6s');
+		$('#query_resulte'+arr2[col][i]).transition(  'slide up',   '800ms');
         //document.getElementById("query_resulte"+ arr2[col][i]).style.display="none";
       }
     }

@@ -95,6 +95,7 @@ div.dropdown div.department {
 	border-radius: 10px;
 	width: 10px;
 	height: 3px;
+	transition-duration: 0.3s;
 }
 td.table-cell:hover{
 	background-color: #f5c9bc;
