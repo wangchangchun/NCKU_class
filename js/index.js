@@ -32,7 +32,8 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1071353126339792',
+//    appId      : '1071353126339792',
+    appId      : '257340648129250',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -70,6 +71,6 @@ function testAPI() {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
-      document.location.href="https://luffy.ee.ncku.edu.tw:1235/Class_Schedule_Front_End/course_planner.html";
+      document.location.href="https://luffy.ee.ncku.edu.tw:1211/Class_Schedule_Front_End/course_planner.html";
       });
 }

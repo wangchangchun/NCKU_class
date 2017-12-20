@@ -24,7 +24,8 @@ function checkLoginState() {
 }
 window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1071353126339792',
+//    appId      : '1071353126339792',
+    appId      : '257340648129250',
     cookie     : true,  // enable cookies to allow the server to access 
     // the session
     xfbml      : true,  // parse social plugins on this page
@@ -109,7 +110,7 @@ $("#fb_logout").click(()=>{
   FB.logout(function(response) {
     // Person is now logged out
     alert('已成功登出!');
-    document.location.href="https://luffy.ee.ncku.edu.tw:1235/index.html";
+    document.location.href="https://luffy.ee.ncku.edu.tw:1211/index.html";
   });
 });
 
@@ -172,6 +173,7 @@ $("#clear_btn").click(() => {
   FB.api('/me',function(response){
     console.log(JSON.stringify(response));
     var id = response.id;
+    var name = response.name;
     var class_arr = getElementsByClass('table-cell');
     for (var i=0;i<class_arr.length;i++){
       if(class_arr[i].innerHTML.length != 0&& class_arr[i].id !=""){
@@ -184,7 +186,8 @@ $("#clear_btn").click(() => {
       method:"GET",
       type:"get",
       data:{
-        id: id
+        id: id,
+        name:name
       },
       success: (res) =>{
         alert("clear");     
