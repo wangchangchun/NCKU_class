@@ -70,6 +70,6 @@ function testAPI() {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
-      document.location.href="https://luffy.ee.ncku.edu.tw:1211/Class_Schedule_Front_End/course_planner.html";
+      document.location.href="https://luffy.ee.ncku.edu.tw:1235/Class_Schedule_Front_End/course_planner.html";
       });
 }

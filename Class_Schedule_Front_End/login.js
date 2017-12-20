@@ -109,7 +109,7 @@ $("#fb_logout").click(()=>{
   FB.logout(function(response) {
     // Person is now logged out
     alert('已成功登出!');
-    document.location.href="https://luffy.ee.ncku.edu.tw:1211/index.html";
+    document.location.href="https://luffy.ee.ncku.edu.tw:1235/index.html";
   });
 });
 
