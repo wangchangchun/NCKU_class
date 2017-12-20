@@ -96,6 +96,7 @@
 	  }
   .college:hover {
 	  background-color:  #a9e3ff;
+      transition-duration: 0.3s;
   }
   div.department{
       height:80%;
@@ -159,12 +160,7 @@
       width:100%;
       overflow:scroll;
   }
-  .snow{
-      background-image:url("snow.jpg");
-      height:50px;
-      weight:50px;
-      
-  }
+
     </style>
 </head>
 
@@ -575,7 +571,7 @@
             </div>
             </div>
         </div>
-        <div id=""subArea>
+        <div id="subArea">
             <input type="button" id="submit" value="submit">
             
         </div>
@@ -620,9 +616,9 @@
             for(i=0;i<bLeng[num];i++){
                 b[num][i]=0;
                 document.getElementById(arr[num][i]).style.display="block";
-                //$( "#"+arr[num][i]).transition('slide up');
+                //$( "#"+arr[num][i]).transition('slide up','0.6s');
                 document.getElementById("query_resulte"+arr[num][i]).style.display="none";
-                //$( "#query_resulte"+arr[num][i]).transition('slide up');
+                //$( "#query_resulte"+arr[num][i]).transition('slide up','0.6s');
             }
             a[num]=(a[num]+1)%2;
             if(a[num]){
@@ -630,7 +626,7 @@
                 for(i=0;i<12;i++){
                     if (i != num){
                         //document.getElementById("e"+i).style.display="none";
-                        $( "#e"+i).transition('slide up');
+                        $( "#e"+i).transition('slide up','0.6s');
                         //document.getElementById("college"+i).style.display = "none";
                         //$( "#college"+i).transition('slide up');
                     }
@@ -638,7 +634,7 @@
                         //document.getElementById("e"+i).style.display="block";
                         //$( "#e"+i).transition('slide up');
                         //document.getElementById("college"+i).style.display = "block";
-                        $( "#college"+i).transition('slide up');
+                        $( "#college"+i).transition('slide up','0.6s');
                     }
                 }
             }
@@ -647,13 +643,13 @@
                 for(i=0;i<12;i++){
                     if(i!=num){
                         //document.getElementById("e"+i).style.display="block";
-                        $( "#e"+i).transition('slide up');
+                        $( "#e"+i).transition('slide up','0.6s');
                         //document.getElementById("college"+i).style.display="none";
                         //$( "#college"+i).transition('slide up');
                     }
                     else{
                         //document.getElementById("college"+i).style.display="none";
-                        $( "#college"+i).transition('slide up');
+                        $( "#college"+i).transition('slide up','0.6s');
                         //document.getElementById("e"+i).style.display = "block";
                         //$( "#e"+i).transition('slide up');
                     }
