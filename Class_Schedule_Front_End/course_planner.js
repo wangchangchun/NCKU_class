@@ -1,3 +1,4 @@
+
 var arr=[
   ['A1' ,'A9' ,'AG' ,'A7'],
   ['B1' ,'B2' ,'B3' ,'B5'],
@@ -62,12 +63,12 @@ function changeBut(num){
     {
       if (i != num)
       {
-        $('#a'+i).transition('slide down');
+        $('#a'+i).transition(  'slide down',   '0.6s');
 		//document.getElementById("a"+i).style.display = "block";
       }
       if(i == num)
       {
-        $('#u'+i).transition('slide up');
+        $('#u'+i).transition(  'slide up',   '0.6s');
 		//document.getElementById("u"+i).style.display="none";
       }
     }
@@ -122,12 +123,12 @@ function clickBut(m ,n){
     {
       if (arr[m-1][i] != arr[m-1][n-1])
       {
-        $('#'+arr[m-1][i]).transition('slide up');
+        $('#'+arr[m-1][i]).transition(  'slide up',   '0.6s');
 		//document.getElementById(arr[m-1][i]).style.display = "none";
       }
       if(arr[m-1][i] == arr[m-1][n-1])
       {
-        $('#query_result'+arr[m-1][i]).transition('slide down');
+        $('#query_result'+arr[m-1][i]).transition(  'slide down',  '0.6s');
 		//document.getElementById("query_result"+arr[m-1][i]).style.display="block";
       }
     }
@@ -137,12 +138,12 @@ function clickBut(m ,n){
     {
       if (arr[m-1][i] != arr[m-1][n-1])
       {
-		$('#'+arr[m-1][i]).transition('slide down');
+		$('#'+arr[m-1][i]).transition(  'slide down',   '0.6s');
 		//document.getElementById(arr[m-1][i]).style.display = "block";
       }
       if(arr[m-1][i] == arr[m-1][n-1])
       {
-        $('#query_result'+arr[m-1][i]).transition('slide up');
+        $('#query_result'+arr[m-1][i]).transition(  'slide up',   '0.6s');
 		//document.getElementById("query_result"+arr[m-1][i]).style.display="none";
       }
     }
@@ -281,12 +282,12 @@ function changeButton(num)
 				if (i != num)
 				{
 					// document.getElementById("e"+i).style.display = "none";
-					$("#e"+i).transition('slide up');
+					$("#e"+i).transition(  'slide up',   '0.6s');
 				}
 				if(i == num)
 				{
 					// document.getElementById("college"+i).style.display="block";
-					$("#college"+i).transition('slide down');
+					$("#college"+i).transition(  'slide down',   '0.6s');
 				}
 			}
 		}
@@ -297,12 +298,12 @@ function changeButton(num)
 				if (i != num)
 				{
 					//document.getElementById("e"+i).style.display = "block";
-					$("#e"+i).transition('slide down');
+					$("#e"+i).transition(  'slide down',   '0.6s');
 				}
 				if(i == num)
 				{
 					//document.getElementById("college"+i).style.display="none";
-					$("#college"+i).transition('slide up');
+					$("#college"+i).transition(  'slide up',   '0.6s');
 				}
 			}
 		}
@@ -349,12 +350,12 @@ function changeButton2(col,dep)
     {
       if ( arr2[col][i] != arr2[col][dep])
       {
-		$('#e'+arr2[col][i]).transition('slide up');
+		$('#e'+arr2[col][i]).transition('slide up','0.6s');
 		//document.getElementById('e'+arr2[col][i]).style.display = "none";
       }
       if(arr2[col][i] == arr2[col][dep])
       {
-        $('#query_resulte'+arr2[col][i]).transition('slide down');
+        $('#query_resulte'+arr2[col][i]).transition('slide down', '0.6s');
 		// document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
       }
     }
@@ -365,12 +366,12 @@ function changeButton2(col,dep)
     {
       if ( arr2[col][i] != arr2[col][dep] )
       {
-        $('#e'+arr2[col][i]).transition('slide down');
+        $('#e'+arr2[col][i]).transition(  'slide down',   '0.6s');
 		//document.getElementById('e'+arr2[col][i]).style.display = "block";
       }
       if( arr2[col][i] == arr2[col][dep] )
       {
-		$('#query_resulte'+arr2[col][i]).transition('slide up');
+		$('#query_resulte'+arr2[col][i]).transition(  'slide up',   '0.6s');
         //document.getElementById("query_resulte"+ arr2[col][i]).style.display="none";
       }
     }
@@ -421,6 +422,7 @@ function searchBar()
   }
 
 }
+
 /*function restore()
 {
 	for (var j = 0; j < arr2.length ; j++)
@@ -436,5 +438,5 @@ function searchBar()
 		//document.getElementById("college"+i).style.display = "none";
 		//document.getElementById("e"+i).style.display = "block";	
 	}
-	}	
-} */		
+  }	
+  } */ 	
