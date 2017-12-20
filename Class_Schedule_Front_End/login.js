@@ -110,6 +110,7 @@ function logout(){
     // Person is now logged out
     alert('已成功登出!');
     window.location.reload();
+    document.location.href="https://luffy.ee.ncku.edu.tw:1211/index.html";
   });
 }
 
