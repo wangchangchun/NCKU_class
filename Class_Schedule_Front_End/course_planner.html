@@ -2,9 +2,9 @@
 <html>
 <head>
   <link rel="stylesheet" href="course_planner.css">
-  <link rel="stylesheet" type="text/css" href="../Semantic-UI-CSS/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-  <script src="../Semantic-UI-CSS/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 </head>
 
 <body>
@@ -21,9 +21,7 @@
 		<div id="status"></div>
     <div class="right menu">
 		<div class="item">
-			<a class="ui primary button" id ="fb_login">
-            <fb:login-button  scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-			</a>
+        <a class = "ui primary button" id = "fb_logout">log out</a>
 		</div>
     </div>
 	</div>
@@ -41,7 +39,6 @@
     
 	<div class="ui inverted left inline vertical sidebar menu">
 	<input type="text" id="searchBar" onkeyup="searchBar()" placeholder="Search for colleges..">
-
 	<div class="dropdown">	
 		<a href="#" id="e0" class="college" onClick="changeButton(0)">其他</a><br>
 			<div id = "college0" class = "department">
