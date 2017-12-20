@@ -59,23 +59,29 @@ div.dropdown a.college {
 	border-radius: 25px;
 	font-weight: bold;
 	font-size: 18px;
+	transition-duration: 0.6s;
 }
 div.dropdown a.department { 
 	text-decoration: none;
 	color: white;
-	background-color: #84767E;
+	background-color: #5F555B;
 	display: block; 
 	text-align: center;
 	padding: 8px;
-	max-width: 100px;
+	width: 100px;
 	margin: auto;
 	border-radius: 20px;
-}
+	transition-duration: 0.6s;
+	}
 div.dropdown  a.department:hover{
-	background-color: #5F555B;
+	background-color:  #84767E;
+	border-radius: 10px;
+	width : 110px;
 }
 div.dropdown a.college:hover{
-	background-color: #e8fd42;
+	background-color: #fffa94;
+	border-radius: 20px;
+	width: 150px;
 }
 div.dropdown div.department {
 	display: none;
@@ -89,6 +95,7 @@ div.dropdown div.department {
 	border-radius: 10px;
 	width: 10px;
 	height: 3px;
+	transition-duration: 0.3s;
 }
 td.table-cell:hover{
 	background-color: #f5c9bc;
