@@ -24,13 +24,16 @@ var b=[
   [0 ,0] 
 ]
 ///
-var week=[MON,TUE,WEN,THU,FRI,SAT,SUN];
-var reNamed;
+var buf;
+var week=['MON','TUE','WED','THU','FRI','SAT','SUN'];
 function replaceCourse(name){
+    alert('first');
     for(var i=0;i<7;i++){
         for(var j=0;j<10;j++){
-            if(0==name.localeCompare(document.getElementById(week[i]+"-"+j).innerHTML)){
-                document.getElementById(week[i]+"-"+j).innerHTML='';
+            strbuf=week[i]+"-"+j;
+            if(name==document.getElementById(strbuf).innerHTML){
+                //alert('here!');
+                document.getElementById(strbuf).innerHTML='';
             }
         }
     }
@@ -215,7 +218,8 @@ $(".dropdown").on("click", "a[name='but']", (event) => { //chick this
         if(class_t1=='N'){
           var str1=str.concat(class_t1);
                   //////
-                  replaceCourse(document.getElementById(str1).innerHTML);
+                  str2 = str1.replace('#', "");
+                  replaceCourse(document.getElementById(str2).innerHTML);
                   //////
           $(str1).html(name);
           $(str1).attr({"name" : event.target.id});
@@ -224,7 +228,8 @@ $(".dropdown").on("click", "a[name='but']", (event) => { //chick this
         if(class_t2=='N'){
           var str1=str.concat(class_t2);
                   //////
-                  replaceCourse(document.getElementById(str1).innerHTML);
+                  str2 = str1.replace('#', "");
+                  replaceCourse(document.getElementById(str2).innerHTML);
                   //////
           $(str1).html(name);
           $(str1).attr({"name" : event.target.id});
@@ -233,7 +238,8 @@ $(".dropdown").on("click", "a[name='but']", (event) => { //chick this
         for(var i=class_t1;i<=class_t2;i++){
           var str1=str.concat(i);
                   //////
-                  replaceCourse(document.getElementById(str1).innerHTML);
+                  str2 = str1.replace('#', "");
+                  replaceCourse(document.getElementById(str2).innerHTML);
                   //////
           $(str1).html(name);
           $(str1).attr({"name" : event.target.id});
@@ -242,7 +248,8 @@ $(".dropdown").on("click", "a[name='but']", (event) => { //chick this
       else{
         var str1=str.concat(class_t1);
                   //////
-                  replaceCourse(document.getElementById(str1).innerHTML);
+                  str2 = str1.replace('#', "");
+                  replaceCourse(document.getElementById(str2).innerHTML);
                   //////
         $(str1).html(name);
         $(str1).attr({"name" : event.target.id});
