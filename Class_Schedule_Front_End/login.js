@@ -104,13 +104,15 @@ function testAPI() {
 
   });
 }
-function logout(){
+$("#fb_logout").click(()=>{
+
   FB.logout(function(response) {
     // Person is now logged out
     alert('已成功登出!');
     document.location.href="https://luffy.ee.ncku.edu.tw:1211/index.html";
   });
-}
+});
+
 
 function getElementsByClass( searchClass, domNode, tagName) {
   if (domNode == null) domNode = document;
