@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<div class="ui top attached olive inverted pointing menu" >                                                                               
+	<div id = "main_menu" class="ui top attached teal inverted pointing huge menu" >                                                                               
 		<a class="item" href="../../index.html" target="_self">
 		About us
 		</a>
@@ -28,11 +28,16 @@
 <div class="ui bottom attached segment pushable">
  <div id="content">
   <header>
-		<button style="margin: 10px 10px;" class="ui inverted green big icon toggle button">
+		
+		<h1 class="headerTitle" style ="margin-top: 50px;">Course Planning System</h1>
+		<button  class="ui inverted violet big icon toggle button">
 		<i class="sidebar icon"></i>Menu
 		</button>
-		
-		<h1 class="headerTitle">Course Planning System</h1>
+    <div class="ui large buttons">
+    <button class="ui button" id ="clear_btn">Clear</button>
+      <div class="or"></div>
+        <button class="ui blue button" id = "save_btn">Save</button>
+        </div>
 	</header>
     
 	<nav>
@@ -559,10 +564,6 @@
 	<main id="main">
 		
 		<table  class="table-main">
-  <div class="ui buttons" >
-    <div class = "ui red basic button" id = "clear_btn">Clear</div>	
-    <div class = "ui blue basic button" id = "save_btn">Save</div>
-  </div>
 <!-- 1st -->
 						<tr class="table-row">
                             <th class="table-cell">節次</th>

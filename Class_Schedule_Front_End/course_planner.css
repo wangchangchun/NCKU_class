@@ -1,4 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 html, body {
+
 	width: 100vw;
 	min-height: 100vh;
 	margin: 0;
@@ -17,15 +19,15 @@ body{
 }
 header{
 		grid-column: 1 / 3;
-		background-color: #f7e8c8;
+		background-color: #e2fffa;
 }
 nav { 
 		grid-row: 2 / span 2;
-		background-color: #f7e8c8;
+		background-color:  #e2fffa;
 		height: 80vh;
 }
 main{
-		background-color: #f7e8c8;
+		background-color: #e2fffa;
 		grid-column: 2/3;
 		grid-row: 2/ span2;
 		overflow: scroll;
@@ -34,8 +36,9 @@ footer{
 	background-color: lightgreen;
 }
 h1.headerTitle{
+  font-family: 'Source Sans Pro', sans-serif;
 		text-align: center;
-		color: navy;
+		color: black;
 		font-size: 50px;
 		margin: 22px;
 }
@@ -98,7 +101,7 @@ div.dropdown div.department {
 	transition-duration: 0.3s;
 }
 td.table-cell:hover{
-	background-color: #f5c9bc;
+	background-color: #9c9fa8;
 }
 .table-main{
 	width: 100%;
@@ -106,11 +109,15 @@ td.table-cell:hover{
   padding: 20px 100px;
 }
 th.table-cell{
-	background-color: #fff861;
-	color: brown;
+	background-color: #fff999;
+  font-size:18px; 
+	font-weight: bold;
+	color: #591d00;
 }
 td.table-cell{
 	text-align:center;
+	background-color: #f2fffc;
+  font-size:14px; 
 	font-weight: bold;
 }
 #searchBar{
@@ -120,4 +127,7 @@ td.table-cell{
 	padding: 16px;
 	border: 1px solid #ddd;
 	margin: 20px;
+}
+#main_menu{
+  font-family: 'Source Sans Pro', sans-serif;
 }

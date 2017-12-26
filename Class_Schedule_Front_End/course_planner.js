@@ -28,7 +28,7 @@ var b=[
 var buf;
 var week=['MON','TUE','WED','THU','FRI','SAT','SUN'];
 function replaceCourse(name){
-    alert('first');
+//    alert('first');
     for(var i=0;i<7;i++){
         for(var j=0;j<10;j++){
             strbuf=week[i]+"-"+j;
