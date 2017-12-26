@@ -24,8 +24,8 @@ function checkLoginState() {
 }
 window.fbAsyncInit = function() {
   FB.init({
-//    appId      : '1071353126339792',
-    appId      : '257340648129250',
+    appId      : '1071353126339792',
+//    appId      : '257340648129250',
     cookie     : true,  // enable cookies to allow the server to access 
     // the session
     xfbml      : true,  // parse social plugins on this page
@@ -200,8 +200,23 @@ $("#clear_btn").click(() => {
 var fb_id="";
 var have_course;
 $("#myClass").on("click", "a[name='but']", (event) => { 
+  want_course_list="";
   have_course=event.target.text
-  alert("select:\n"+have_course)
+  $.get({
+    url: "../trade_course_check",
+    method: "GET",
+    type: "get",
+    data: { 
+      have: have_course,
+      id: fb_id
+    }, 
+    success: (res) => {
+      if(res == "course already have")
+        alert("You have already select this course!")
+      else
+        alert("select:\n"+have_course)
+    }
+  })
 });
 var want_course_list="";
 $("#changeGoal").on("click", "a[name='but']", (event) => { 
