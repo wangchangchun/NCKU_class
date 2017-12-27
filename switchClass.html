@@ -699,6 +699,17 @@
         })
         
     }
+    
+    $(document).ready(function() {
+        $.ajax({
+            method: "get",
+            url: "./showBoard",
+            cache: false,
+            success: function(back) {
+            $('#showBoard').html(back)
+            }
+        })
+    })
     </script>
     <script>
         ;(function ( $, window, document, undefined ) {
