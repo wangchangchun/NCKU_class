@@ -225,17 +225,25 @@ $("#changeGoal").on("click", "a[name='but']", (event) => {
   alert("select:"+want_course_list)
 });
 $("#submit").click(() => {
-  $.get({
-    url: "../trading",
-    method: "GET",
-    type: "get",
-    data: { 
-      have: have_course,
-      want: want_course_list,
-      id: fb_id
-    }, 
-    success: (res) => {
-      alert(res)
-    }
-  })
+  if(have_course == null){
+    alert("Please select your class.")
+  }
+  else if(want_course_list==""){
+    alert("Please select course you want to exchange.")
+  }
+  else{
+    $.get({
+      url: "../trading",
+      method: "GET",
+      type: "get",
+      data: { 
+        have: have_course,
+        want: want_course_list,
+        id: fb_id
+      }, 
+      success: (res) => {
+        alert(res)
+      }
+    })
+  }
 });
