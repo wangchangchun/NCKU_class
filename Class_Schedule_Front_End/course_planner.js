@@ -164,27 +164,26 @@ function clickBut(m ,n){
     }
   })
 }
+$(".dropdown").on({
+  "click":(event) => { //chick this
+    var res = course_name;
+    var name = res.split("[")[0];
+    var test = res.split("[")
+      for(var j=1;j<test.length;j++){
 
-$(".dropdown").on("click", "a[name='but']", (event) => { //chick this
-    var res = event.target.text;
-    //alert(res);
-  var name = res.split("[")[0];
-  var test = res.split("[")
-  for(var j=1;j<test.length;j++){
-
-    var time = res.split("[")[j];//時間
-    var day = time[0];//日期
-    var class_t1 = "";
-    var class_t2 = "";
-    var only_one_class = 0;
-    if(time[3]=='~'){
-      class_t1 = time[2];
-      class_t2 = time[4];
-      only_one_class=0;
-    }
-    else{
-      class_t1 = time[2];
-      only_one_class=1
+        var time = res.split("[")[j];//時間
+        var day = time[0];//日期
+        var class_t1 = "";
+        var class_t2 = "";
+        var only_one_class = 0;
+        if(time[3]=='~'){
+          class_t1 = time[2];
+          class_t2 = time[4];
+          only_one_class=0;
+        }
+        else{
+          class_t1 = time[2];
+          only_one_class=1
     }
 
     var str = "";
@@ -259,7 +258,35 @@ $(".dropdown").on("click", "a[name='but']", (event) => { //chick this
     //$(str1).html(name);
     //$(str2).html(name);
   }
-});
+  },
+  "mouseenter":(event) => {
+    course_name=$(event.target).text();
+    if(course_name.length != 0){
+      var name=$(event.target).attr("id");
+      if(name.length != 0){
+        var department=name.split("/")[0];
+        var num=name.split("/")[1];
+        var course=name.split("/")[2];
+        //alert(name)
+        $.get({
+          url: "../info",
+          method: "GET",
+          type: "get",
+          data: {
+            department: department,
+            num: num,
+            course: course
+          },
+          success: (res) => {
+            $(event.target).html(res)
+          }
+        })
+      }}
+  },
+  "mouseleave":(event) => {
+      $(event.target).html(course_name);
+  }
+},"a[name='but']");
 
 // Below are functions for the left sidebar menu.
 
@@ -449,6 +476,7 @@ $("#main").on("mouseover", "td[class='table-cell']", (event) => {
     var department=name.split("/")[0];
     var num=name.split("/")[1];
     var course=name.split("/")[2];
+    //alert(name)
     $.get({
       url: "../info",
       method: "GET",
