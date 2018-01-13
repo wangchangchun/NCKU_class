@@ -439,4 +439,33 @@ function searchBar()
 		//document.getElementById("e"+i).style.display = "block";	
 	}
   }	
-  } */ 	
+  } */ 
+var course_name;
+$("#main").on("mouseover", "td[class='table-cell']", (event) => {
+  course_name=$(event.target).text();
+  if(course_name.length != 0){
+    var name=$(event.target).attr("name");
+    if(name.length != 0){
+    var department=name.split("/")[0];
+    var num=name.split("/")[1];
+    var course=name.split("/")[2];
+    $.get({
+      url: "../info",
+      method: "GET",
+      type: "get",
+      data: {
+        department: department,
+        num: num,
+        course: course
+      },
+      success: (res) => {
+        $(event.target).html(res)
+      }
+    })
+  }}
+});
+$("#main").on("mouseout", "td[class='table-cell']", (event) => {
+  $("#"+event.target.id).html(course_name);
+});
+
+

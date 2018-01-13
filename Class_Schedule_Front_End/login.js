@@ -219,10 +219,17 @@ $("#myClass").on("click", "a[name='but']", (event) => {
   })
 });
 var want_course_list="";
+var n=0;
 $("#changeGoal").on("click", "a[name='but']", (event) => { 
   //alert("select:"+event.target.text)
-  want_course_list=want_course_list+event.target.text+"\n"
-  alert("select:"+want_course_list)
+  if(n==5){
+    alert("You have already select five course.")
+  }
+  else{
+    want_course_list=want_course_list+event.target.text+"\n"
+      n=n+1;
+    alert("select:"+want_course_list)
+  }
 });
 $("#submit").click(() => {
   if(have_course == null){
