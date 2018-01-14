@@ -30,7 +30,8 @@ window.fbAsyncInit = function() {
     cookie     : true,  // enable cookies to allow the server to access 
     // the session
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.11' // use graph api version 2.8
+    version    : 'v2.11', // use graph api version 2.8
+    oauth:true
   });
   // Now that we've initialized the JavaScript SDK, we call 
   // FB.getLoginStatus().  This function gets the state of the
@@ -67,6 +68,7 @@ function testAPI() {
     //    alert(response.id);
     //    file_id = response.id;
     fb_id = response.id;
+    
     $.get({
       url: "../read",
       method:"GET",
@@ -126,7 +128,7 @@ var fb_id="";
 var have_course;
 $("#having_class").on("click", "a[name='but']", (event) => { 
   want_course_list="";
-  have_course=event.target.text
+  have_course=event.target.text+" "+event.target.id;
   $.get({
     url: "../trade_course_check",
     method: "GET",
@@ -146,7 +148,7 @@ $("#having_class").on("click", "a[name='but']", (event) => {
 var want_course_list="";
 $("#changeGoal").on("click", "a[name='but']", (event) => { 
   //alert("select:"+event.target.text)
-  want_course_list=want_course_list+event.target.text+"\n"
+  want_course_list=want_course_list+event.target.text+"/"+event.target.id+"\n"
   alert("select:"+want_course_list)
 });
 $("#submit").click(() => {

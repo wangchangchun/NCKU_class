@@ -95,3 +95,7 @@ div#wantedClass .column div.department {
 #main_menu{
   font-family: 'Source Sans Pro', sans-serif;
 }
+#showBoard{
+    background-color: #e2fffa;
+    font-family: 'Source Sans Pro', sans-serif;
+}
