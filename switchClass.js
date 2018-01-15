@@ -145,13 +145,27 @@ $("#having_class").on("click", "a[name='but']", (event) => {
     }
   })
 });
-var want_course_list="";
+//var want_course_list="";
 $("#changeGoal").on("click", "a[name='but']", (event) => { 
   //alert("select:"+event.target.text)
-  want_course_list=want_course_list+event.target.text+"/"+event.target.id+"\n"
-  alert("select:"+want_course_list)
+  //want_course_list=want_course_list+event.target.text+"/"+event.target.id+"\n"
+  //alert("select:"+want_course_list)
+  var str="<a href = \"#\" class = \"ui teal button chosenItem\" name = \"chosen\">"+ event.target.text+"/"+event.target.id+"</a>"
+  $("#chosenClass").append(str);
+      
 });
+$("#chosenClass").on("click","a[name='chosen']",(event)=>{
+  //  alert("click"+event.target.style.visibility)
+    event.target.remove() ;
+})
 $("#submit").click(() => {
+  var want_course_list="";
+  var getChosen = document.getElementsByName("chosen")
+  for(var i=0;i<getChosen.length;i++)
+  {
+    want_course_list = want_course_list+getChosen[i].innerHTML+"\n";
+  }
+    alert(want_course_list);
   if(have_course == null){
     alert("Please select your class.")
   }
