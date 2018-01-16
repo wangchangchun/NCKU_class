@@ -297,7 +297,7 @@ $("#submit").click(() => {
             url: "./showBoard",
             cache: false,
             success: function(back) {
-            $('#showBoard').html(back)
+            $('#waitList').html(back)
             }
         })
         $('.ui.dropdown').dropdown({

@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <div id = "background">
       <div id = "main_menu" class="ui top attached teal inverted pointing huge menu">
           <a class="item" href="../../index.html" target="_self">
               About us
@@ -434,7 +435,18 @@
         <button  class = "ui primary button" id="submit" >submit</button>
 
         
-        <div id="showBoard">這裡會有還沒被換的課</div>
-  <script type="text/javascript" src="switchClass.js"></script>
-</body>
-</html>
+        <table class="ui striped table">
+            <thead>
+                <tr>
+                    <th>換課同學</th>
+                    <th>換課籌碼</th>
+                    <th>願望清單</th>
+                </tr>
+            </thead>
+            <tbody id = "waitList">
+            </tbody>
+        </table>
+        <script type="text/javascript" src="switchClass.js"></script>
+        </div>
+        </body>
+        </html>
