@@ -68,7 +68,7 @@ function testAPI() {
     //    alert(response.id);
     //    file_id = response.id;
     fb_id = response.id;
-    
+    fb_name = response.name; 
     $.get({
       url: "../read",
       method:"GET",
@@ -180,7 +180,8 @@ $("#submit").click(() => {
       data: { 
         have: have_course,
         want: want_course_list,
-        id: fb_id
+        id: fb_id,
+        name:fb_name
       }, 
       success: (res) => {
         alert(res)
