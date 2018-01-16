@@ -167,7 +167,7 @@ function clickBut(m ,n){
 $(".dropdown").on({
   "click":(event) => { //chick this
     var res = course_name;
-    var name = res.split("[")[0];
+    var name = res.split(":")[0];
     var test = res.split("[")
       for(var j=1;j<test.length;j++){
 
@@ -284,7 +284,8 @@ $(".dropdown").on({
       }}
   },
   "mouseleave":(event) => {
-      $(event.target).html(course_name);
+    //alert("leave");  
+    $(event.target).html(course_name);
   }
 },"a[name='but']");
 

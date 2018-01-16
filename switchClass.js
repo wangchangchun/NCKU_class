@@ -146,14 +146,44 @@ $("#having_class").on("click", "a[name='but']", (event) => {
   })
 });
 //var want_course_list="";
-$("#changeGoal").on("click", "a[name='but']", (event) => { 
+var course_name="";
+$("#changeGoal").on({
+  "click":(event) => { 
   //alert("select:"+event.target.text)
   //want_course_list=want_course_list+event.target.text+"/"+event.target.id+"\n"
   //alert("select:"+want_course_list)
   var str="<a href = \"#\" class = \"ui teal button chosenItem\" name = \"chosen\">"+ event.target.text+"/"+event.target.id+"</a>"
   $("#chosenClass").append(str);
-      
-});
+  },    
+  "mouseenter":(event) => {
+    course_name=$(event.target).text();
+    if(course_name.length != 0){
+      var name=$(event.target).attr("id");
+      if(name.length != 0){
+        var department=name.split("/")[0];
+        var num=name.split("/")[1];
+        var course=name.split("/")[2];
+        //alert(name)
+        $.get({
+          url: "../info",
+          method: "GET",
+          type: "get",
+          data: {
+            department: department,
+            num: num,
+            course: course
+          },
+          success: (res) => {
+            $(event.target).html(res)
+          }
+        })
+      }}
+  },
+  "mouseleave":(event) => {
+    //alert("leave");  
+    $(event.target).html(course_name);
+  }
+},"a[name='but']");
 $("#chosenClass").on("click","a[name='chosen']",(event)=>{
   //  alert("click"+event.target.style.visibility)
     event.target.remove() ;
