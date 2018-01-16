@@ -451,7 +451,8 @@ function changeButton2(col,dep)
     }, 
     success: (res) => {
       var result_id="#query_resulte".concat(arr2[col][dep])
-      $(result_id).append(res);
+        if(result_id!="#query_resulteA9")
+            $(result_id).append(res);
     }
   })
   $.get({
