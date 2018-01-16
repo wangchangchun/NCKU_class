@@ -1,4 +1,3 @@
-
 var arr=[
   ['A1' ,'A9' ,'AG' ,'A7'],
   ['B1' ,'B2' ,'B3' ,'B5'],
@@ -413,6 +412,7 @@ function changeButton2(col,dep)
     }, 
     success: (res) => {
       var result_id="#query_resulte".concat(arr2[col][dep])
+      $(result_id).empty();
       $(result_id).append(res);
     }
   })
