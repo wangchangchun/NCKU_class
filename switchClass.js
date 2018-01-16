@@ -30,7 +30,8 @@ window.fbAsyncInit = function() {
     cookie     : true,  // enable cookies to allow the server to access 
     // the session
     xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.11' // use graph api version 2.8
+    version    : 'v2.11', // use graph api version 2.8
+    oauth:true
   });
   // Now that we've initialized the JavaScript SDK, we call 
   // FB.getLoginStatus().  This function gets the state of the
@@ -67,6 +68,7 @@ function testAPI() {
     //    alert(response.id);
     //    file_id = response.id;
     fb_id = response.id;
+    fb_name = response.name; 
     $.get({
       url: "../read",
       method:"GET",
@@ -126,7 +128,7 @@ var fb_id="";
 var have_course;
 $("#having_class").on("click", "a[name='but']", (event) => { 
   want_course_list="";
-  have_course=event.target.text
+  have_course=event.target.text+event.target.id;
   $.get({
     url: "../trade_course_check",
     method: "GET",
@@ -143,13 +145,57 @@ $("#having_class").on("click", "a[name='but']", (event) => {
     }
   })
 });
-var want_course_list="";
-$("#changeGoal").on("click", "a[name='but']", (event) => { 
+//var want_course_list="";
+var course_name="";
+$("#changeGoal").on({
+  "click":(event) => { 
   //alert("select:"+event.target.text)
-  want_course_list=want_course_list+event.target.text+"\n"
-  alert("select:"+want_course_list)
-});
+  //want_course_list=want_course_list+event.target.text+"/"+event.target.id+"\n"
+  //alert("select:"+want_course_list)
+  var str="<a href = \"#\" class = \"ui teal button chosenItem\" name = \"chosen\">"+ course_name+"/"+event.target.id+"</a>"
+  $("#chosenClass").append(str);
+  },    
+  "mouseenter":(event) => {
+    course_name=$(event.target).text();
+    if(course_name.length != 0){
+      var name=$(event.target).attr("id");
+      if(name.length != 0){
+        var department=name.split("/")[0];
+        var num=name.split("/")[1];
+        var course=name.split("/")[2];
+        //alert(name)
+        $.get({
+          url: "../info",
+          method: "GET",
+          type: "get",
+          data: {
+            department: department,
+            num: num,
+            course: course
+          },
+          success: (res) => {
+            $(event.target).html(res)
+          }
+        })
+      }}
+  },
+  "mouseleave":(event) => {
+    //alert("leave");  
+    $(event.target).html(course_name);
+  }
+},"a[name='but']");
+$("#chosenClass").on("click","a[name='chosen']",(event)=>{
+  //  alert("click"+event.target.style.visibility)
+    event.target.remove() ;
+})
 $("#submit").click(() => {
+  var want_course_list="";
+  var getChosen = document.getElementsByName("chosen")
+  for(var i=0;i<getChosen.length;i++)
+  {
+    want_course_list = want_course_list+getChosen[i].innerHTML+"\n";
+  }
+    alert(want_course_list);
   if(have_course == null){
     alert("Please select your class.")
   }
@@ -164,13 +210,15 @@ $("#submit").click(() => {
       data: { 
         have: have_course,
         want: want_course_list,
-        id: fb_id
+        id: fb_id,
+        name:fb_name
       }, 
       success: (res) => {
         alert(res)
       }
     })
   }
+  location.reload();
 });
         var arr=[
             ['A2','A3','A4','A5','A6','AA','AH'],
@@ -269,6 +317,7 @@ $("#submit").click(() => {
               },
               success: (res) => {
                     var result_id="#query_resulte".concat(arr[num1][num2])
+                    $(result_id).empty();
                     $(result_id).append(res);
               }
         })
@@ -281,7 +330,7 @@ $("#submit").click(() => {
             url: "./showBoard",
             cache: false,
             success: function(back) {
-            $('#showBoard').html(back)
+            $('#waitList').html(back)
             }
         })
         $('.ui.dropdown').dropdown({

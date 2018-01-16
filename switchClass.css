@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 html, body {
 
 	width: 100vw;
@@ -8,6 +9,7 @@ html, body {
 }
 body{
   /*width: -webkit-fill-available; */
+		background-color: #e2fffa;
 } 
 /* The following decides how the body will be divided */
 #content { 
@@ -36,21 +38,25 @@ footer{
 	background-color: lightgreen;
 }
 h1.headerTitle{
-  font-family: 'Source Sans Pro', sans-serif;
+  /*font-family: 'Source Sans Pro', sans-serif;*/
+  font-family:'Noto Sans TC', sans-serif;
 		text-align: center;
 		color: black;
 		font-size: 50px;
+    font-weight:300;
 		margin: 22px;
 }
-/*
+
 div#wantedClass .column{
-	padding-bottom:10px;
+  font-family:'Noto Sans TC', sans-serif;
+/*	padding-bottom:10px;
   height:500px;
 	width: 50%;
 	overflow-y: scroll;
 	margin: 20px;
-}
 */
+}
+
 div#wantedClass .column a.college { 
 	text-decoration: none;
 	color: brown;
@@ -93,5 +99,24 @@ div#wantedClass .column div.department {
 .query_result {display:none;}
 
 #main_menu{
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family:'Noto Sans TC', sans-serif;
+}
+#waitList{
+    background-color: #e2fffa;
+  /*  font-family: 'Source Sans Pro', sans-serif;*/
+  font-family:'Noto Sans TC', sans-serif;
+}
+p{
+  margin:auto;
+  font-family:'Noto Sans TC', sans-serif;
+  font-size:18px;
+
+}
+div#chosenClass a{
+    margin:5px;
+  font-family:'Noto Sans TC', sans-serif;
+}
+div#background{
+    background-color: #e2fffa;
+
 }

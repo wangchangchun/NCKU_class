@@ -1,4 +1,3 @@
-
 var arr=[
   ['A1' ,'A9' ,'AG' ,'A7'],
   ['B1' ,'B2' ,'B3' ,'B5'],
@@ -35,6 +34,20 @@ function replaceCourse(name){
             if(name==document.getElementById(strbuf).innerHTML){
                 //alert('here!');
                 document.getElementById(strbuf).innerHTML='';
+            }
+        }
+    }
+}
+
+function rmCourse(input){
+    var goal=input.innerHTML;
+    alert(goal);
+    var cell;
+    for(var i=0;i<7;i++){
+        for(var j=0;j<10;j++){
+            cell=week[i]+"-"+j;
+            if(goal==document.getElementById(cell).innerHTML){
+                document.getElementById(cell).innerHTML='';
             }
         }
     }
@@ -115,6 +128,32 @@ $("#main").on("click", "td[class='table-cell']", (event) => {
       break;
   }
 });
+$( ".table-cell" ).click(function(){
+                         //goal=this.innerHTML;
+                         goal=this.attributes["name"].value;
+                         /*var cell;
+                          for(var i=0;i<7;i++){
+                          for(var j=0;j<10;j++){
+                          cell=week[i]+"-"+j;
+                          if(goal==document.getElementById(cell).innerHTML){
+                          document.getElementById(cell).innerHTML='';
+                          }
+                          }
+                          }*/
+                         });
+function dltCourse(){
+    var cell;
+    for(var i=0;i<7;i++){
+        for(var j=0;j<10;j++){
+            cell=week[i]+"-"+j;
+            if(goal==document.getElementById(cell).getAttribute("name")){
+                document.getElementById(cell).innerHTML='';
+            }
+            //alert(document.getElementsByName(goal).innerHTML)
+        }
+    }
+    goal='';
+}
 function clickBut(m ,n){
   b[m-1][n-1]=(b[m-1][n-1]+1)%2;
   if(b[m-1][n-1]==1)
@@ -164,27 +203,25 @@ function clickBut(m ,n){
     }
   })
 }
-
-$(".dropdown").on("click", "a[name='but']", (event) => { //chick this
-    var res = event.target.text;
-    //alert(res);
-  var name = res.split("[")[0];
-  var test = res.split("[")
-  for(var j=1;j<test.length;j++){
-
-    var time = res.split("[")[j];//時間
-    var day = time[0];//日期
-    var class_t1 = "";
-    var class_t2 = "";
-    var only_one_class = 0;
-    if(time[3]=='~'){
-      class_t1 = time[2];
-      class_t2 = time[4];
-      only_one_class=0;
-    }
-    else{
-      class_t1 = time[2];
-      only_one_class=1
+$(".dropdown").on({
+  "click":(event) => { //chick this
+    var res = course_name;
+    var name = res.split(":")[0];
+    var test = res.split("[")
+    var time = $(event.target).attr("value");//時間
+    for(var j=1;j<test.length;j++){
+        var day = time[1];//日期
+        var class_t1 = "";
+        var class_t2 = "";
+        var only_one_class = 0;
+        if(time[4]=='~'){
+          class_t1 = time[3];
+          class_t2 = time[5];
+          only_one_class=0;
+        }
+        else{
+          class_t1 = time[3];
+          only_one_class=1
     }
 
     var str = "";
@@ -259,7 +296,36 @@ $(".dropdown").on("click", "a[name='but']", (event) => { //chick this
     //$(str1).html(name);
     //$(str2).html(name);
   }
-});
+  },
+  "mouseenter":(event) => {
+    course_name=$(event.target).text();
+    if(course_name.length != 0){
+      var name=$(event.target).attr("id");
+      if(name.length != 0){
+        var department=name.split("/")[0];
+        var num=name.split("/")[1];
+        var course=name.split("/")[2];
+        //alert(name)
+        $.get({
+          url: "../info",
+          method: "GET",
+          type: "get",
+          data: {
+            department: department,
+            num: num,
+            course: course
+          },
+          success: (res) => {
+            $(event.target).html(res)
+          }
+        })
+      }}
+  },
+  "mouseleave":(event) => {
+    //alert("leave");  
+    $(event.target).html(course_name);
+  }
+},"a[name='but']");
 
 // Below are functions for the left sidebar menu.
 
@@ -387,7 +453,7 @@ function changeButton2(col,dep)
       }
     }
   }
-  
+  if(arr2[col][dep]!='A9'){
   $.get({
     url: "../test",
     method: "GET",
@@ -397,9 +463,32 @@ function changeButton2(col,dep)
     }, 
     success: (res) => {
       var result_id="#query_resulte".concat(arr2[col][dep])
+      $(result_id).empty();
       $(result_id).append(res);
     }
   })
+  }
+  else{
+  a9flag=0;
+  $.get({
+    url:"../A9sp",
+    method:"GET",
+    type:"get",
+    success:(res)=>{
+        var result_id="#query_resulteA9";
+        //alert(res)
+        $(result_id).empty();
+      //  $(res).replaceAll(result_id);
+      $(result_id).append(res);
+        a9flag=(a9flag+1)%2;
+        if(a9flag==0){
+            document.getElementById("query_resulteA9").display="none";
+        }
+        else
+            document.getElementById("query_resulteA9").display="block";
+    }
+  })
+  }
 }
 
 function displaySearch1() 
@@ -708,4 +797,34 @@ function searchBar()
 		//document.getElementById("e"+i).style.display = "block";	
 	}
   }	
-  }	 */
+  } */ 
+var course_name;
+$("#main").on("mouseover", "td[class='table-cell']", (event) => {
+  course_name=$(event.target).text();
+  if(course_name.length != 0){
+    var name=$(event.target).attr("name");
+    if(name.length != 0){
+    var department=name.split("/")[0];
+    var num=name.split("/")[1];
+    var course=name.split("/")[2];
+    //alert(name)
+    $.get({
+      url: "../info",
+      method: "GET",
+      type: "get",
+      data: {
+        department: department,
+        num: num,
+        course: course
+      },
+      success: (res) => {
+        $(event.target).html(res)
+      }
+    })
+  }}
+});
+$("#main").on("mouseout", "td[class='table-cell']", (event) => {
+  $("#"+event.target.id).html(course_name);
+});
+
+

@@ -75,9 +75,9 @@ function testAPI() {
         name:response.name
       },
       success:(res)=>{
-        //alert(res);
         var sp = res.split(" ");
 
+        //alert(sp);
         for (var i=0;i<sp.length;i=i+2){
           var class_id =sp[i].substr(0,3)+"-"+sp[i][3];
           //alert(class_id+" "+sp[i+1]);
@@ -89,20 +89,6 @@ function testAPI() {
 
     })
 
-  $.get({
-    url: "../self",
-    method: "GET",
-    type: "get",
-    data: { 
-      id:fb_id
-    }, 
-    success: (res) => {
-      //alert(res)
-      $('#myClass').append(res);
-    }
-  })
-
-
   });
 }
 $("#fb_logout").click(()=>{
@@ -110,7 +96,7 @@ $("#fb_logout").click(()=>{
   FB.logout(function(response) {
     // Person is now logged out
     alert('已成功登出!');
-    document.location.href="https://luffy.ee.ncku.edu.tw:1211/index.html";
+    document.location.href="https://luffy.ee.ncku.edu.tw:1235/index.html";
   });
 });
 
@@ -142,7 +128,7 @@ $("#save_btn").click(() =>{
       class_name = class_name.concat(class_arr[i].innerHTML,"\n");
       //     alert("frontend "+class_time+" "+class_name);
       class_no = class_no.concat(class_arr[i].getAttribute("name"),"\n");
-      alert(class_no);
+      //alert(class_no);
 
     }
   }
@@ -196,54 +182,4 @@ $("#clear_btn").click(() => {
     })
   });
 
-});
-var fb_id="";
-var have_course;
-$("#myClass").on("click", "a[name='but']", (event) => { 
-  want_course_list="";
-  have_course=event.target.text
-  $.get({
-    url: "../trade_course_check",
-    method: "GET",
-    type: "get",
-    data: { 
-      have: have_course,
-      id: fb_id
-    }, 
-    success: (res) => {
-      if(res == "course already have")
-        alert("You have already select this course!")
-      else
-        alert("select:\n"+have_course)
-    }
-  })
-});
-var want_course_list="";
-$("#changeGoal").on("click", "a[name='but']", (event) => { 
-  //alert("select:"+event.target.text)
-  want_course_list=want_course_list+event.target.text+"\n"
-  alert("select:"+want_course_list)
-});
-$("#submit").click(() => {
-  if(have_course == null){
-    alert("Please select your class.")
-  }
-  else if(want_course_list==""){
-    alert("Please select course you want to exchange.")
-  }
-  else{
-    $.get({
-      url: "../trading",
-      method: "GET",
-      type: "get",
-      data: { 
-        have: have_course,
-        want: want_course_list,
-        id: fb_id
-      }, 
-      success: (res) => {
-        alert(res)
-      }
-    })
-  }
 });
