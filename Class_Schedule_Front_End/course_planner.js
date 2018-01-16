@@ -453,7 +453,7 @@ function changeButton2(col,dep)
       }
     }
   }
-  if(arr2[col][dep]!='A9'){
+  
   $.get({
     url: "../test",
     method: "GET",
@@ -463,32 +463,24 @@ function changeButton2(col,dep)
     }, 
     success: (res) => {
       var result_id="#query_resulte".concat(arr2[col][dep])
+<<<<<<< HEAD
       $(result_id).empty();
       $(result_id).append(res);
+=======
+        if(result_id!="#query_resulteA9")
+            $(result_id).append(res);
     }
   })
-  }
-  else{
-  a9flag=0;
   $.get({
     url:"../A9sp",
     method:"GET",
     type:"get",
     success:(res)=>{
         var result_id="#query_resulteA9";
-        //alert(res)
-        $(result_id).empty();
-      //  $(res).replaceAll(result_id);
-      $(result_id).append(res);
-        a9flag=(a9flag+1)%2;
-        if(a9flag==0){
-            document.getElementById("query_resulteA9").display="none";
-        }
-        else
-            document.getElementById("query_resulteA9").display="block";
+        $(result_id).append(res);
+>>>>>>> 5d9e04e8099ff339d614a2a39e9b43310e95da3f
     }
   })
-  }
 }
 
 function displaySearch1() 
