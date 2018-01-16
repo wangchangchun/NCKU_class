@@ -1,4 +1,3 @@
-
 var arr=[
   ['A1' ,'A9' ,'AG' ,'A7'],
   ['B1' ,'B2' ,'B3' ,'B5'],
@@ -453,6 +452,10 @@ function changeButton2(col,dep)
     }, 
     success: (res) => {
       var result_id="#query_resulte".concat(arr2[col][dep])
+<<<<<<< HEAD
+      $(result_id).empty();
+      $(result_id).append(res);
+=======
         if(result_id!="#query_resulteA9")
             $(result_id).append(res);
     }
@@ -464,6 +467,7 @@ function changeButton2(col,dep)
     success:(res)=>{
         var result_id="#query_resulteA9";
         $(result_id).append(res);
+>>>>>>> 5d9e04e8099ff339d614a2a39e9b43310e95da3f
     }
   })
 }

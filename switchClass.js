@@ -68,7 +68,7 @@ function testAPI() {
     //    alert(response.id);
     //    file_id = response.id;
     fb_id = response.id;
-    
+   fb_name = response.name; 
     $.get({
       url: "../read",
       method:"GET",
@@ -210,13 +210,15 @@ $("#submit").click(() => {
       data: { 
         have: have_course,
         want: want_course_list,
-        id: fb_id
+        id: fb_id,
+        name:fb_name
       }, 
       success: (res) => {
         alert(res)
       }
     })
   }
+  location.reload();
 });
         var arr=[
             ['A2','A3','A4','A5','A6','AA','AH'],
@@ -315,6 +317,7 @@ $("#submit").click(() => {
               },
               success: (res) => {
                     var result_id="#query_resulte".concat(arr[num1][num2])
+                    $(result_id).empty();
                     $(result_id).append(res);
               }
         })
