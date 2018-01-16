@@ -68,7 +68,7 @@ div.dropdown a.department {
 	text-decoration: none;
 	color: white;
 	background-color: #5F555B;
-	display: block; 
+	display: none; 
 	text-align: center;
 	padding: 8px;
 	width: 100px;
@@ -120,14 +120,20 @@ td.table-cell{
   font-size:14px; 
 	font-weight: bold;
 }
-#searchBar{
+.searchBar{
 	width: 80%;
 	max-width: 500px;
-	font-size: 16px;
+	font-size: 14px;
 	padding: 16px;
 	border: 1px solid #ddd;
 	margin: 20px;
+	display: none;
 }
 #main_menu{
   font-family: 'Source Sans Pro', sans-serif;
+}
+#collegeSearch,#departmentSearch,#classSearch{
+	width:28%;
+	font-size: 10px;
+	margin: 5px;
 }
