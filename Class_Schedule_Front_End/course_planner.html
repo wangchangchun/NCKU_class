@@ -43,14 +43,8 @@
 	<nav>
     
 	<div class="ui inverted left inline vertical sidebar menu">
-	<button class="ui blue button" id="collegeSearch" onclick="displaySearch1()">Search Colleges</button>
-	<button class="ui blue button" id="departmentSearch" onclick="displaySearch2()">Search Departments</button>
-	<button class="ui blue button" id="classSearch" onclick="displaySearch3()">Search Classes</button>
-	
-	<input type="text" id="searchBar1" class ="searchBar"onkeyup="searchBar1()" placeholder="Search for colleges..">
-	<input type="text" id="searchBar2" class ="searchBar" onkeyup="searchBar2()" placeholder="Search departments...">
-	<input type="text" id="searchBar3" class ="searchBar" onkeyup="searchBar3()" placeholder="Search classes.'E2_053'">
-	<div id="container" class="dropdown">	
+	<input type="text" id="searchBar" onkeyup="searchBar()" placeholder="Search for colleges..">
+	<div class="dropdown">	
 		<a href="#" id="e0" class="college" onClick="changeButton(0)">其他</a><br>
 			<div id = "college0" class = "department">
 				<a href="#" id="eA2" class="department" onClick="changeButton2(0,0)">體育室</a><br>

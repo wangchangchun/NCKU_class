@@ -129,8 +129,10 @@ $("#main").on("click", "td[class='table-cell']", (event) => {
   }
 });
 $( ".table-cell" ).click(function(){
-                         //goal=this.innerHTML;
-                         goal=this.attributes["name"].value;
+                         goal=this.innerHTML;
+                   //      alert(event.target.text!="undefined")
+                   //if(event.target.text!="undefined")      
+//                         goal=this.attributes["name"].value;
                          /*var cell;
                           for(var i=0;i<7;i++){
                           for(var j=0;j<10;j++){
@@ -146,7 +148,8 @@ function dltCourse(){
     for(var i=0;i<7;i++){
         for(var j=0;j<10;j++){
             cell=week[i]+"-"+j;
-            if(goal==document.getElementById(cell).getAttribute("name")){
+       //     if(goal==document.getElementById(cell).getAttribute("name")){
+                if(goal==document.getElementById(cell).innerHTML){
                 document.getElementById(cell).innerHTML='';
             }
             //alert(document.getElementsByName(goal).innerHTML)
@@ -334,37 +337,26 @@ var f= [1,1,1,1,1,1,1,1,1,1,1,1];
 
 function changeButton(num)
 	{
-		var totalCollegeArray = document.getElementsByClassName("college");
-		var leftCollegeArray = [];
-		
-		//Build array of colleges for the left sidebar 
-		for( var i = 0; i < totalCollegeArray.length; i++)
-		{
-			if (totalCollegeArray[i].id.indexOf("e") == 0)
-			{
-				leftCollegeArray.push(totalCollegeArray[i]);
-			}
-		}
-		
+
 		for (var i = 0; i < f.length; i++)
 		{ 
 			if (num == i)
 				f[i] = (f[i] + 1)%2;
 		}
 
-		if(leftCollegeArray[num].style.display.indexOf(""))
+		if(f[num] == 0)
 		{
 			for(var i = 0; i < f.length; i++)
 			{
 				if (i != num)
 				{
-					document.getElementById("e"+i).style.display = "none";
-					//$("#e"+i).transition(  'slide up',   '800ms');
+					// document.getElementById("e"+i).style.display = "none";
+					$("#e"+i).transition(  'slide up',   '800ms');
 				}
 				if(i == num)
 				{
-					document.getElementById("college"+i).style.display="block";
-					//$("#college"+i).transition(  'slide down',   '800ms');
+					// document.getElementById("college"+i).style.display="block";
+					$("#college"+i).transition(  'slide down',   '800ms');
 				}
 			}
 		}
@@ -427,13 +419,13 @@ function changeButton2(col,dep)
     {
       if ( arr2[col][i] != arr2[col][dep])
       {
-		$('#e'+arr2[col][i]).transition('slide up','800ms');
-		//document.getElementById('e'+arr2[col][i]).style.display = "none";
+        $('#e'+arr2[col][i]).transition('slide up','800ms');
+        //document.getElementById('e'+arr2[col][i]).style.display = "none";
       }
       if(arr2[col][i] == arr2[col][dep])
       {
         $('#query_resulte'+arr2[col][i]).transition('slide down', '800ms');
-		// document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
+        // document.getElementById("query_resulte"+arr2[col][i]).style.display="block";
       }
     }
   }
@@ -444,356 +436,135 @@ function changeButton2(col,dep)
       if ( arr2[col][i] != arr2[col][dep] )
       {
         $('#e'+arr2[col][i]).transition(  'slide down',   '800ms');
-		//document.getElementById('e'+arr2[col][i]).style.display = "block";
+        //document.getElementById('e'+arr2[col][i]).style.display = "block";
       }
       if( arr2[col][i] == arr2[col][dep] )
       {
-		$('#query_resulte'+arr2[col][i]).transition(  'slide up',   '800ms');
+        $('#query_resulte'+arr2[col][i]).transition(  'slide up',   '800ms');
         //document.getElementById("query_resulte"+ arr2[col][i]).style.display="none";
       }
     }
   }
-  
+
+  if(arr2[col][dep]!='A9'){
+    $.get({
+url: "../test",
+method: "GET",
+type: "get",
+data: { 
+id:arr2[col][dep]
+}, 
+success: (res) => {
+var result_id="#query_resulte".concat(arr2[col][dep])
+$(result_id).empty();
+$(result_id).append(res);
+}
+})
+}
+else{
+  a9flag=0;
   $.get({
-    url: "../test",
-    method: "GET",
-    type: "get",
-    data: { 
-      id:arr2[col][dep]
-    }, 
-    success: (res) => {
-      var result_id="#query_resulte".concat(arr2[col][dep])
+url:"../A9sp",
+method:"GET",
+type:"get",
+success:(res)=>{
+var result_id="#query_resulteA9";
+//alert(res)
+$(result_id).empty();
+//  $(res).replaceAll(result_id);
+$(result_id).append(res);
+a9flag=(a9flag+1)%2;
+if(a9flag==0){
+document.getElementById("query_resulteA9").display="none";
+}
+else
+document.getElementById("query_resulteA9").display="block";
+}
+})
+}
+
+/*
+   $.get({
+url: "../test",
+method: "GET",
+type: "get",
+data: { 
+id:arr2[col][dep]
+}, 
+success: (res) => {
+var result_id="#query_resulte".concat(arr2[col][dep])
 <<<<<<< HEAD
-      $(result_id).empty();
-      $(result_id).append(res);
+$(result_id).empty();
+$(result_id).append(res);
 =======
-        if(result_id!="#query_resulteA9")
-            $(result_id).append(res);
-    }
-  })
-  $.get({
-    url:"../A9sp",
-    method:"GET",
-    type:"get",
-    success:(res)=>{
-        var result_id="#query_resulteA9";
-        $(result_id).append(res);
->>>>>>> 5d9e04e8099ff339d614a2a39e9b43310e95da3f
-    }
-  })
+if(result_id!="#query_resulteA9")
+$(result_id).append(res);
+}
+})
+$.get({
+url:"../A9sp",
+method:"GET",
+type:"get",
+success:(res)=>{
+var result_id="#query_resulteA9";
+$(result_id).append(res);
+}
+})*/
 }
 
-function displaySearch1() 
-{
-	document.getElementById("searchBar1").style.display = "block";
-	document.getElementById("searchBar2").style.display = "none";
-	document.getElementById("searchBar3").style.display = "none";
-}
-function displaySearch2() 
-{
-	document.getElementById("searchBar1").style.display = "none";
-	document.getElementById("searchBar2").style.display = "block";
-	document.getElementById("searchBar3").style.display = "none";
-}
-function displaySearch3() 
-{
-	document.getElementById("searchBar1").style.display = "none";
-	document.getElementById("searchBar2").style.display = "none";
-	document.getElementById("searchBar3").style.display = "block";
-}
-function searchBar1()
-{
-	var input = document.getElementById("searchBar1");
-	var filter = input.value;
-	var totalCollegeArray = document.getElementsByClassName("college");
-	var leftCollegeArray = [];
-	
-	// Creating array of Colleges for the left sidebar
-	for( var i = 0; i < totalCollegeArray.length; i++)
-	{
-		if ( totalCollegeArray[i].id.indexOf("e") == 0)
-		{
-			leftCollegeArray.push(totalCollegeArray[i]);
-		}
-	}
-	
-	if (filter.length > 0) // If searchbar has text, only the college that matches the text
-	{
-		for ( var i = 0; i < leftCollegeArray.length; i++)
-		{
-			if( leftCollegeArray[i].innerHTML.indexOf(filter) > -1)
-			{
-				leftCollegeArray[i].style.display = "block";
-			}
-			else
-			{
-				leftCollegeArray[i].style.display = "none";
-			}
-		}
-	}
-	else // If searchbar has no text, display all colleges
-	{
-		for( var i = 0; i < leftCollegeArray.length ; i++)
-		{
-			leftCollegeArray[i].style.display = "block";
-		}
-	}
-}
 
-function searchBar2()
-{
-	var input = document.getElementById("searchBar2");
-	var filter = input.value;
-	var totalCollegeArray = document.getElementsByClassName("college");
-	var totalDepartmentArray = document.getElementsByClassName("department");
-	var leftDepartmentArray = [];
-	var leftDepartmentDivArray = [];
-	var leftCollegeArray = [];
-	var departmentDivCounter = 0;
-	
-	//Build array of colleges for left sidebar
-	for (var i = 0; i < totalCollegeArray.length; i++)
-	{
-		if (totalCollegeArray[i].id.indexOf("e") == 0)
-		{
-			leftCollegeArray.push(totalCollegeArray[i]);
-		}
-	}
-
-	//Build array of departments and departmentDivs for left sidebar
-	for (var i = 0; i < totalDepartmentArray.length ; i++)
-	{
-		if (totalDepartmentArray[i].id.indexOf("e") == 0)
-		{
-			leftDepartmentArray.push(totalDepartmentArray[i]);
-		}
-		else if( totalDepartmentArray[i].id.indexOf("college") == 0)
-		{
-			leftDepartmentDivArray.push(totalDepartmentArray[i]);
-		}
-		
-	}
-	
-	
-	if(filter.length > 0) //If the searchbar has text, only display the departments that match the text
-	{
-		for (var j = 0; j < leftCollegeArray.length; j++)
-		{
-			leftCollegeArray[j].style.display = "none";
-		}
-		
-		for(var i = 0; i < leftDepartmentArray.length; i++)
-		{   		
-				if(leftDepartmentArray[i].innerHTML.indexOf(filter) > -1)
-				{
-					leftDepartmentArray[i].style.display = "block";
-					
-					// Display the Department Div if a particular department
-					// matches the search string. 
-					for ( var m = 0; m < arr2.length; m++)
-					{
-						for( var n = 0; n < arr2[m].length; n++)
-						{
-							if(leftDepartmentArray[i].id.indexOf(arr2[m][n]) > -1) 
-							{
-								leftDepartmentDivArray[m].style.display = "block";
-								departmentDivCounter += 1;
-							}
-							else if(departmentDivCounter == 0)
-							{
-								leftDepartmentDivArray[m].style.display = "none";
-							}
-						}
-					}
-				}
-				else 
-				{	
-					leftDepartmentArray[i].style.display = "none";
-				}
-		}
-    }
-	else //If the searchbar has no text, display all the departments.
-	{
-		for (var i = 0; i < leftCollegeArray.length; i++)
-		{
-			leftCollegeArray[i].style.display = "block";
-		}
-		for (var i = 0; i < leftDepartmentArray.length; i++)
-		{
-			leftDepartmentArray[i].style.display = "none";
-		}
-		for (var i = 0; i < leftDepartmentDivArray.length; i++)
-		{
-			leftDepartmentDivArray[i].style.display = "none";
-		}
-	}
-}
-
-function searchBar3()
-{
-	var input = document.getElementById("searchBar3");
-	var filter = input.value;
-	
-	$.get({
-    url: "../searchBar3",
-    method: "GET",
-    type: "get",
-    data: { 
-      course_number: filter;
-    }, 
-    success: (res) => {
-
-      $("#container").append(res);
-    }
-  }) 
-}
 function searchBar()
 {
-	var input = document.getElementById("searchBar");
-	var filter = input.value;
-	var collegeArray = document.getElementsByClassName("college");
-	var departmentArrayTotal = document.getElementsByClassName("department");
-	var departmentArrayLeft= [];
-	var departmentArrayDiv = [];
-	var departmentDivCounter = 0;
-	var a,b;
- // alert("DepartmentArrayTotal.Length = " + departmentArrayTotal.length);
- // alert("CollegeArray.Length = " + collegeArray.length);
- if( filter.length > 0)
- {	for (var i = 0; i < collegeArray.length ; i++)
-	{	  
-		collegeArray[i].style.display = "none";  
-		//$('#e'+i).transition('slide up');
-	}
- 
-	for (var i = 0; i < departmentArrayTotal.length ; i++)
-	{	  
-		departmentArrayTotal[i].style.display = "none"; 
-	 
-	}
+  var input = document.getElementById("searchBar");
+  var filter = input.value;
+  var collegeArray = document.getElementsByClassName("college");
+  var a,b;
+  for (var i = 0; i < collegeArray.length; i++)
+  {
+    a = collegeArray[i];
+    //   b = departmentArray[i]
 
-	for(var i = 0; i < departmentArrayTotal.length  ; i++)
-	{
-		if (departmentArrayTotal[i].id.indexOf("e") == 0)
-		{
-			departmentArrayLeft.push(departmentArrayTotal[i]);
-		}
-		else if (departmentArrayTotal[i].id.indexOf("college") == 0)
-		{
-			departmentArrayDiv.push(departmentArrayTotal[i]);
-		} 
-	}
- // alert("DepartmentArrayLeft.Length =" + departmentArrayLeft.length);
- // alert("DepartmentArrayDiv.Length =" + departmentArrayDiv.length);
-	for (var i = 0; i < departmentArrayLeft.length; i++)
-	{
-		if( i < collegeArray.length)
-		{
-			a = collegeArray[i];
-			b = departmentArrayLeft[i];
-	 
-			if (a.innerHTML.indexOf(filter) > -1)
-			{
-				a.style.display = "block";
-			}
-			else if(a.innerHTML.indexOf(filter) == -1)
-			{
-				a.style.display = "none";
-			}
-		
-			if (b.innerHTML.indexOf(filter) > -1)
-			{
-				b.style.display = "block";
-				
-				for ( var m = 0; m < arr2.length; m++)
-				{
-					for( var n = 0; n < arr2[m].length; n++)
-					{
-						if(b.id.indexOf(arr2[m][n]) > -1) 
-						{
-							departmentArrayDiv[m].style.display = "block";
-							departmentDivCounter += 1;
-						}
-						else if(departmentDivCounter == 0)
-						{
-							departmentArrayDiv[m].style.display = "none";
-						}
-					
-					}
-				}
-			}
-			else
-			{
-				b.style.display = "none";
-			}
-		}
-		else if (i >= collegeArray.length)
-		{
-			b = departmentArrayLeft[i];
-		
-			if (b.innerHTML.indexOf(filter) > -1)
-			{
-				b.style.display = "block";
-				
-				for ( var m = 0; m < arr2.length; m++)
-				{
-					for( var n = 0; n < arr2[m].length; n++)
-					{
-						if(b.id.indexOf(arr2[m][n]) > -1) 
-						{	departmentArrayDiv[m].style.display = "block";
-							departmentDivCounter += 1;
-						}
-						else if(departmentDivCounter == 0)
-						{	
-							departmentArrayDiv[m].style.display = "none";
-						}
-					}
-				}
-			}
-			else
-			{
-				b.style.display = "none";
-			}
-		}
-	//  alert(b.id);
+    if (a.innerHTML.indexOf(filter) > -1)
+    {
+      a.style.display = "block";
+    }
+    else
+    {
+      a.style.display = "none";
+    }
+    /*	if (b.innerHTML.indexOf(filter) > -1)
+        {
+        departmentArray[i].style.display = "block";
+        }
+        else
+        {
+        departmentArray[i].style.display = "none";
+        } */
   }
- }
- else
- {
-	 for (var i = 0; i < collegeArray.length ; i++)
-	 {
-		 collegeArray[i].style.display = "block";
-		 //alert("College "+i+" has been blocked");
-	 } 
-	 for (var i = 0; i < departmentArrayTotal.length; i++)
-	 {
-		 departmentArrayTotal[i].style.display = "none";
-		 //alert("Department "+i+ " has been blocked");
-	 }
- }
+
 }
 
 /*function restore()
-{
-	for (var j = 0; j < arr2.length ; j++)
-	{
-		$('#e'+j).transition('slide down');
-	for (var i = 0; i < arr2[j].length; i++)
-	{
-		$('#e'+arr2[j][i]).transition('slide up');
-		$('#query_resulte'+arr2[j][i]).transition('slide up');
-		//$('#e'+i).transition('slide down');
-		//$('#college'+i).transition("slide up");
-		
-		//document.getElementById("college"+i).style.display = "none";
-		//document.getElementById("e"+i).style.display = "block";	
-	}
-  }	
-  } */ 
+  {
+  for (var j = 0; j < arr2.length ; j++)
+  {
+  $('#e'+j).transition('slide down');
+  for (var i = 0; i < arr2[j].length; i++)
+  {
+  $('#e'+arr2[j][i]).transition('slide up');
+  $('#query_resulte'+arr2[j][i]).transition('slide up');
+//$('#e'+i).transition('slide down');
+//$('#college'+i).transition("slide up");
+
+//document.getElementById("college"+i).style.display = "none";
+//document.getElementById("e"+i).style.display = "block";	
+}
+}	
+} */ 
 var course_name;
 $("#main").on("mouseover", "td[class='table-cell']", (event) => {
-  course_name=$(event.target).text();
-  if(course_name.length != 0){
+    course_name=$(event.target).text();
+    if(course_name.length != 0){
     var name=$(event.target).attr("name");
     if(name.length != 0){
     var department=name.split("/")[0];
@@ -801,22 +572,22 @@ $("#main").on("mouseover", "td[class='table-cell']", (event) => {
     var course=name.split("/")[2];
     //alert(name)
     $.get({
-      url: "../info",
-      method: "GET",
-      type: "get",
-      data: {
-        department: department,
-        num: num,
-        course: course
-      },
-      success: (res) => {
-        $(event.target).html(res)
-      }
-    })
-  }}
+url: "../info",
+method: "GET",
+type: "get",
+data: {
+department: department,
+num: num,
+course: course
+},
+success: (res) => {
+$(event.target).html(res)
+}
+})
+}}
 });
 $("#main").on("mouseout", "td[class='table-cell']", (event) => {
-  $("#"+event.target.id).html(course_name);
-});
+    $("#"+event.target.id).html(course_name);
+    });
 
 
