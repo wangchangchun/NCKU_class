@@ -38,6 +38,20 @@ function replaceCourse(name){
         }
     }
 }
+
+function rmCourse(input){
+    var goal=input.innerHTML;
+    alert(goal);
+    var cell;
+    for(var i=0;i<7;i++){
+        for(var j=0;j<10;j++){
+            cell=week[i]+"-"+j;
+            if(goal==document.getElementById(cell).innerHTML){
+                document.getElementById(cell).innerHTML='';
+            }
+        }
+    }
+}
 ///
 function changeBut(num){
   a[num-1]=(a[num-1]+1)%2;
@@ -114,6 +128,30 @@ $("#main").on("click", "td[class='table-cell']", (event) => {
       break;
   }
 });
+$( ".table-cell" ).click(function(){
+                         goal=this.innerHTML;
+                         /*var cell;
+                          for(var i=0;i<7;i++){
+                          for(var j=0;j<10;j++){
+                          cell=week[i]+"-"+j;
+                          if(goal==document.getElementById(cell).innerHTML){
+                          document.getElementById(cell).innerHTML='';
+                          }
+                          }
+                          }*/
+                         });
+function dltCourse(){
+    var cell;
+    for(var i=0;i<7;i++){
+        for(var j=0;j<10;j++){
+            cell=week[i]+"-"+j;
+            if(goal==document.getElementById(cell).innerHTML){
+                document.getElementById(cell).innerHTML='';
+            }
+        }
+    }
+    goal='';
+}
 function clickBut(m ,n){
   b[m-1][n-1]=(b[m-1][n-1]+1)%2;
   if(b[m-1][n-1]==1)
@@ -412,8 +450,22 @@ function changeButton2(col,dep)
     }, 
     success: (res) => {
       var result_id="#query_resulte".concat(arr2[col][dep])
+<<<<<<< HEAD
       $(result_id).empty();
       $(result_id).append(res);
+=======
+        if(result_id!="#query_resulteA9")
+            $(result_id).append(res);
+    }
+  })
+  $.get({
+    url:"../A9sp",
+    method:"GET",
+    type:"get",
+    success:(res)=>{
+        var result_id="#query_resulteA9";
+        $(result_id).append(res);
+>>>>>>> 5d9e04e8099ff339d614a2a39e9b43310e95da3f
     }
   })
 }
