@@ -169,20 +169,19 @@ $(".dropdown").on({
     var res = course_name;
     var name = res.split(":")[0];
     var test = res.split("[")
-      for(var j=1;j<test.length;j++){
-
-        var time = res.split("[")[j];//時間
-        var day = time[0];//日期
+    var time = $(event.target).attr("value");//時間
+    for(var j=1;j<test.length;j++){
+        var day = time[1];//日期
         var class_t1 = "";
         var class_t2 = "";
         var only_one_class = 0;
-        if(time[3]=='~'){
-          class_t1 = time[2];
-          class_t2 = time[4];
+        if(time[4]=='~'){
+          class_t1 = time[3];
+          class_t2 = time[5];
           only_one_class=0;
         }
         else{
-          class_t1 = time[2];
+          class_t1 = time[3];
           only_one_class=1
     }
 
