@@ -39,6 +39,20 @@ function replaceCourse(name){
         }
     }
 }
+
+function rmCourse(input){
+    var goal=input.innerHTML;
+    alert(goal);
+    var cell;
+    for(var i=0;i<7;i++){
+        for(var j=0;j<10;j++){
+            cell=week[i]+"-"+j;
+            if(goal==document.getElementById(cell).innerHTML){
+                document.getElementById(cell).innerHTML='';
+            }
+        }
+    }
+}
 ///
 function changeBut(num){
   a[num-1]=(a[num-1]+1)%2;
@@ -115,6 +129,30 @@ $("#main").on("click", "td[class='table-cell']", (event) => {
       break;
   }
 });
+$( ".table-cell" ).click(function(){
+                         goal=this.innerHTML;
+                         /*var cell;
+                          for(var i=0;i<7;i++){
+                          for(var j=0;j<10;j++){
+                          cell=week[i]+"-"+j;
+                          if(goal==document.getElementById(cell).innerHTML){
+                          document.getElementById(cell).innerHTML='';
+                          }
+                          }
+                          }*/
+                         });
+function dltCourse(){
+    var cell;
+    for(var i=0;i<7;i++){
+        for(var j=0;j<10;j++){
+            cell=week[i]+"-"+j;
+            if(goal==document.getElementById(cell).innerHTML){
+                document.getElementById(cell).innerHTML='';
+            }
+        }
+    }
+    goal='';
+}
 function clickBut(m ,n){
   b[m-1][n-1]=(b[m-1][n-1]+1)%2;
   if(b[m-1][n-1]==1)
@@ -169,20 +207,19 @@ $(".dropdown").on({
     var res = course_name;
     var name = res.split(":")[0];
     var test = res.split("[")
-      for(var j=1;j<test.length;j++){
-
-        var time = res.split("[")[j];//時間
-        var day = time[0];//日期
+    var time = $(event.target).attr("value");//時間
+    for(var j=1;j<test.length;j++){
+        var day = time[1];//日期
         var class_t1 = "";
         var class_t2 = "";
         var only_one_class = 0;
-        if(time[3]=='~'){
-          class_t1 = time[2];
-          class_t2 = time[4];
+        if(time[4]=='~'){
+          class_t1 = time[3];
+          class_t2 = time[5];
           only_one_class=0;
         }
         else{
-          class_t1 = time[2];
+          class_t1 = time[3];
           only_one_class=1
     }
 
@@ -415,6 +452,15 @@ function changeButton2(col,dep)
     success: (res) => {
       var result_id="#query_resulte".concat(arr2[col][dep])
       $(result_id).append(res);
+    }
+  })
+  $.get({
+    url:"../A9sp",
+    method:"GET",
+    type:"get",
+    success:(res)=>{
+        var result_id="#query_resulteA9";
+        $(result_id).append(res);
     }
   })
 }

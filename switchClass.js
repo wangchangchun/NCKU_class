@@ -128,7 +128,7 @@ var fb_id="";
 var have_course;
 $("#having_class").on("click", "a[name='but']", (event) => { 
   want_course_list="";
-  have_course=event.target.text+" "+event.target.id;
+  have_course=event.target.text+event.target.id;
   $.get({
     url: "../trade_course_check",
     method: "GET",
@@ -152,7 +152,7 @@ $("#changeGoal").on({
   //alert("select:"+event.target.text)
   //want_course_list=want_course_list+event.target.text+"/"+event.target.id+"\n"
   //alert("select:"+want_course_list)
-  var str="<a href = \"#\" class = \"ui teal button chosenItem\" name = \"chosen\">"+ event.target.text+"/"+event.target.id+"</a>"
+  var str="<a href = \"#\" class = \"ui teal button chosenItem\" name = \"chosen\">"+ course_name+"/"+event.target.id+"</a>"
   $("#chosenClass").append(str);
   },    
   "mouseenter":(event) => {
