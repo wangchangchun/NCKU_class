@@ -128,28 +128,21 @@ $("#main").on("click", "td[class='table-cell']", (event) => {
       break;
   }
 });
+
 $( ".table-cell" ).click(function(){
-                         goal=this.innerHTML;
-                   //      alert(event.target.text!="undefined")
-                   //if(event.target.text!="undefined")      
-//                         goal=this.attributes["name"].value;
-                         /*var cell;
-                          for(var i=0;i<7;i++){
-                          for(var j=0;j<10;j++){
-                          cell=week[i]+"-"+j;
-                          if(goal==document.getElementById(cell).innerHTML){
-                          document.getElementById(cell).innerHTML='';
-                          }
-                          }
-                          }*/
-                         });
+    //goal=this.innerHTML;
+        if(this.innerHTML!=''){
+                goal=this.attributes["name"].value;
+        }
+});
+
 function dltCourse(){
     var cell;
     for(var i=0;i<7;i++){
         for(var j=0;j<10;j++){
             cell=week[i]+"-"+j;
-       //     if(goal==document.getElementById(cell).getAttribute("name")){
-                if(goal==document.getElementById(cell).innerHTML){
+            if(goal==document.getElementById(cell).getAttribute("name")){
+        //        if(goal==document.getElementById(cell).innerHTML){
                 document.getElementById(cell).innerHTML='';
             }
             //alert(document.getElementsByName(goal).innerHTML)
